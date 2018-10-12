@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Derme</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="row layout-topo">
+        <div class="col-xs-12 col-sm-12 col-md-12 ">
+            <div class="col-xs-3 col-sm-3 col-md-3 layout-topo__logo">
+                <span class="topo-logo">Clean Derme</span>
+            </div>
+
+            <div class="col-xs-9 col-sm-9 col-md-9 layout-topo__barra-superior">
+                <div class="col-xs-9 col-sm-9 col-md-9">
+
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <p class="topo-usuario">Olá, Daniel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-3 col-sm-3 col-md-3 layout-menu-lateral">
+                <ul>
+                    <li>Home</li>
+                    <li>Cadastros Gerais</li>
+                    <li><a href="@Url.Action("Index", "Clinicas")">Dados da Clínica</a></li>
+                    <li><a href="@Url.Action("Index", "Servicos")">Serviços</a></li>
+                    <li><a href="@Url.Action("Index", "Especialidades")">Especialidades</a></li>
+                    <li>-</li>
+                    <li><a href="@Url.Action("Index", "Usuarios")">Usuários</a></li>
+                    <li>Profissional</li>
+                    <li><a href="@Url.Action("Index", "Profissionais")">Cadastrar</a></li>
+                    <li>Clientes</li>
+                    <li><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
+                </ul>
+
+
+            </div>
+
+            <div class="col-xs-9 col-sm-9 col-md-9 layout-conteudo">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Daniel Moreira Developer</p>
+            </footer>
+        </div>
+    </div>
+
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
