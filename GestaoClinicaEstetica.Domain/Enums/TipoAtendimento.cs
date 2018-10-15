@@ -8,5 +8,8 @@ namespace GestaoClinicaEstetica.Domain.Enums
 {
     public enum TipoAtendimento
     {
+        Sessão = 0,
+        Consulta = 1,
+        Atendimento = 2
     }
 }

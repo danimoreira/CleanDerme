@@ -11,7 +11,7 @@ namespace GestaoClinicaEstetica.Context.Migrations
         {
             AutomaticMigrationsEnabled = false;
 
-            //SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(GestaoClinicaEstetica.Context.ClinicaContext context)

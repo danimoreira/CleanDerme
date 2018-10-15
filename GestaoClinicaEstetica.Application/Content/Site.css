@@ -1,24 +1,199 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-Black.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-BlackItalic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-BoldItalic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-ExtraBold.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-ExtraLight.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-ExtraLightItalic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-Italic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-Light.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-MediumItalic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-SemiBoldItalic.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-Thin.ttf') format('truetype'), url('../fonts/Montserrat/Montserrat-ThinItalic.ttf') format('truetype');
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+
+:root {
+    --main-bg-color: #E74C3C;
+    --secondary-bg-color: #E95C4D;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+*, body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Montserrat';
+    font-weight: lighter;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+    background-color: #F2F9D1;
+}
+
+/***************************************LAYOUT**********************************/
+
+.layout-topo {
+    height: 10vh;
+    background-color: var(--main-bg-color);
+    border-bottom: 1px solid #DDEF81;
+}
+
+.layout-topo__logo {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.layout-topo__barra-superior {
+}
+
+.topo-usuario {
+}
+
+.layout-menu-lateral {
+    background-color: var(--secondary-bg-color);
+    min-height: 150vh;
+    border-right: 1px solid #DDEF81;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral {
+    list-style: none;
+    margin-top: 3vh;
+    color: #fff;
+}
+
+    .menu-lateral li {
+        height: 7vh;
+        border-bottom: 1px solid rgba(213, 213, 213, .7);
+        padding-top: 1.5vh;
+    }
+
+.menu-titulo {
+    color: #EAEAEA;
+    padding-left: 10px;
+}
+
+.menu-item a {
+    color: rgba(213, 213, 213, .7);
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+    .menu-item a:hover {
+        color: #DDEF81;
+    }
+
+.layout-conteudo {
+}
+
+.layout-footer {
+    background-color: #E95C4D;
+    color: rgba(213, 213, 213, .7);
+    font-size: 8px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(213, 213, 213, .7);
+}
+
+/***************************************GERAL**********************************/
+.botao-acao {
+    border-radius: 100px;
+    background-color: #fff;
+    border-color: #EAEAEA;
+    min-width: 150px;
+    height: 40px;
+    padding-top: 10px;
+}
+
+    .botao-acao i {
+        padding-right: 10px;
+        padding-left: 5px;
+    }
+
+.botao-acao-salvar {
+    color: #ffffff !important;
+    background-color: #5cb85c !important;
+    border-color: #4cae4c !important;
+}
+
+.label-obrigatorio {
+    color: red;
+}
+/***************************************LISTAGEM**********************************/
+.listagem-topo {
+    padding-top: 10px;
+}
+
+.listagem-titulo {
+    font-size: 48px;
+    color: var(--main-bg-color);
+    border-bottom: 1px solid rgba(233, 92, 77, .3);
+}
+
+.listagem-botoes {
+    height: 15vh;
+    padding-top: 10px;
+}
+
+
+
+.input-search {
+    padding: 0;
+}
+
+.group-icons-search {
+    margin-top: -10px !important;
+}
+
+.icon-button a {
+    text-decoration: none !important;
+}
+
+.icon-search {
+    padding-top: -10px;
+    font-size: 26px;
+    cursor: pointer !important;
+}
+
+.icon-clear {
+    padding: 0;
+    font-size: 32px;
+    color: var(--main-bg-color);
+    opacity: .6;
+    cursor: pointer !important;
+}
+
+.listagem-conteudo {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 70vh;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+    box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+}
+
+/***************************************FORMULÁRIO**********************************/
+.formulario-topo {
+    padding-top: 10px;
+}
+
+.formulario-conteudo {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 70vh;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+    box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+}
+
+.formulario-botoes {
+    height: 15vh;
+    padding-top: 10px;
+}
+/***************************************CUSTOM**********************************/
+.dataTables_filter {
+    display: none;
+}
+
+.form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }

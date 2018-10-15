@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using GestaoClinicaEstetica.Application.Controllers.Base;
 using GestaoClinicaEstetica.Context;
 using GestaoClinicaEstetica.Domain.Entidades;
 using GestaoClinicaEstetica.Domain.Interfaces.Service;
 
 namespace GestaoClinicaEstetica.Application.Controllers
 {
-    public class ProfissionaisController : Controller
+    public class ProfissionaisController : BaseController
     {
         private IProfissionalService _profissionalService;
 
@@ -55,6 +56,16 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Cpf,DataNascimento,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Profissional profissional)
         {
+            UpdateBag();
+
+            profissional.DataCadastro = DateTime.Now;
+            profissional.UsuarioCadastro = ViewBag.UsuarioLogin;
+            profissional.DataAlteracao = DateTime.Now;
+            profissional.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(profissional);
+
             if (ModelState.IsValid)
             {
                 _profissionalService.Add(profissional);

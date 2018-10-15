@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using GestaoClinicaEstetica.Application.Controllers.Base;
 using GestaoClinicaEstetica.Context;
 using GestaoClinicaEstetica.Domain.Entidades;
 using GestaoClinicaEstetica.Domain.Interfaces.Service;
 
 namespace GestaoClinicaEstetica.Application.Controllers
 {
-    public class EspecialidadesController : Controller
+    public class EspecialidadesController : BaseController
     {
         private IEspecialidadeService _especialidadeService;
 
@@ -55,6 +56,13 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Descricao,TipoAtendimento,TempoAtendimentoPadrao,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Especialidade especialidade)
         {
+            UpdateBag();
+
+            especialidade.DataCadastro = DateTime.Now;
+            especialidade.UsuarioCadastro = ViewBag.UsuarioLogin;
+            especialidade.DataAlteracao = DateTime.Now;
+            especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
             if (ModelState.IsValid)
             {
                 _especialidadeService.Add(especialidade);

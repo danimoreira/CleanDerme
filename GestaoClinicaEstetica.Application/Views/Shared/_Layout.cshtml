@@ -8,67 +8,75 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-    <div class="row layout-topo">
-        <div class="col-xs-12 col-sm-12 col-md-12 ">
-            <div class="col-xs-3 col-sm-3 col-md-3 layout-topo__logo">
-                <span class="topo-logo">Clean Derme</span>
-            </div>
-
-            <div class="col-xs-9 col-sm-9 col-md-9 layout-topo__barra-superior">
-                <div class="col-xs-9 col-sm-9 col-md-9">
-
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
-                    <p class="topo-usuario">Olá, Daniel</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="col-xs-3 col-sm-3 col-md-3 layout-menu-lateral">
-                <ul>
-                    <li>Home</li>
-                    <li>Cadastros Gerais</li>
-                    <li><a href="@Url.Action("Index", "Clinicas")">Dados da Clínica</a></li>
-                    <li><a href="@Url.Action("Index", "Servicos")">Serviços</a></li>
-                    <li><a href="@Url.Action("Index", "Especialidades")">Especialidades</a></li>
-                    <li>-</li>
-                    <li><a href="@Url.Action("Index", "Usuarios")">Usuários</a></li>
-                    <li>Profissional</li>
-                    <li><a href="@Url.Action("Index", "Profissionais")">Cadastrar</a></li>
-                    <li>Clientes</li>
-                    <li><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
-                </ul>
+        <div class="col-xs-12 col-md-12 col-sm-12">
+            <div class="row layout-topo">
+                <div class="col-xs-12 col-sm-12 col-md-12 ">
+                    <div class="col-xs-3 col-sm-3 col-md-3 layout-topo__logo">
+                        <span class="topo-logo">Clean Derme</span>
+                    </div>
 
+                    <div class="col-xs-9 col-sm-9 col-md-9 layout-topo__barra-superior">
+                        <div class="col-xs-9 col-sm-9 col-md-9">
 
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                            <p class="topo-usuario">Olá, @ViewBag.UsuarioNome</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-xs-9 col-sm-9 col-md-9 layout-conteudo">
-                @RenderBody()
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-3 col-sm-3 col-md-3 layout-menu-lateral">
+                        <ul class="menu-lateral">
+                            <li class="menu-titulo">Home</li>
+                            <li class="menu-titulo">Cadastros Gerais</li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Clinicas")">Dados da Clínica</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Servicos")">Serviços</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Especialidades")">Especialidades</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Usuarios")">Usuários</a></li>
+                            <li class="menu-titulo">Profissional</li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Cadastrar</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Incluir Especilidade</a></li>
+                            <li class="menu-titulo">Clientes</li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Incluir Serviço</a></li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Ver presenças</a></li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Ver atendimentos</a></li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Receber Serviço</a></li>
+                            <li class="menu-titulo">Agenda</li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Ver agenda</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Marcar consulta</a></li>
+                            <li class="menu-titulo">Relatórios</li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Clientes")">Histórico do Cliente</a></li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Fechamento Financeiro</a></li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Repasse ao profissional</a></li>
+
+                        </ul>
+
+
+                    </div>
+
+                    <div class="col-xs-9 col-sm-9 col-md-9 layout-conteudo">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+            <div class="row layout-footer">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <p>&copy; @DateTime.Now.Year - Daniel Moreira Developer</p>
+                </div>
             </div>
         </div>
-
     </div>
-
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Daniel Moreira Developer</p>
-            </footer>
-        </div>
-    </div>
-
-
-
-
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/configuration")
+    @Scripts.Render("~/bundles/controllers")
     @RenderSection("scripts", required: false)
 </body>
 </html>

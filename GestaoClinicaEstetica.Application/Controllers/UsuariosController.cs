@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using GestaoClinicaEstetica.Application.Controllers.Base;
 using GestaoClinicaEstetica.Context;
 using GestaoClinicaEstetica.Domain.Entidades;
 using GestaoClinicaEstetica.Domain.Interfaces.Service;
 
 namespace GestaoClinicaEstetica.Application.Controllers
 {
-    public class UsuariosController : Controller
+    public class UsuariosController : BaseController
     {
         private IUsuarioService _usuarioService;
 
@@ -55,6 +56,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,Login,Senha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
         {
+            UpdateBag();
+
             if (ModelState.IsValid)
             {
                 _usuarioService.Add(usuario);                

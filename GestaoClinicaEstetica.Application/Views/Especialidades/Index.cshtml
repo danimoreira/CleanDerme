@@ -1,69 +1,76 @@
 ﻿@model IEnumerable<GestaoClinicaEstetica.Domain.Entidades.Especialidade>
 
-@{
-    ViewBag.Title = "Index";
-}
+<div class="col-xs-12 col-md-12 col-sm-12 listagem-topo">
+    <p class="listagem-titulo">Especialidades</p>
+</div>
 
-<h2>Index</h2>
+<div class="row listagem-botoes">
+    <div class="col-xs-9 col-sm-9 col-md-9 text-left">
+        <div class="col-xs-10 col-sm-10 col-md-10 input-search">
+            <input type="text" class="form-control" name="txtPesquisarEspecialidades" value="" />
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 group-icons-search">
+            <a class="icon-button icon-search" data-idTable="EspecialidadeLista" data-nameInput="txtPesquisarEspecialidades" data-toggle="tooltip" title="Pesquisar" onclick="PesquisarDataTable(this)">
+                <i class="fa fa-search"></i>
+            </a>
+            <a class="icon-button icon-clear" data-idTable="EspecialidadeLista" data-nameInput="txtPesquisarEspecialidades" data-toggle="tooltip" title="Limpar Pesquisa" onclick="LimparPesquisaDataTable(this)">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoAtendimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TempoAtendimentoPadrao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UsuarioCadastro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataAlteracao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UsuarioAlteracao)
-        </th>
-        <th></th>
-    </tr>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+        <a class="btn botao-acao" href="@Url.Action("Create", "Especialidades")">
+            <i class="fa fa-plus"></i> Incluir Especialidade
+        </a>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoAtendimento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TempoAtendimentoPadrao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCadastro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsuarioCadastro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataAlteracao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsuarioAlteracao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+</div>
 
-</table>
+
+<div class="col-xs-12 col-md-12 col-sm-12 listagem-conteudo">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+        <table class="table table-striped hover" id="EspecialidadeLista">
+            <thead>
+                <tr>
+                    <th>
+                        Descrição
+                    </th>
+                    <th>
+                        Tipo de Atendimento
+                    </th>
+                    <th>
+                        Tempo Padrão
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoAtendimento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TempoAtendimentoPadrao)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+</div>

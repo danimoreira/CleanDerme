@@ -8,6 +8,12 @@ namespace GestaoClinicaEstetica.Domain.Enums
 {
     public enum Periodicidade
     {
-        
+        Avulso = 0,
+        Semanal = 1,
+        Mensal = 2,
+        Bimestral = 3,
+        Trimestral = 4,
+        Semestral  = 5,
+        Anual = 6           
     }
 }

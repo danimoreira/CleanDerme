@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestaoClinicaEstetica.Application.Controllers.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,10 +7,11 @@ using System.Web.Mvc;
 
 namespace GestaoClinicaEstetica.Application.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
+            UpdateBag();
             return View();
         }
 

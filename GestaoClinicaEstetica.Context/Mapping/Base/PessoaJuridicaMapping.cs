@@ -12,7 +12,7 @@ namespace GestaoClinicaEstetica.Context.Mapping
         public PessoaJuridicaMapping()
         {
             Property(x => x.Cnpj)
-                .HasColumnName("CPF");
+                .HasColumnName("CNPJ");
 
             Property(x => x.DataFundacao)
                 .HasColumnName("DAT_FUNDACAO");

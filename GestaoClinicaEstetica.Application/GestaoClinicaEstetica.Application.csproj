@@ -166,6 +166,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
@@ -181,7 +182,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\select2.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -190,10 +195,93 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="fonts\Montserrat\Montserrat-Black.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-Bold.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-Italic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-Light.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-Medium.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-Regular.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-Thin.ttf" />
+    <Content Include="fonts\Montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\Configuration\Datatables-Configuration.js" />
+    <Content Include="Scripts\Configuration\Formulario-Configuration.js" />
+    <Content Include="Scripts\Controllers\ClientesController.js" />
+    <Content Include="Scripts\Controllers\ClinicasController.js" />
+    <Content Include="Scripts\Controllers\EspecialidadesController.js" />
+    <Content Include="Scripts\Controllers\ProfissionaisController.js" />
+    <Content Include="Scripts\Controllers\ServicosController.js" />
+    <Content Include="Scripts\Controllers\UsuariosController.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Scripts\Datatables\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\Datatables\datatables.css" />
+    <Content Include="Scripts\Datatables\datatables.js" />
+    <Content Include="Scripts\Datatables\datatables.min.css" />
+    <Content Include="Scripts\Datatables\datatables.min.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
+    <Content Include="Scripts\globalize\unit.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery.mask.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.globalize.js" />
+    <Content Include="Scripts\jquery.validate.globalize.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -201,6 +289,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2.full.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -251,6 +340,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -263,7 +353,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GestaoClinicaEstetica.Context\GestaoClinicaEstetica.Context.csproj">
