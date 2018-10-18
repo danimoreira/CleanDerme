@@ -1,144 +1,27 @@
 ﻿@model GestaoClinicaEstetica.Domain.Entidades.Clinica
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-topo">
+    <p class="listagem-titulo">Dados da Clínica</p>
+</div>
 
-@{
-    ViewBag.Title = "Delete";
-}
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Clinica</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cnpj)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cnpj)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataFundacao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataFundacao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bairro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bairro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Uf)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Uf)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cep)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cep)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TelefoneFixo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TelefoneFixo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TelefoneCelular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TelefoneCelular)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataCadastro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UsuarioCadastro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UsuarioCadastro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataAlteracao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataAlteracao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UsuarioAlteracao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UsuarioAlteracao)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="row formulario-botoes">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+            <a class="btn botao-acao" href="@Url.Action("Index")"><i class="fa fa-undo"></i> Cancelar</a>
         </div>
-    }
+        <div class="col-xs-9 col-sm-9 col-md-9 text-right">
+            <a class="btn botao-acao botao-acao-confirmar-exclusao" onclick="ConfirmarExclusao()"><i class="fa fa-check"></i> Confirmar exclusão</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo-exclusao">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <h4 class="texto-excluir-registro">Deseja realmente excluir os dados da clínica @Model.Nome?</h4>
+            </div>
+        }
+    </div>
 </div>

@@ -13,8 +13,10 @@ namespace GestaoClinicaEstetica.Domain.Entidades
         public string Descricao { get; set; }
         public Decimal ValorServico { get; set; }
         public Periodicidade Periodicidade { get; set; }
+        public int CodigoEspecialidade { get; set; }
+        public int QuantidadeSessoes { get; set; }
 
-        public virtual ICollection<EspecialidadePorServico> EspecialidadesPorServico { get; set; }
+        public virtual Especialidade Especialidade { get; set; }
         public virtual ICollection<ServicoPorCliente> ServicosPorCliente { get; set; }
 
     }

@@ -95,6 +95,12 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Cpf,DataNascimento,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Cliente cliente)
         {
+            cliente.DataAlteracao = DateTime.Now;
+            cliente.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(cliente);
+
             if (ModelState.IsValid)
             {
                 _clienteService.Update(cliente);

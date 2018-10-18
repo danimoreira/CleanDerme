@@ -54,10 +54,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Login)
                         </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        <td align="right">
+                            <a class="btn-link icon-acao icon-acao-editar" href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar"><i class="fa fa-pencil"></i></a>
+                            <a class="btn-link icon-acao icon-acao-deletar" href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" title="Excluir"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 }

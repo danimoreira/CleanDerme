@@ -21,7 +21,6 @@ namespace GestaoClinicaEstetica.Context
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Clinica> Clinica { get; set; }
         public virtual DbSet<Especialidade> Especialidade { get; set; }
-        public virtual DbSet<EspecialidadePorServico> EspecialidadePorServico { get; set; }
         public virtual DbSet<EspecialidadesPorServicoPorCliente> EspecialidadesPorServicoPorCliente { get; set; }
         public virtual DbSet<Presenca> Presenca { get; set; }
         public virtual DbSet<Profissional> Profissional { get; set; }
@@ -37,7 +36,6 @@ namespace GestaoClinicaEstetica.Context
             modelBuilder.Configurations.Add(new ClienteMapping());
             modelBuilder.Configurations.Add(new ClinicaMapping());
             modelBuilder.Configurations.Add(new EspecialidadeMapping());
-            modelBuilder.Configurations.Add(new EspecialidadePorServicoMapping());
             modelBuilder.Configurations.Add(new EspecialidadesPorServicoPorClienteMapping());            
             modelBuilder.Configurations.Add(new PresencaMapping());
             modelBuilder.Configurations.Add(new ProfissionalMapping());

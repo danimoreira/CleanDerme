@@ -54,9 +54,17 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Login,Senha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Nome,Login,Senha,ConfirmaSenha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
         {
             UpdateBag();
+
+            usuario.DataCadastro = DateTime.Now;
+            usuario.UsuarioCadastro = ViewBag.UsuarioLogin;
+            usuario.DataAlteracao = DateTime.Now;
+            usuario.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(usuario);
 
             if (ModelState.IsValid)
             {
@@ -87,8 +95,14 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Login,Senha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Login,Senha,ConfirmaSenha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
         {
+            usuario.DataAlteracao = DateTime.Now;
+            usuario.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(usuario);
+
             if (ModelState.IsValid)
             {
                 _usuarioService.Update(usuario);

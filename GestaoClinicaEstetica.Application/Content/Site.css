@@ -107,6 +107,12 @@ body {
     border-color: #4cae4c !important;
 }
 
+.botao-acao-confirmar-exclusao {
+    color: #ffffff !important;
+    background-color: #d9534f !important;
+    border-color: #d43f3a !important;
+}
+
 .label-obrigatorio {
     color: red;
 }
@@ -166,6 +172,28 @@ body {
     box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
 }
 
+.icon-acao {
+    margin-right: 5%;
+}
+
+.icon-acao-editar {
+    font-size: 20px;
+    color: green;
+}
+
+    .icon-acao-editar:hover {
+        color: green;
+    }
+
+.icon-acao-deletar {
+    font-size: 20px;
+    color: red;
+}
+
+    .icon-acao-deletar:hover {
+        color: red;
+    }
+
 /***************************************FORMULÁRIO**********************************/
 .formulario-topo {
     padding-top: 10px;
@@ -184,9 +212,26 @@ body {
     box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
 }
 
+.formulario-conteudo-exclusao {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 15vh;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+    box-shadow: 0px 0px 5px 1px rgba(153,148,153,0.52);
+}
+
 .formulario-botoes {
     height: 15vh;
     padding-top: 10px;
+}
+
+.texto-excluir-registro {
+    color: var(--main-bg-color);
 }
 /***************************************CUSTOM**********************************/
 .dataTables_filter {

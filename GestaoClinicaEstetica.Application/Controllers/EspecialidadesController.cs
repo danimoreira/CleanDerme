@@ -63,6 +63,9 @@ namespace GestaoClinicaEstetica.Application.Controllers
             especialidade.DataAlteracao = DateTime.Now;
             especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;
 
+            ModelState.Clear();
+            TryValidateModel(especialidade);
+
             if (ModelState.IsValid)
             {
                 _especialidadeService.Add(especialidade);
@@ -96,6 +99,12 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Descricao,TipoAtendimento,TempoAtendimentoPadrao,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Especialidade especialidade)
         {
+            especialidade.DataAlteracao = DateTime.Now;
+            especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(especialidade);
+
             if (ModelState.IsValid)
             {
                 _especialidadeService.Update(especialidade);

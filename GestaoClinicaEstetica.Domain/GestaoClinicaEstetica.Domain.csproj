@@ -50,7 +50,6 @@
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Clinica.cs" />
     <Compile Include="Entidades\Especialidade.cs" />
-    <Compile Include="Entidades\EspecialidadePorServico.cs" />
     <Compile Include="Entidades\EspecialidadesPorServicoPorCliente.cs" />
     <Compile Include="Entidades\RecebimentoServicoPorCliente.cs" />
     <Compile Include="Entidades\Presenca.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="Interfaces\Repository\IAtendimentoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClinicaRepository.cs" />
-    <Compile Include="Interfaces\Repository\IEspecialidadePorServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadesPorServicoPorClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadeRepository.cs" />
     <Compile Include="Interfaces\Repository\IPresencaRepository.cs" />
@@ -83,7 +81,6 @@
     <Compile Include="Interfaces\Service\IAtendimentoService.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClinicaService.cs" />
-    <Compile Include="Interfaces\Service\IEspecialidadePorServicoService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadeService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadesPorServicoPorClienteService.cs" />
     <Compile Include="Interfaces\Service\IPresencaService.cs" />

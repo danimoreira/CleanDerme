@@ -14,6 +14,6 @@ namespace GestaoClinicaEstetica.Domain.Enums
         Bimestral = 3,
         Trimestral = 4,
         Semestral  = 5,
-        Anual = 6           
+        Anual = 6
     }
 }

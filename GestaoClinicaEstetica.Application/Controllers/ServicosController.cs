@@ -10,18 +10,22 @@ using GestaoClinicaEstetica.Application.Controllers.Base;
 using GestaoClinicaEstetica.Context;
 using GestaoClinicaEstetica.Domain.Entidades;
 using GestaoClinicaEstetica.Domain.Interfaces.Service;
+using GestaoClinicaEstetica.Ioc;
+using Ninject;
 
 namespace GestaoClinicaEstetica.Application.Controllers
 {
     public class ServicosController : BaseController
     {
         private IServicoService _servicoService;
+        private IEspecialidadeService _especialidadeService;
 
-        public ServicosController(IServicoService servicoService)
+        public ServicosController(IServicoService servicoService, IEspecialidadeService especialidadeService)
         {
             _servicoService = servicoService;
+            _especialidadeService = especialidadeService;
         }
-
+        
         // GET: Servico5s
         public ActionResult Index()
         {
@@ -46,6 +50,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Servicos/Create
         public ActionResult Create()
         {
+            UpdateBag();
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Descricao,ValorServico,Periodicidade,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Servico servico)
+        public ActionResult Create([Bind(Include = "Id,Descricao,ValorServico,Periodicidade,CodigoEspecialidade,QuantidadeSessoes,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Servico servico)
         {
             UpdateBag();
 
@@ -79,6 +84,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Servicos/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -96,8 +103,14 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Descricao,ValorServico,Periodicidade,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Servico servico)
+        public ActionResult Edit([Bind(Include = "Id,Descricao,ValorServico,Periodicidade,CodigoEspecialidade,QuantidadeSessoes,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Servico servico)
         {
+            servico.DataAlteracao = DateTime.Now;
+            servico.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(servico);
+
             if (ModelState.IsValid)
             {
                 _servicoService.Update(servico);
@@ -139,6 +152,17 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 _servicoService.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public override void UpdateBag()
+        {
+            base.UpdateBag();
+
+            ViewBag.ListaEspecialidades = _especialidadeService.List().Select(x => new SelectListItem()
+            {
+                Text = x.Descricao,
+                Value = x.Id.ToString()
+            }).ToList();
         }
     }
 }

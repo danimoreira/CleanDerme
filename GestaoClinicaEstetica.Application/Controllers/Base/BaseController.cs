@@ -10,13 +10,13 @@ namespace GestaoClinicaEstetica.Application.Controllers.Base
     {
         public BaseController()
         {
-            UpdateBag();
+            ViewBag.UsuarioLogin = "daniel";
+            ViewBag.UsuarioNome = "Daniel";
         }
 
         public virtual void UpdateBag()
         {
-            ViewBag.UsuarioLogin = "daniel";
-            ViewBag.UsuarioNome = "Daniel";
+
         }
     }
 }

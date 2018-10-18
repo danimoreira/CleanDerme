@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $('.date').mask('00/00/0000');
-    $('.time').mask('00:00:00');
+    $('.time').mask('00:00');
     $('.date_time').mask('00/00/0000 00:00:00');
     $('.cep').mask('00000-000');
     $('.phone-fixo').mask('(00) 0000-0000');
@@ -12,5 +12,10 @@
 
 function SalvarFormulario() {
     var formulario = $(".formulario-conteudo").find("form");
+    formulario.submit();
+}
+
+function ConfirmarExclusao() {
+    var formulario = $(".formulario-conteudo-exclusao").find("form");
     formulario.submit();
 }

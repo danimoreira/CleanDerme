@@ -71,7 +71,6 @@
     <Compile Include="Mapping\ClienteMapping.cs" />
     <Compile Include="Mapping\ClinicaMapping.cs" />
     <Compile Include="Mapping\EspecialidadeMapping.cs" />
-    <Compile Include="Mapping\EspecialidadePorServicoMapping.cs" />
     <Compile Include="Mapping\EspecialidadesPorServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\PresencaMapping.cs" />
     <Compile Include="Mapping\ProfissionalMapping.cs" />
@@ -90,6 +89,18 @@
     <Compile Include="Migrations\201810152314060_AlterTableClinica_alternameCNPJ.cs" />
     <Compile Include="Migrations\201810152314060_AlterTableClinica_alternameCNPJ.Designer.cs">
       <DependentUpon>201810152314060_AlterTableClinica_alternameCNPJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810172153025_alterTableEspecialidade_obrigatorios.cs" />
+    <Compile Include="Migrations\201810172153025_alterTableEspecialidade_obrigatorios.Designer.cs">
+      <DependentUpon>201810172153025_alterTableEspecialidade_obrigatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810172313214_alterTableUsuarios_definicao.cs" />
+    <Compile Include="Migrations\201810172313214_alterTableUsuarios_definicao.Designer.cs">
+      <DependentUpon>201810172313214_alterTableUsuarios_definicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.cs" />
+    <Compile Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.Designer.cs">
+      <DependentUpon>201810180026341_dropTable_EspecialidadePorServico.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +124,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810152314060_AlterTableClinica_alternameCNPJ.resx">
       <DependentUpon>201810152314060_AlterTableClinica_alternameCNPJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810172153025_alterTableEspecialidade_obrigatorios.resx">
+      <DependentUpon>201810172153025_alterTableEspecialidade_obrigatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810172313214_alterTableUsuarios_definicao.resx">
+      <DependentUpon>201810172313214_alterTableUsuarios_definicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.resx">
+      <DependentUpon>201810180026341_dropTable_EspecialidadePorServico.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
