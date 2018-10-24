@@ -11,21 +11,10 @@ namespace GestaoClinicaEstetica.Application.Controllers
     {
         public ActionResult Index()
         {
-            UpdateBag();
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            this.UpdateBag();
+            if (string.IsNullOrEmpty(ViewBag.UsuarioLogin))
+                return RedirectToAction("Index", "Seguranca");
+            
             return View();
         }
     }

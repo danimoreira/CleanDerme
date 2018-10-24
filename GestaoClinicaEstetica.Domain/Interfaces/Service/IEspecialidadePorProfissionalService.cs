@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEstetica.Domain.Interfaces.Service
 {
-    public interface IUsuarioService : IServiceBase<Usuario>
+    public interface IEspecialidadePorProfissionalService : IServiceBase<EspecialidadePorProfissional>
     {
-        Usuario Logar(Usuario dados);
     }
 }

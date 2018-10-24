@@ -24,6 +24,7 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IServicoPorClienteRepository>().To<ServicoPorClienteRepository>();
             Bind<IServicoRepository>().To<ServicoRepository>();
             Bind<IUsuarioRepository>().To<UsuarioRepository>();
+            Bind<IEspecialidadePorProfissionalRepository>().To<EspecialidadePorProfissionalRepository>();
 
             Bind<IAgendaService>().To<AgendaService>();
             Bind<IAtendimentoService>().To<AtendimentoService>();
@@ -37,6 +38,7 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IServicoPorClienteService>().To<ServicoPorClienteService>();
             Bind<IServicoService>().To<ServicoService>();
             Bind<IUsuarioService>().To<UsuarioService>();
+            Bind<IEspecialidadePorProfissionalService>().To<EspecialidadePorProfissionalService>();
         }        
     }
 }

@@ -1,0 +1,74 @@
+﻿@model GestaoClinicaEstetica.Application.Models.LoginModel
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Clean Derme - Entrar</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12 formulario-login">
+        <div class="col-xs-4 col-md-4 col-sm-4">
+
+        </div>
+
+        <div class="col-xs-4 col-md-4 col-sm-4">
+            @using (Html.BeginForm("Entrar", "Seguranca", new { returnUrl = Request["ReturnUrl"] }, FormMethod.Post, new { @class = "form-signin" }))
+            {
+                <span class="font-titulo-login">Clean Derme</span>
+                <span class="font-bem-vindo">Bem-vindo</span>
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.Usuario)</span>
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.Senha)</span>
+                <div class="row form-group">
+                    <input type="text" id="Usuario" name="Usuario" class="form-control" placeholder="Usuário" required>
+                </div>
+
+                <div class="row form-group">
+                    <input type="password" id="Senha" name="Senha" class="form-control" placeholder="Senha" required>
+                </div>
+
+                <div class="row form-group">
+                    <button class="btn btn-danger btn-block" type="submit">Entrar</button>
+                </div>
+
+
+                <br />
+                <p>
+                    <span class="mt-5 mb-3 text-muted" style="font-size: 12px;">
+                        versão 02.000.000
+                    </span>
+                    <br />
+                    <span class="mt-5 mb-3 text-muted" style="font-size: 12px;">
+                        &copy;Daniel Moreira Developer
+                    </span>
+                </p>
+
+            }
+
+        </div>
+
+        <div class="col-xs-4 col-md-4 col-sm-4">
+
+        </div>
+
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/configuration")
+    @Scripts.Render("~/bundles/controllers")
+
+</body>
+
+</html>

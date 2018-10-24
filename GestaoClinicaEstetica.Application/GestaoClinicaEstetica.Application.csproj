@@ -169,14 +169,18 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\EspecialidadePorProfissionalController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfissionaisController.cs" />
+    <Compile Include="Controllers\SegurancaController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListaEspecialidadeViewModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,8 +238,10 @@
     <Content Include="Scripts\cldr\unresolved.js" />
     <Content Include="Scripts\Configuration\Datatables-Configuration.js" />
     <Content Include="Scripts\Configuration\Formulario-Configuration.js" />
+    <Content Include="Scripts\Configuration\Select2-Configuration.js" />
     <Content Include="Scripts\Controllers\ClientesController.js" />
     <Content Include="Scripts\Controllers\ClinicasController.js" />
+    <Content Include="Scripts\Controllers\EspecialidadePorProfissionalController.js" />
     <Content Include="Scripts\Controllers\EspecialidadesController.js" />
     <Content Include="Scripts\Controllers\ProfissionaisController.js" />
     <Content Include="Scripts\Controllers\ServicosController.js" />
@@ -346,10 +352,11 @@
     <Content Include="Views\Especialidades\Details.cshtml" />
     <Content Include="Views\Especialidades\Edit.cshtml" />
     <Content Include="Views\Especialidades\Index.cshtml" />
+    <Content Include="Views\Seguranca\Index.cshtml" />
+    <Content Include="Views\EspecialidadePorProfissional\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -404,7 +411,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3251</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3251/</IISUrl>
+          <IISUrl>http://localhost:8052</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

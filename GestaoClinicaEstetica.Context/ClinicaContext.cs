@@ -43,8 +43,11 @@ namespace GestaoClinicaEstetica.Context
             modelBuilder.Configurations.Add(new ServicoMapping());
             modelBuilder.Configurations.Add(new ServicoPorClienteMapping());
             modelBuilder.Configurations.Add(new UsuarioMapping());
+            modelBuilder.Configurations.Add(new EspecialidadePorProfissionalMapping());
 
             base.OnModelCreating(modelBuilder);            
         }
+
+        public System.Data.Entity.DbSet<GestaoClinicaEstetica.Domain.Entidades.EspecialidadePorProfissional> EspecialidadePorProfissionals { get; set; }
     }
 }

@@ -86,6 +86,20 @@ body {
     border-top: 1px solid rgba(213, 213, 213, .7);
 }
 
+.formulario-login {
+    width: 60%;
+    padding-top: 10%;    
+}
+
+.font-titulo-login {
+    color: var(--main-bg-color);
+    font-size: 30px;
+}
+
+.font-bem-vindo {
+    color: var(--secondary-bg-color);
+    font-size: 16px;
+}
 /***************************************GERAL**********************************/
 .botao-acao {
     border-radius: 100px;
