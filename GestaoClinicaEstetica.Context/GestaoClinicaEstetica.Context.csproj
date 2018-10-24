@@ -71,6 +71,7 @@
     <Compile Include="Mapping\ClienteMapping.cs" />
     <Compile Include="Mapping\ClinicaMapping.cs" />
     <Compile Include="Mapping\EspecialidadeMapping.cs" />
+    <Compile Include="Mapping\EspecialidadePorProfissionalMapping.cs" />
     <Compile Include="Mapping\EspecialidadesPorServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\PresencaMapping.cs" />
     <Compile Include="Mapping\ProfissionalMapping.cs" />
@@ -101,6 +102,10 @@
     <Compile Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.cs" />
     <Compile Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.Designer.cs">
       <DependentUpon>201810180026341_dropTable_EspecialidadePorServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.cs" />
+    <Compile Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.Designer.cs">
+      <DependentUpon>201810222340305_addTableEspecialidadePorProfissional.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.resx">
       <DependentUpon>201810180026341_dropTable_EspecialidadePorServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.resx">
+      <DependentUpon>201810222340305_addTableEspecialidadePorProfissional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,6 +22,7 @@
                         </div>
                         <div class="col-xs-3 col-sm-3 col-md-3 text-right">
                             <p class="topo-usuario">Olá, @ViewBag.UsuarioNome</p>
+                            <p><a href="@Url.Action("Logout", "Seguranca")">Sair</a> </p>
                         </div>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
                             <li class="menu-item"><a href="@Url.Action("Index", "Usuarios")">Usuários</a></li>
                             <li class="menu-titulo">Profissional</li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Cadastrar</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Incluir Especilidade</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "EspecialidadePorProfissional")">Incluir Especilidade</a></li>
                             <li class="menu-titulo">Clientes</li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
                             <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Incluir Serviço</a></li>

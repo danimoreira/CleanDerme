@@ -53,6 +53,7 @@
     <Compile Include="Services\Base\ServiceBase.cs" />
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ClinicaService.cs" />
+    <Compile Include="Services\EspecialidadePorProfissionalService.cs" />
     <Compile Include="Services\EspecialidadeService.cs" />
     <Compile Include="Services\EspecialidadesPorServicoPorClienteService.cs" />
     <Compile Include="Services\PresencaService.cs" />
