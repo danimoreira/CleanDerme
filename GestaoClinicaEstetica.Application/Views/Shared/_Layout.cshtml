@@ -32,7 +32,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="col-xs-3 col-sm-3 col-md-3 layout-menu-lateral">
                         <ul class="menu-lateral">
-                            <li class="menu-titulo">Home</li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
                             <li class="menu-titulo">Cadastros Gerais</li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Clinicas")">Dados da Clínica</a></li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Especialidades")">Especialidades</a></li>
@@ -43,10 +43,11 @@
                             <li class="menu-item"><a href="@Url.Action("Index", "EspecialidadePorProfissional")">Incluir Especilidade</a></li>
                             <li class="menu-titulo">Clientes</li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
-                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Incluir Serviço</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index", "ServicoPorCliente")">Incluir Serviço</a></li>
                             <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Ver presenças</a></li>
                             <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Ver atendimentos</a></li>
-                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Receber Serviço</a></li>
+                            <li class="menu-titulo">Financeiro</li>
+                            <li class="menu-item"><a href="@Url.Action("NovoServico", "Clientes")">Receber pagamento</a></li>
                             <li class="menu-titulo">Agenda</li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Ver agenda</a></li>
                             <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Marcar consulta</a></li>

@@ -72,12 +72,10 @@
     <Compile Include="Mapping\ClinicaMapping.cs" />
     <Compile Include="Mapping\EspecialidadeMapping.cs" />
     <Compile Include="Mapping\EspecialidadePorProfissionalMapping.cs" />
-    <Compile Include="Mapping\EspecialidadesPorServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\PresencaMapping.cs" />
     <Compile Include="Mapping\ProfissionalMapping.cs" />
     <Compile Include="Mapping\RecebimentoServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\ServicoMapping.cs" />
-    <Compile Include="Mapping\ServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\UsuarioMapping.cs" />
     <Compile Include="Migrations\201810082204519_criacao-banco.cs" />
     <Compile Include="Migrations\201810082204519_criacao-banco.Designer.cs">
@@ -106,6 +104,10 @@
     <Compile Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.cs" />
     <Compile Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.Designer.cs">
       <DependentUpon>201810222340305_addTableEspecialidadePorProfissional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810252128380_ajusteEstruturaTabelas.cs" />
+    <Compile Include="Migrations\201810252128380_ajusteEstruturaTabelas.Designer.cs">
+      <DependentUpon>201810252128380_ajusteEstruturaTabelas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.resx">
       <DependentUpon>201810222340305_addTableEspecialidadePorProfissional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810252128380_ajusteEstruturaTabelas.resx">
+      <DependentUpon>201810252128380_ajusteEstruturaTabelas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

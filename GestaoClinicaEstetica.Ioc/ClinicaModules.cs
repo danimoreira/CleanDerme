@@ -17,11 +17,9 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IClienteRepository>().To<ClienteRepository>();
             Bind<IClinicaRepository>().To<ClinicaRepository>();
             Bind<IEspecialidadeRepository>().To<EspecialidadeRepository>();
-            Bind<IEspecialidadesPorServicoPorClienteRepository>().To<EspecialidadesPorServicoPorClienteRepository>();
             Bind<IPresencaRepository>().To<PresencaRepository>();
             Bind<IProfissionalRepository>().To<ProfissionalRepository>();
             Bind<IRecebimentoServicoPorClienteRepository>().To<RecebimentoServicoPorClienteRepository>();
-            Bind<IServicoPorClienteRepository>().To<ServicoPorClienteRepository>();
             Bind<IServicoRepository>().To<ServicoRepository>();
             Bind<IUsuarioRepository>().To<UsuarioRepository>();
             Bind<IEspecialidadePorProfissionalRepository>().To<EspecialidadePorProfissionalRepository>();
@@ -31,11 +29,9 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IClienteService>().To<ClienteService>();
             Bind<IClinicaService>().To<ClinicaService>();
             Bind<IEspecialidadeService>().To<EspecialidadeService>();
-            Bind<IEspecialidadesPorServicoPorClienteService>().To<EspecialidadesPorServicoPorClienteService>();
             Bind<IPresencaService>().To<PresencaService>();
             Bind<IProfissionalService>().To<ProfissionalService>();
             Bind<IRecebimentoServicoPorClienteService>().To<RecebimentoServicoPorClienteService>();
-            Bind<IServicoPorClienteService>().To<ServicoPorClienteService>();
             Bind<IServicoService>().To<ServicoService>();
             Bind<IUsuarioService>().To<UsuarioService>();
             Bind<IEspecialidadePorProfissionalService>().To<EspecialidadePorProfissionalService>();

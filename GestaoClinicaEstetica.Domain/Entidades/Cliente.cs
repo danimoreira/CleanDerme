@@ -9,7 +9,6 @@ namespace GestaoClinicaEstetica.Domain.Entidades
 {
     public class Cliente : PessoaFisicaBase
     {
-        public virtual ICollection<Agenda> Compromissos { get; set; }
-        public virtual ICollection<ServicoPorCliente> ServicosPorCliente { get; set; }
+        public virtual ICollection<Agenda> Compromissos { get; set; }        
     }
 }

@@ -13,8 +13,11 @@ namespace GestaoClinicaEstetica.Context.Mapping
         {
             ToTable("RECEBIMENTOS");
 
-            Property(x => x.CodigoServicoPorCliente)
-                .HasColumnName("COD_SERVICO_POR_CLIENTE");
+            Property(x => x.CodigoCliente)
+                .HasColumnName("COD_CLIENTE");
+
+            Property(x => x.CodigoServico)
+                .HasColumnName("COD_SERVICO");
 
             Property(x => x.DataVencimento)
                 .HasColumnName("DAT_VENCIMENTO");
@@ -37,9 +40,8 @@ namespace GestaoClinicaEstetica.Context.Mapping
             Property(x => x.ValorRecebido)
                 .HasColumnName("VLR_RECEBIDO");
 
-            HasRequired<ServicoPorCliente>(x => x.ServicosPorCliente)
-               .WithRequiredPrincipal(y => y.RecebimentoServicoPorCliente)
-               .WillCascadeOnDelete(true);            
+            Property(x => x.DataAquisicao)
+                .HasColumnName("DAT_AQUISICAO");
         }
     }
 }

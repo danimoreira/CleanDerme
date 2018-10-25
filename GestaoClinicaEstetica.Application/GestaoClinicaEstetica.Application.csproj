@@ -244,6 +244,7 @@
     <Content Include="Scripts\Controllers\EspecialidadePorProfissionalController.js" />
     <Content Include="Scripts\Controllers\EspecialidadesController.js" />
     <Content Include="Scripts\Controllers\ProfissionaisController.js" />
+    <Content Include="Scripts\Controllers\ServicoPorClienteController.js" />
     <Content Include="Scripts\Controllers\ServicosController.js" />
     <Content Include="Scripts\Controllers\UsuariosController.js" />
     <Content Include="Scripts\Datatables\DataTables-1.10.18\css\dataTables.bootstrap.css" />
