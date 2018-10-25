@@ -10,7 +10,9 @@ namespace GestaoClinicaEstetica.Domain.Entidades
 {
     public class RecebimentoServicoPorCliente : EntidadeBase
     {
-        public int CodigoServicoPorCliente { get; set; }
+        public int CodigoCliente { get; set; }
+        public int CodigoServico { get; set; }
+        public DateTime DataAquisicao { get; set; }
         public DateTime DataVencimento { get; set; }
         public DateTime DataPagamento { get; set; }
         public Decimal ValorDevido { get; set; }
@@ -18,7 +20,5 @@ namespace GestaoClinicaEstetica.Domain.Entidades
         public SituacaoPagamento SituacaoPagamento { get; set; }
         public string UsuarioRecebimento { get; set; }
         public TipoPagamento TipoPagamento { get; set; }
-
-        public virtual ServicoPorCliente ServicosPorCliente { get; set; }
     }
 }
