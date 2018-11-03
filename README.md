@@ -10,3 +10,6 @@ Clean Derme - Sistema de Gestão de Agendas
 - Bootstrap
 - Jquery
 - FullCalendar
+- DataTables
+- Select2
+- Moments.js
