@@ -19,3 +19,7 @@ function ConfirmarExclusao() {
     var formulario = $(".formulario-conteudo-exclusao").find("form");
     formulario.submit();
 }
+
+function FormatDecimal(valor) {
+    return valor.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+}

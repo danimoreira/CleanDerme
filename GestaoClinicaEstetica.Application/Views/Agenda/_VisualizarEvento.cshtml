@@ -1,0 +1,30 @@
+﻿<div id="modalVisualizar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span class="titulo-evento" id="paciente-evento"></span></h4>
+            </div>
+            <div class="modal-body modal-lg">
+                <input type="hidden" id="idEventoVisualizar" />
+                <p class="profissional-evento" id="profissional-evento"></p>
+                <p class="especialidade-evento" id="especialidade-evento"></p>
+                <p><label class="control-label">Data: <br /> </label><span class="texto-evento" id="data-evento"></span></p>
+                <p><label class="control-label">Hora início: </label><span class="texto-evento" id="hora-inicio-evento"></span></p>
+                <p><label class="control-label">Hora fim: </label><span class="texto-evento" id="hora-fim-evento"></span></p>
+                <p><label class="control-label">Observação: </label><span class="texto-evento" id="observacao-evento"></span></p>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="modalConsulta.incluirAtendimento()">Incluir atendimento</button>
+                <button type="button" class="btn btn-primary" onclick="modalConsulta.editarEvento()">Reagendar</button>
+                <button type="button" class="btn btn-warning" onclick="modalConsulta.realizarAgendamento()">Informar Presença</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

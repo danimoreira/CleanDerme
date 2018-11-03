@@ -12,6 +12,9 @@ namespace GestaoClinicaEstetica.Domain.Entidades
     {
         public int CodigoCliente { get; set; }
         public int CodigoServico { get; set; }
+        public int CodigoEspecialidade { get; set; }
+        public int CodigoProfissional { get; set; }
+
         public DateTime DataAquisicao { get; set; }
         public DateTime DataVencimento { get; set; }
         public DateTime DataPagamento { get; set; }
@@ -20,5 +23,10 @@ namespace GestaoClinicaEstetica.Domain.Entidades
         public SituacaoPagamento SituacaoPagamento { get; set; }
         public string UsuarioRecebimento { get; set; }
         public TipoPagamento TipoPagamento { get; set; }
+
+        public virtual Cliente Cliente { get; set; }
+        public virtual Servico Servico { get; set; }
+        public virtual Profissional Profissional { get; set; }
+        public virtual Especialidade Especialidade { get; set; }
     }
 }

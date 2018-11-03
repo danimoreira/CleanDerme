@@ -19,6 +19,12 @@ namespace GestaoClinicaEstetica.Context.Mapping
             Property(x => x.CodigoServico)
                 .HasColumnName("COD_SERVICO");
 
+            Property(x => x.CodigoEspecialidade)
+                .HasColumnName("COD_ESPECIALIDADE");
+
+            Property(x => x.CodigoProfissional)
+                .HasColumnName("COD_PROFISSIONAL");
+
             Property(x => x.DataVencimento)
                 .HasColumnName("DAT_VENCIMENTO");
 
@@ -42,6 +48,26 @@ namespace GestaoClinicaEstetica.Context.Mapping
 
             Property(x => x.DataAquisicao)
                 .HasColumnName("DAT_AQUISICAO");
+
+            HasRequired<Cliente>(x => x.Cliente)
+               .WithMany(y => y.Recebimentos)
+               .HasForeignKey<int>(g => g.CodigoCliente)
+               .WillCascadeOnDelete(true);
+
+            HasRequired<Servico>(x => x.Servico)
+               .WithMany(y => y.Recebimentos)
+               .HasForeignKey<int>(g => g.CodigoServico)
+               .WillCascadeOnDelete(true);
+
+            HasRequired<Especialidade>(s => s.Especialidade)
+                .WithMany(x => x.Recebimentos)
+                .HasForeignKey<int>(s => s.CodigoEspecialidade)
+                .WillCascadeOnDelete(true);
+
+            HasRequired<Profissional>(s => s.Profissional)
+                .WithMany(x => x.Recebimentos)
+                .HasForeignKey<int>(s => s.CodigoProfissional)
+                .WillCascadeOnDelete(true);
         }
     }
 }

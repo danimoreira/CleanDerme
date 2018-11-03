@@ -55,7 +55,6 @@
     <Compile Include="Repository\ClinicaRepository.cs" />
     <Compile Include="Repository\EspecialidadePorProfissionalRepository.cs" />
     <Compile Include="Repository\EspecialidadeRepository.cs" />
-    <Compile Include="Repository\PresencaRepository.cs" />
     <Compile Include="Repository\ProfissionalRepository.cs" />
     <Compile Include="Repository\RecebimentoServicoPorClienteRepository.cs" />
     <Compile Include="Repository\ServicoRepository.cs" />

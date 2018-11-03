@@ -7,28 +7,16 @@ namespace GestaoClinicaEstetica.Context.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.SERVICO_POR_CLIENTE", "COD_CLIENTE", "dbo.CLIENTE");
-            DropForeignKey("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_ESPECIALIDADE", "dbo.ESPECIALIDADE");
-            DropForeignKey("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_SERVICO_POR_CLIENTE", "dbo.SERVICO_POR_CLIENTE");
-            DropForeignKey("dbo.SERVICO_POR_CLIENTE", "ID", "dbo.RECEBIMENTOS");
-            DropForeignKey("dbo.SERVICO_POR_CLIENTE", "COD_SERVICO", "dbo.SERVICO");
-            DropIndex("dbo.SERVICO_POR_CLIENTE", new[] { "ID" });
-            DropIndex("dbo.SERVICO_POR_CLIENTE", new[] { "COD_SERVICO" });
-            DropIndex("dbo.SERVICO_POR_CLIENTE", new[] { "COD_CLIENTE" });
-            DropIndex("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", new[] { "COD_SERVICO_POR_CLIENTE" });
-            DropIndex("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", new[] { "COD_ESPECIALIDADE" });
-            AddColumn("dbo.RECEBIMENTOS", "COD_CLIENTE", c => c.Int(nullable: false));
-            AddColumn("dbo.RECEBIMENTOS", "COD_SERVICO", c => c.Int(nullable: false));
-            AddColumn("dbo.RECEBIMENTOS", "DAT_AQUISICAO", c => c.DateTime(nullable: false, precision: 0));
-            DropColumn("dbo.RECEBIMENTOS", "COD_SERVICO_POR_CLIENTE");
-            DropTable("dbo.SERVICO_POR_CLIENTE");
-            DropTable("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE");
+            AddColumn("RECEBIMENTOS", "COD_CLIENTE", c => c.Int(nullable: false));
+            AddColumn("RECEBIMENTOS", "COD_SERVICO", c => c.Int(nullable: false));
+            AddColumn("RECEBIMENTOS", "DAT_AQUISICAO", c => c.DateTime(nullable: false, precision: 0));
+
         }
         
         public override void Down()
         {
             CreateTable(
-                "dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE",
+                "ESPECIALIDADE_POR_SERVICO_POR_CLIENTE",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -45,7 +33,7 @@ namespace GestaoClinicaEstetica.Context.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.SERVICO_POR_CLIENTE",
+                "SERVICO_POR_CLIENTE",
                 c => new
                     {
                         ID = c.Int(nullable: false),
@@ -60,20 +48,20 @@ namespace GestaoClinicaEstetica.Context.Migrations
                     })
                 .PrimaryKey(t => t.ID);
             
-            AddColumn("dbo.RECEBIMENTOS", "COD_SERVICO_POR_CLIENTE", c => c.Int(nullable: false));
-            DropColumn("dbo.RECEBIMENTOS", "DAT_AQUISICAO");
-            DropColumn("dbo.RECEBIMENTOS", "COD_SERVICO");
-            DropColumn("dbo.RECEBIMENTOS", "COD_CLIENTE");
-            CreateIndex("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_ESPECIALIDADE");
-            CreateIndex("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_SERVICO_POR_CLIENTE");
-            CreateIndex("dbo.SERVICO_POR_CLIENTE", "COD_CLIENTE");
-            CreateIndex("dbo.SERVICO_POR_CLIENTE", "COD_SERVICO");
-            CreateIndex("dbo.SERVICO_POR_CLIENTE", "ID");
-            AddForeignKey("dbo.SERVICO_POR_CLIENTE", "COD_SERVICO", "dbo.SERVICO", "ID", cascadeDelete: true);
-            AddForeignKey("dbo.SERVICO_POR_CLIENTE", "ID", "dbo.RECEBIMENTOS", "ID", cascadeDelete: true);
-            AddForeignKey("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_SERVICO_POR_CLIENTE", "dbo.SERVICO_POR_CLIENTE", "ID", cascadeDelete: true);
-            AddForeignKey("dbo.ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_ESPECIALIDADE", "dbo.ESPECIALIDADE", "ID", cascadeDelete: true);
-            AddForeignKey("dbo.SERVICO_POR_CLIENTE", "COD_CLIENTE", "dbo.CLIENTE", "ID", cascadeDelete: true);
+            AddColumn("RECEBIMENTOS", "COD_SERVICO_POR_CLIENTE", c => c.Int(nullable: false));
+            DropColumn("RECEBIMENTOS", "DAT_AQUISICAO");
+            DropColumn("RECEBIMENTOS", "COD_SERVICO");
+            DropColumn("RECEBIMENTOS", "COD_CLIENTE");
+            CreateIndex("ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_ESPECIALIDADE");
+            CreateIndex("ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_SERVICO_POR_CLIENTE");
+            CreateIndex("SERVICO_POR_CLIENTE", "COD_CLIENTE");
+            CreateIndex("SERVICO_POR_CLIENTE", "COD_SERVICO");
+            CreateIndex("SERVICO_POR_CLIENTE", "ID");
+            AddForeignKey("SERVICO_POR_CLIENTE", "COD_SERVICO", "SERVICO", "ID", cascadeDelete: true);
+            AddForeignKey("SERVICO_POR_CLIENTE", "ID", "RECEBIMENTOS", "ID", cascadeDelete: true);
+            AddForeignKey("ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_SERVICO_POR_CLIENTE", "SERVICO_POR_CLIENTE", "ID", cascadeDelete: true);
+            AddForeignKey("ESPECIALIDADE_POR_SERVICO_POR_CLIENTE", "COD_ESPECIALIDADE", "ESPECIALIDADE", "ID", cascadeDelete: true);
+            AddForeignKey("SERVICO_POR_CLIENTE", "COD_CLIENTE", "CLIENTE", "ID", cascadeDelete: true);
         }
     }
 }
