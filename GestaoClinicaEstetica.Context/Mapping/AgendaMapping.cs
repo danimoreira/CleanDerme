@@ -44,6 +44,11 @@ namespace GestaoClinicaEstetica.Context.Mapping
             Property(x => x.SituacaoPresenca)
                 .HasColumnName("SIT_PRESENCA");
 
+            Property(x => x.ObsAtendimento)
+                .HasColumnName("OBS_ATENDIMENTO")
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(5000);
+
             HasRequired<Cliente>(s => s.Cliente)
                 .WithMany(x => x.Compromissos)
                 .HasForeignKey<int>(s => s.CodigoCliente)

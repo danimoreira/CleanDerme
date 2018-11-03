@@ -44,12 +44,14 @@
     <Compile Include="Dto\AgendaDto.cs" />
     <Compile Include="Dto\AgendarPagamentoDto.cs" />
     <Compile Include="Dto\AniversarianteDto.cs" />
+    <Compile Include="Dto\DadosAtendimentoDto.cs" />
     <Compile Include="Dto\DadosPresencaDto.cs" />
     <Compile Include="Dto\EventosDto.cs" />
     <Compile Include="Dto\RecebimentoClienteDto.cs" />
+    <Compile Include="Dto\SalvarAtendimentoDto.cs" />
+    <Compile Include="Dto\SalvarPresencaDto.cs" />
     <Compile Include="Dto\ServicoDto.cs" />
     <Compile Include="Entidades\Agenda.cs" />
-    <Compile Include="Entidades\Atendimento.cs" />
     <Compile Include="Entidades\Base\EntidadeBase.cs" />
     <Compile Include="Entidades\Base\PessoaBase.cs" />
     <Compile Include="Entidades\Base\PessoaFisicaBase.cs" />
@@ -70,7 +72,6 @@
     <Compile Include="Enums\TipoPagamento.cs" />
     <Compile Include="Interfaces\Repository\Base\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repository\IAgendaRepository.cs" />
-    <Compile Include="Interfaces\Repository\IAtendimentoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClinicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadePorProfissionalRepository.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Interfaces\Repository\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Service\Base\IServiceBase.cs" />
     <Compile Include="Interfaces\Service\IAgendaService.cs" />
-    <Compile Include="Interfaces\Service\IAtendimentoService.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClinicaService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadePorProfissionalService.cs" />

@@ -18,7 +18,7 @@
 
                             <div class="form-group col-xs-12 col-md-12 col-sm-12">
                                 <label class="control-label label-obrigatorio">Cliente:</label>
-                                <select class="form-control" name="CodCliente" id="CodClienteConsulta">
+                                <select class="form-control" name="CodCliente" id="CodClienteConsulta" required data-LabelError="Cliente">
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.ListaClientes)
                                     {
@@ -29,7 +29,7 @@
 
                             <div class="form-group col-xs-12 col-md-12 col-sm-12">
                                 <label class="control-label label-obrigatorio">Especialidade:</label>
-                                <select class="form-control" name="CodEspecialidade" id="CodEspecialidadeConsulta" onchange="modalConsulta.recuperarCombosDependentes()">
+                                <select class="form-control" name="CodEspecialidade" id="CodEspecialidadeConsulta" required data-LabelError="Especialidade" onchange="modalConsulta.recuperarCombosDependentes()">
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.ListaEspecialidades)
                                     {
@@ -40,7 +40,7 @@
 
                             <div class="form-group col-xs-12 col-md-12 col-sm-12">
                                 <label class="control-label label-obrigatorio">Profissional:</label>
-                                <select class="form-control" name="CodProfissional" id="CodProfissionalConsulta" disabled>
+                                <select class="form-control" name="CodProfissional" id="CodProfissionalConsulta" required data-LabelError="Profissional" disabled>
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.ListaProfissionais)
                                     {
@@ -51,7 +51,7 @@
 
                             <div class="form-group col-xs-12 col-md-12 col-sm-12">
                                 <label class="control-label">Serviço:</label>
-                                <select class="form-control" name="CodServico" id="CodServicoConsulta" disabled>
+                                <select class="form-control" name="CodServico" id="CodServicoConsulta" required data-LabelError="Serviço" disabled>
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.ListaServicos)
                                     {
@@ -62,17 +62,17 @@
 
                             <div class="form-group col-xs-4 col-md-4 col-sm-4">
                                 <label class="control-label label-obrigatorio">Data:</label>
-                                <input type="text" class="form-control date" name="DataConsulta" id="DataConsulta" />
+                                <input type="date" class="form-control" name="DataConsulta" required data-LabelError="Data" id="DataConsulta" />
                             </div>
 
                             <div class="form-group col-xs-4 col-md-4 col-sm-4">
                                 <label class="control-label label-obrigatorio">Horário Início:</label>
-                                <input type="text" class="form-control time" name="HoraInicioConsulta" id="HoraInicioConsulta" />
+                                <input type="text" class="form-control time" name="HoraInicioConsulta"  required data-LabelError="Horário Início" id="HoraInicioConsulta" />
                             </div>
 
                             <div class="form-group col-xs-4 col-md-4 col-sm-4">
                                 <label class="control-label label-obrigatorio">Horário Fim:</label>
-                                <input type="text" class="form-control time" name="HoraFimConsulta" id="HoraFimConsulta" />
+                                <input type="text" class="form-control time" name="HoraFimConsulta"  required data-LabelError="Horário Fim" id="HoraFimConsulta" />
                             </div>
 
                             <div class="form-group col-xs-12 col-md-12 col-sm-12">

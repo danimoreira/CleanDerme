@@ -102,8 +102,8 @@ var Agenda = function () {
                     event.push({
                         id: linha.Id,
                         title: linha.Title,
-                        start: linha.Start,
-                        end: linha.End,
+                        start: moment(linha.Start),
+                        end: moment(linha.End),
                         allDay: linha.AllDay,
                         backgroundColor: linha.BackgroundColor,
                         Icon: linha.Icone,
@@ -195,8 +195,8 @@ var ModalConsulta = function () {
                 $("#profissional-evento").html(data.NomeProfissional);
                 $("#especialidade-evento").html(data.DescricaoEspecialidade);
                 $("#data-evento").html(moment(data.DataInicioEvento).format("DD/MM/YYYY"));
-                $("#hora-inicio-evento").html(moment(data.DataInicioEvento).format("HH:M"));
-                $("#hora-fim-evento").html(moment(data.DataFimEvento).format("HH:M"));
+                $("#hora-inicio-evento").html(moment(data.DataInicioEvento).format("h:mm"));
+                $("#hora-fim-evento").html(moment(data.DataFimEvento).format("h:mm"));
                 $("#observacao-evento").html(data.Procedimento);
                 $("#modalVisualizar").modal("show");
             }
@@ -233,9 +233,9 @@ var ModalConsulta = function () {
                 modalConsulta.recuperarServicos();
                 $("#CodProfissionalConsulta").val(data.CodigoProfissional);
                 $("#CodServicoConsulta").val("");
-                $("#DataConsulta").val(moment(data.DataInicioEvento).format("DD/MM/YYYY"));
-                $("#HoraInicioConsulta").val(moment(data.DataInicioEvento).format("HH:M"));
-                $("#HoraFimConsulta").val(moment(data.DataFimEvento).format("HH:M"));
+                $("#DataConsulta").val(moment(data.DataInicioEvento).format("YYYY-MM-DD"));
+                $("#HoraInicioConsulta").val(moment(data.DataInicioEvento).format("hh:mm"));
+                $("#HoraFimConsulta").val(moment(data.DataFimEvento).format("hh:mm"));
                 $("#ObservacaoConsulta").val(data.Procedimento);
                 $("#modalConsulta").modal("show");
             }
@@ -260,14 +260,30 @@ var ModalConsulta = function () {
 
     this.realizarAgendamento = function () {
 
+        var errorValidation = false;
+
+        $('input,textarea,select').filter('[required]:visible').each(function () {
+            if ($(this).val() == "") {
+                toastr.error("Favor preencher o campo: " + $(this).attr("data-LabelError"));
+                errorValidation = true;
+                return false;
+            }
+        });
+
+        if (errorValidation) {
+            return false;
+        }
+
+        debugger;
+
         var evento = {
             Id: $("[name=IdConsulta]").val(),
             CodigoCliente: $("#CodClienteConsulta").val(),
             CodigoEspecialidade: $("#CodEspecialidadeConsulta").val(),
             CodigoProfissional: $("#CodProfissionalConsulta").val(),
             CodigoServico: $("#CodServicoConsulta").val(),
-            DataInicio: moment($("#DataConsulta").val() + " " + $("#HoraInicioConsulta").val()).format("DD/MM/YYYY HH:M"),
-            DataFim: moment($("#DataConsulta").val() + " " + $("#HoraFimConsulta").val()).format("DD/MM/YYYY HH:M"),
+            DataInicio: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraInicioConsulta").val(), "hh:mm").format("hh:mm")).format("YYYY-MM-DD hh:mm"),
+            DataFim: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraFimConsulta").val(), "hh:mm").format("hh:mm")).format("YYYY-MM-DD hh:mm"),
             Procedimento: $("#ObservacaoConsulta").val()
         }
 
@@ -282,6 +298,20 @@ var ModalConsulta = function () {
             }
         });
 
+    }
+
+    this.indicarPresenca = function () {
+        
+        var codAgenda = $("#idEventoVisualizar").val();
+
+        modalPresenca.indicarPresenca(codAgenda);
+    }
+
+    this.informarAtendimento = function () {
+
+        var codAgenda = $("#idEventoVisualizar").val();
+
+        modalAtendimento.indicarAtendimento(codAgenda);
     }
 
     this.visualizarAniversariante = function (idAniversariante) {
