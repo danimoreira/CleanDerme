@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    InitializeSelect2("CodProfissional");
+    InitializeSelect2("#CodProfissional");
 
     especialidades = new Especialidades();
 })
@@ -36,8 +36,6 @@ var Especialidades = function () {
 
         var objetoEnvio = [];
         
-        debugger;
-
         $('[name=chkEspecialidadeSelecionada]').each(function (i, obj) {
             var item = {
                 IdObjeto: $(obj).data("id"),

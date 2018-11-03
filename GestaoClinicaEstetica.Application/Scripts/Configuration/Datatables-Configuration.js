@@ -1,5 +1,6 @@
-﻿function InitDataTable(idTable) {
+﻿function InitDataTable(idTable, columnsDefinition) {
     $('#' + idTable).DataTable({
+        destroy: true,
         language: {
             processing: "Aguarde! Recuperando as informações...",
             search: "Pesquisar",
@@ -20,7 +21,8 @@
             aria: {
                 sortAscending: ": activer pour trier la colonne par ordre croissant",
                 sortDescending: ": activer pour trier la colonne par ordre décroissant"
-            }
+            },
+            columnDefs: columnsDefinition
         }
     });
 }

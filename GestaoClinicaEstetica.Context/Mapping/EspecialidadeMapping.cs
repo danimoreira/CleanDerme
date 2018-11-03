@@ -20,7 +20,16 @@ namespace GestaoClinicaEstetica.Context.Mapping
                 .HasColumnName("TIP_ATENDIMENTO");
 
             Property(x => x.TempoAtendimentoPadrao)
-                .HasColumnName("TMP_ATENDIMENTO_PADRAO");           
+                .HasColumnName("TMP_ATENDIMENTO_PADRAO");
+
+            Property(x => x.CorEvento)
+                .HasColumnName("TIP_COR_EVENTO")
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(10);
+
+            Property(x => x.PercentualRepasse)
+                .HasColumnName("PRC_REPASSE");
+
         }
     }
 }

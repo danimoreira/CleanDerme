@@ -41,6 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\AgendaDto.cs" />
+    <Compile Include="Dto\AgendarPagamentoDto.cs" />
+    <Compile Include="Dto\AniversarianteDto.cs" />
+    <Compile Include="Dto\DadosPresencaDto.cs" />
+    <Compile Include="Dto\EventosDto.cs" />
+    <Compile Include="Dto\RecebimentoClienteDto.cs" />
+    <Compile Include="Dto\ServicoDto.cs" />
     <Compile Include="Entidades\Agenda.cs" />
     <Compile Include="Entidades\Atendimento.cs" />
     <Compile Include="Entidades\Base\EntidadeBase.cs" />
@@ -52,7 +59,6 @@
     <Compile Include="Entidades\Especialidade.cs" />
     <Compile Include="Entidades\EspecialidadePorProfissional.cs" />
     <Compile Include="Entidades\RecebimentoServicoPorCliente.cs" />
-    <Compile Include="Entidades\Presenca.cs" />
     <Compile Include="Entidades\Profissional.cs" />
     <Compile Include="Entidades\Servico.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -69,7 +75,6 @@
     <Compile Include="Interfaces\Repository\IClinicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadePorProfissionalRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadeRepository.cs" />
-    <Compile Include="Interfaces\Repository\IPresencaRepository.cs" />
     <Compile Include="Interfaces\Repository\IProfissionalRepository.cs" />
     <Compile Include="Interfaces\Repository\IRecebimentoServicoPorClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IServicoRepository.cs" />
@@ -81,13 +86,11 @@
     <Compile Include="Interfaces\Service\IClinicaService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadePorProfissionalService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadeService.cs" />
-    <Compile Include="Interfaces\Service\IPresencaService.cs" />
     <Compile Include="Interfaces\Service\IProfissionalService.cs" />
     <Compile Include="Interfaces\Service\IRecebimentoServicoPorClienteService.cs" />
     <Compile Include="Interfaces\Service\IServicoService.cs" />
     <Compile Include="Interfaces\Service\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

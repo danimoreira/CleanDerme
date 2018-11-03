@@ -1,3 +1,3 @@
 ﻿function InitializeSelect2(idObjeto) {
-    $("#" + idObjeto).select2();
+    $(idObjeto).select2();
 }

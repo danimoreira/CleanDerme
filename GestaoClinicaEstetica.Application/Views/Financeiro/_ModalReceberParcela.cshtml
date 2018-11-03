@@ -1,0 +1,107 @@
+﻿<div id="modalIncluirServico" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Receber serviço avulso</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="form-inline">
+
+                            <input type="hidden" name="IdRecebimento" />
+                            <input type="hidden" name="DataAquisicao" />
+
+
+                            <div class="form-group col-xs-12 col-md-12 col-sm-12">
+                                <label class="control-label label-obrigatorio">Cliente:</label>
+                                <select class="form-control" name="CodClienteIncServico" id="CodCliente" required data-LabelError="Cliente">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewBag.ListaClientes)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs-12 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Especialidade:</label>
+                                <select class="form-control" name="CodEspecialidadeIncServico" id="CodEspecialidade" required data-LabelError="Especialidade" onclick="modalServico.recuperarCombosDependentes()">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewBag.ListaEspecialidades)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs-12 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Profissional:</label>
+                                <select class="form-control" name="CodProfissionalIncServico" id="CodigoProfissional" required data-LabelError="Profissional">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewBag.ListaProfissionais)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs-8 col-md-8 col-sm-8">
+                                <label class="control-label label-obrigatorio">Serviço:</label>
+                                <select class="form-control" name="CodServicoIncServico" id="CodServico" required data-LabelError="Serviço" onchange="modalServico.recuperarInfoServico()">
+                                    <option value=""></option>
+                                    @foreach (var item in ViewBag.ListaServicos)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs-4 col-md-4 col-sm-4">
+                                <label class="control-label label-obrigatorio">Forma de Pagamento:</label>
+                                <select class="form-control" name="FormaPagamento" id="FormaPagamento" required data-LabelError="Forma de Pagamento">
+                                    <option value=""></option>
+                                    <option value="0">Dinheiro</option>
+                                    <option value="1">Cartão de Débito</option>
+                                    <option value="2">Cartão de Crédito</option>
+                                    <option value="3">Cheque</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                                <label class="control-label">Valor do Serviço:</label>
+                                <input type="text" class="form-control money2" name="ValorServico" required data-LabelError="Valor do Serviço" disabled />
+                            </div>
+
+                            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                                <label class="control-label label-obrigatorio">Data de Vencimento:</label>
+                                <input type="text" class="form-control date" name="DataVencimento" required data-LabelError="Data de Vencimento" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                            </div>
+
+                            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                                <label class="control-label label-obrigatorio">Data de Pagamento:</label>
+                                <input type="text" class="form-control date" name="DataPagamento" required data-LabelError="Data de Pagamento" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                            </div>
+
+                            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                                <label class="control-label label-obrigatorio">Valor recebido:</label>
+                                <input type="text" class="form-control money2" name="ValorPago" required data-LabelError="Valor recebido" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="modalServico.receberPagamento()">Receber</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

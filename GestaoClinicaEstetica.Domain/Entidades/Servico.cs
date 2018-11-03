@@ -17,6 +17,8 @@ namespace GestaoClinicaEstetica.Domain.Entidades
         public int QuantidadeSessoes { get; set; }
 
         public virtual Especialidade Especialidade { get; set; }
+        public virtual ICollection<Agenda> Agenda { get; set; }
+        public virtual ICollection<RecebimentoServicoPorCliente> Recebimentos { get; set; }
 
     }
 }

@@ -1,0 +1,64 @@
+﻿<div class="col-xs-12 col-md-12 col-sm-12 formulario-topo">
+    <p class="listagem-titulo">Presença</p>
+</div>
+
+
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+
+        <div class="row col-xs-12 col-md-12 col-sm-12">
+            <div class="form-group col-xs-9 col-md-9 col-sm-9">
+                <label class="control-label">Selecione um cliente:</label>
+                <select class="form-control" name="CodigoCliente" id="CodigoClienteRecebimento">
+                    <option value=""></option>
+                    @foreach (var item in ViewBag.ListaClientes)
+                {
+                    <option value="@item.Value">@item.Text</option>
+            }
+                </select>
+            </div>
+            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                <a class="form-control btn botao-acao" onclick="" name="PesquisarEspecialidades">Pesquisar</a>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 col-sm-12 hidden" id="groupPresencaCliente">
+            
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <table class="table table-striped hover" id="PresencaCliente" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Serviço
+                            </th>
+                            <th>
+                                Data Venc.
+                            </th>
+                            <th>
+                                Vlr Devido
+                            </th>
+                            <th>
+                                Forma Pagto
+                            </th>
+                            <th>
+                                Situação
+                            </th>
+                            <th></th>
+                            <th class="hidden">Codigo Recebimento</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

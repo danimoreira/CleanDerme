@@ -8,5 +8,9 @@ namespace GestaoClinicaEstetica.Domain.Enums
 {
     public enum SituacaoPresenca
     {
+        Pendente = 0,
+        Presente = 1,
+        Falta = 2,
+        Remacardo = 3
     }
 }

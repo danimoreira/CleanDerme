@@ -106,6 +106,14 @@ body {
     color: var(--secondary-bg-color) !important;
 }
 /***************************************GERAL**********************************/
+.botao-default {
+    border-radius: 100px;
+    background-color: #fff;
+    min-width: 150px;
+    height: 40px;
+    padding-top: 10px;
+}
+
 .botao-acao {
     border-radius: 100px;
     background-color: #fff;
@@ -260,4 +268,17 @@ body {
 .form-group {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.fc-scroller {
+    overflow-y: hidden !important;
+}
+
+.modal-dialog {
+    width: 70% !important;
+    
+}
+
+.modal-content {
+    height: 80% !important;
 }

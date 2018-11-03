@@ -20,10 +20,12 @@ namespace GestaoClinicaEstetica.Domain.Entidades
         [Required(ErrorMessage = "Favor informar o tempo de atendimento padrão.", AllowEmptyStrings = false)]
         [Display(Name = "Tempo de Atendimento Padrão")]
         public TimeSpan? TempoAtendimentoPadrao { get; set; }
+        public string CorEvento { get; set; }
+        public decimal? PercentualRepasse { get; set; }
 
         public virtual ICollection<Agenda> Compromissos { get; set; }
         public virtual ICollection<Servico> Servicos { get; set; }
-
         public virtual ICollection<EspecialidadePorProfissional> EspecialidadePorProfissional { get; set; }
+        public virtual ICollection<RecebimentoServicoPorCliente> Recebimentos { get; set; }
     }
 }

@@ -72,7 +72,6 @@
     <Compile Include="Mapping\ClinicaMapping.cs" />
     <Compile Include="Mapping\EspecialidadeMapping.cs" />
     <Compile Include="Mapping\EspecialidadePorProfissionalMapping.cs" />
-    <Compile Include="Mapping\PresencaMapping.cs" />
     <Compile Include="Mapping\ProfissionalMapping.cs" />
     <Compile Include="Mapping\RecebimentoServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\ServicoMapping.cs" />
@@ -108,6 +107,30 @@
     <Compile Include="Migrations\201810252128380_ajusteEstruturaTabelas.cs" />
     <Compile Include="Migrations\201810252128380_ajusteEstruturaTabelas.Designer.cs">
       <DependentUpon>201810252128380_ajusteEstruturaTabelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260029589_addCodigoServicoAgenda.cs" />
+    <Compile Include="Migrations\201810260029589_addCodigoServicoAgenda.Designer.cs">
+      <DependentUpon>201810260029589_addCodigoServicoAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260040550_ajustePresencaPorAgenda.cs" />
+    <Compile Include="Migrations\201810260040550_ajustePresencaPorAgenda.Designer.cs">
+      <DependentUpon>201810260040550_ajustePresencaPorAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260050589_ajustePresenca.cs" />
+    <Compile Include="Migrations\201810260050589_ajustePresenca.Designer.cs">
+      <DependentUpon>201810260050589_ajustePresenca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.cs" />
+    <Compile Include="Migrations\201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.Designer.cs">
+      <DependentUpon>201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810271419295_alterTableRecebimento_addFKs.cs" />
+    <Compile Include="Migrations\201810271419295_alterTableRecebimento_addFKs.Designer.cs">
+      <DependentUpon>201810271419295_alterTableRecebimento_addFKs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs" />
+    <Compile Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.Designer.cs">
+      <DependentUpon>201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,6 +169,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810252128380_ajusteEstruturaTabelas.resx">
       <DependentUpon>201810252128380_ajusteEstruturaTabelas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260029589_addCodigoServicoAgenda.resx">
+      <DependentUpon>201810260029589_addCodigoServicoAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260040550_ajustePresencaPorAgenda.resx">
+      <DependentUpon>201810260040550_ajustePresencaPorAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260050589_ajustePresenca.resx">
+      <DependentUpon>201810260050589_ajustePresenca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.resx">
+      <DependentUpon>201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810271419295_alterTableRecebimento_addFKs.resx">
+      <DependentUpon>201810271419295_alterTableRecebimento_addFKs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.resx">
+      <DependentUpon>201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

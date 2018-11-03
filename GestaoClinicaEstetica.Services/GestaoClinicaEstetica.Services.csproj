@@ -55,7 +55,6 @@
     <Compile Include="Services\ClinicaService.cs" />
     <Compile Include="Services\EspecialidadePorProfissionalService.cs" />
     <Compile Include="Services\EspecialidadeService.cs" />
-    <Compile Include="Services\PresencaService.cs" />
     <Compile Include="Services\ProfissionalService.cs" />
     <Compile Include="Services\RecebimentoServicoPorClienteService.cs" />
     <Compile Include="Services\ServicoService.cs" />
