@@ -17,7 +17,6 @@ namespace GestaoClinicaEstetica.Context
         }
 
         public virtual DbSet<Agenda> Agenda { get; set; }
-        public virtual DbSet<Atendimento> Atendimento { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Clinica> Clinica { get; set; }
         public virtual DbSet<Especialidade> Especialidade { get; set; }
@@ -29,7 +28,6 @@ namespace GestaoClinicaEstetica.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AgendaMapping());
-            modelBuilder.Configurations.Add(new AtendimentoMapping());
             modelBuilder.Configurations.Add(new ClienteMapping());
             modelBuilder.Configurations.Add(new ClinicaMapping());
             modelBuilder.Configurations.Add(new EspecialidadeMapping());

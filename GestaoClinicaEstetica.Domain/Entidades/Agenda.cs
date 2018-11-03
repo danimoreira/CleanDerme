@@ -18,11 +18,12 @@ namespace GestaoClinicaEstetica.Domain.Entidades
         public SituacaoPresenca SituacaoPresenca { get; set; }
         public string ObservacaoPresenca { get; set; }
 
+        public string ObsAtendimento { get; set; }
+
         public virtual Profissional Profissional { get; set; }
         public virtual Cliente Cliente { get; set; }
         public virtual Servico Servico { get; set; }
         public virtual Especialidade Especialidade { get; set; }
-        public virtual ICollection<Atendimento> Atendimento { get; set; }
 
     }
 }

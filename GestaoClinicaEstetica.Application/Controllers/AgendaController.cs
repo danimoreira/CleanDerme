@@ -101,7 +101,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 eventoAntigo.DataFim = objeto.DataFim;
                 eventoAntigo.Procedimento = objeto.Procedimento;
 
-                _agendaService.Update(objeto);
+                _agendaService.Update(eventoAntigo);
             }
         }
 
@@ -143,8 +143,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
             eventos.AddRange(_agendaService.List().Select(x => new EventosDto
             {
                 Title = _clienteService.GetById(x.CodigoCliente).Nome + "(" + _especialidadeService.GetById(x.CodigoEspecialidade).Descricao + ")",
-                Start = x.DataInicio.ToString("yyyy-MM-dd HH:M"),
-                End = x.DataFim.ToString("yyyy-MM-dd HH:M"),
+                Start = x.DataInicio.ToString("yyyy-MM-dd hh:mm"),
+                End = x.DataFim.ToString("yyyy-MM-dd hh:mm"),
                 Id = x.Id,
                 BackgroundColor = _especialidadeService.GetById(x.CodigoEspecialidade).CorEvento,
                 TipoEvento = 0
@@ -154,7 +154,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             eventos.AddRange(_clienteService.List().Select(x => new EventosDto
             {
                 Title = x.Nome,
-                Start = x.DataNascimento.Value.ToString(DateTime.Now.Year + "-MM-dd HH:M"),
+                Start = x.DataNascimento.Value.ToString(DateTime.Now.Year + "-MM-dd hh:mm"),
                 AllDay = true,
                 BackgroundColor = "#ffee05",
                 Icone = "birthday-cake",
@@ -166,7 +166,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             eventos.AddRange(_recebimentoService.List().Where(y => y.SituacaoPagamento.Equals(SituacaoPagamento.Pendente)).Select(x => new EventosDto
             {
                 Title = _clienteService.GetById(x.CodigoCliente).Nome + "( R$ " + x.ValorDevido + ")",
-                Start = x.DataVencimento.ToString("yyyy-MM-dd HH:M"),
+                Start = x.DataVencimento.ToString("yyyy-MM-dd hh:mm"),
                 AllDay = true,
                 BackgroundColor = "#40c42f",
                 Icone = "dollar-sign",

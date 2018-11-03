@@ -167,6 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
+    <Compile Include="Controllers\AtendimentoController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
@@ -249,11 +250,13 @@
     <Content Include="Scripts\Configuration\Layout-Configuration.js" />
     <Content Include="Scripts\Configuration\Select2-Configuration.js" />
     <Content Include="Scripts\Controllers\AgendaController.js" />
+    <Content Include="Scripts\Controllers\AtendimentoController.js" />
     <Content Include="Scripts\Controllers\ClientesController.js" />
     <Content Include="Scripts\Controllers\ClinicasController.js" />
     <Content Include="Scripts\Controllers\EspecialidadePorProfissionalController.js" />
     <Content Include="Scripts\Controllers\EspecialidadesController.js" />
     <Content Include="Scripts\Controllers\FinanceiroController.js" />
+    <Content Include="Scripts\Controllers\PresencaController.js" />
     <Content Include="Scripts\Controllers\ProfissionaisController.js" />
     <Content Include="Scripts\Controllers\ServicosController.js" />
     <Content Include="Scripts\Controllers\UsuariosController.js" />
@@ -461,6 +464,9 @@
     <Content Include="Views\Financeiro\_ModalReceberParcela.cshtml" />
     <Content Include="Views\Financeiro\_ModalAgendarPagamentos.cshtml" />
     <Content Include="Views\Presenca\Index.cshtml" />
+    <Content Include="Views\Presenca\_ModalIndicarPresenca.cshtml" />
+    <Content Include="Views\Atendimento\Index.cshtml" />
+    <Content Include="Views\Atendimento\_ModalAtendimento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
