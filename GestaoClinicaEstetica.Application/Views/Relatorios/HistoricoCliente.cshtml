@@ -1,0 +1,31 @@
+﻿<div class="col-xs-12 col-md-12 col-sm-12 formulario-topo">
+    <p class="listagem-titulo">Histórico do Cliente</p>
+</div>
+
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+
+        <div class="row col-xs-12 col-md-12 col-sm-12">
+            <div class="form-group col-xs-9 col-md-9 col-sm-9">
+                <label class="control-label">Selecione um cliente:</label>
+                <select class="form-control" name="CodigoCliente" id="CodigoClienteRecebimento">
+                    <option value=""></option>
+                    @foreach (var item in ViewBag.ListaClientes)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                <a class="form-control btn botao-acao" onclick="" name="GerarRelatorio">Gerar Relatório</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
