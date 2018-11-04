@@ -13,7 +13,6 @@ namespace GestaoClinicaEstetica.Ioc
         public override void Load()
         {
             Bind<IAgendaRepository>().To<AgendaRepository>();
-            Bind<IAtendimentoRepository>().To<AtendimentoRepository>();
             Bind<IClienteRepository>().To<ClienteRepository>();
             Bind<IClinicaRepository>().To<ClinicaRepository>();
             Bind<IEspecialidadeRepository>().To<EspecialidadeRepository>();
@@ -24,7 +23,6 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IEspecialidadePorProfissionalRepository>().To<EspecialidadePorProfissionalRepository>();
 
             Bind<IAgendaService>().To<AgendaService>();
-            Bind<IAtendimentoService>().To<AtendimentoService>();
             Bind<IClienteService>().To<ClienteService>();
             Bind<IClinicaService>().To<ClinicaService>();
             Bind<IEspecialidadeService>().To<EspecialidadeService>();

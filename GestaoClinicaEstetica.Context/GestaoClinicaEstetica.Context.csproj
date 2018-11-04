@@ -63,7 +63,6 @@
   <ItemGroup>
     <Compile Include="ClinicaContext.cs" />
     <Compile Include="Mapping\AgendaMapping.cs" />
-    <Compile Include="Mapping\AtendimentoMapping.cs" />
     <Compile Include="Mapping\Base\BaseMapping.cs" />
     <Compile Include="Mapping\Base\PessoaFisicaMapping.cs" />
     <Compile Include="Mapping\Base\PessoaJuridicaMapping.cs" />
@@ -132,6 +131,10 @@
     <Compile Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.Designer.cs">
       <DependentUpon>201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.cs" />
+    <Compile Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.Designer.cs">
+      <DependentUpon>201811031541513_alterAgenda_addObsAtendimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.resx">
       <DependentUpon>201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.resx">
+      <DependentUpon>201811031541513_alterAgenda_addObsAtendimento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
