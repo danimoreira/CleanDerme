@@ -136,6 +136,16 @@ namespace GestaoClinicaEstetica.Application.Controllers
             return Json(agendaDto, JsonRequestBehavior.AllowGet);
         }
 
+        public bool VerificarExistenciaCompromisso(int codigoCliente, int codigoProfissional, DateTime dataInicio, DateTime dataFim)
+        {
+            bool existeCompromisso = _agendaService.List().Where(x => x.CodigoCliente.Equals(codigoCliente) && ((x.DataInicio >= dataInicio && x.DataInicio <= dataFim) || (x.DataFim >= dataInicio && x.DataFim <= dataFim))).Count() > 0;
+
+            if (!existeCompromisso)
+                existeCompromisso = _agendaService.List().Where(x => x.CodigoProfissional.Equals(codigoCliente) && ((x.DataInicio >= dataInicio && x.DataInicio <= dataFim) || (x.DataFim >= dataInicio && x.DataFim <= dataFim))).Count() > 0;
+
+            return existeCompromisso;
+        }
+
         public List<EventosDto> RecuperarEventos()
         {
             List<EventosDto> eventos = new List<EventosDto>();

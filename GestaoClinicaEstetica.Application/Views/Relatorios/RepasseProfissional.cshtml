@@ -5,6 +5,32 @@
 <div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo">
     <div class="col-xs-12 col-md-12 col-sm-12">
 
+        <div class="row col-xs-12 col-md-12 col-sm-12">
+            <div class="form-group col-xs-9 col-md-9 col-sm-9">
+                <label class="control-label">Selecione um profissional:</label>
+                <select class="form-control" name="CodigoProfissionalRelatorio" id="CodigoProfissionalRelatorio">
+                    <option value=""></option>
+                    @foreach (var item in ViewBag.ListaProfissionais)
+            {
+                <option value="@item.Value">@item.Text</option>
+    }
+                </select>
+            </div>
+
+            <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                <label class="control-label">Informe a data inícial:</label>
+                <input type="date" class="form-control" name="DtInicioRelatorio" />
+            </div>
+
+            <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                <label class="control-label">Informe a data final:</label>
+                <input type="date" class="form-control" name="DtFimRelatorio" />
+            </div>
+
+            <div class="form-group col-xs-3 col-md-3 col-sm-3">
+                <a class="form-control btn botao-acao" onclick="relatorios.gerarRepasseProfissional()" name="GerarRelatorio">Gerar Relatório</a>
+            </div>
+        </div>
 
 
     </div>

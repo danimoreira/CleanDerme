@@ -86,8 +86,8 @@ var Agenda = function () {
     this.marcarConsultaClickDay = function (dateTimeClick) {
         modalConsulta.NovoEvento();
         $("#modalConsulta").modal("show");
-        $("#DataConsulta").val(dateTimeClick.format("DD/MM/YYYY"));
-        $("#HoraInicioConsulta").val(dateTimeClick.format("hh:mm"));
+        $("#DataConsulta").val(dateTimeClick.format("YYYY-MM-DD"));
+        $("#HoraInicioConsulta").val(dateTimeClick.format("HH:mm"));
     }
 
     this.recuperarEventos = function () {
@@ -272,31 +272,44 @@ var ModalConsulta = function () {
 
         if (errorValidation) {
             return false;
-        }
-
-        debugger;
-
+        }        
+        
         var evento = {
             Id: $("[name=IdConsulta]").val(),
             CodigoCliente: $("#CodClienteConsulta").val(),
             CodigoEspecialidade: $("#CodEspecialidadeConsulta").val(),
             CodigoProfissional: $("#CodProfissionalConsulta").val(),
             CodigoServico: $("#CodServicoConsulta").val(),
-            DataInicio: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraInicioConsulta").val(), "hh:mm").format("hh:mm")).format("YYYY-MM-DD hh:mm"),
-            DataFim: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraFimConsulta").val(), "hh:mm").format("hh:mm")).format("YYYY-MM-DD hh:mm"),
+            DataInicio: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraInicioConsulta").val(), "hh:mm A").format("hh:mm A")).format("YYYY-MM-DD hh:mm A"),
+            DataFim: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraFimConsulta").val(), "hh:mm A").format("hh:mm A")).format("YYYY-MM-DD hh:mm A"),
             Procedimento: $("#ObservacaoConsulta").val()
         }
 
         $.ajax({
-            type: "POST",
-            url: "/Agenda/RealizarAgendamento",
-            data: JSON.stringify({ objeto: evento }),
+            type: "GET",
+            url: "/Agenda/VerificarExistenciaCompromisso?codigoCliente=" + evento.CodigoCliente + "&codigoProfissional=" + evento.CodigoProfissional + "&dataInicio=" + evento.DataInicio + "&dataFim=" + evento.DataFim,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $("#modalConsulta").modal("hide");
-                agenda.recuperarEventos();
+                if (data == "True") {
+                    toastr.warning("Já existe uma consulta para este cliente/profissional neste mesmo horário.");
+                    return false;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Agenda/RealizarAgendamento",
+                    data: JSON.stringify({ objeto: evento }),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#modalConsulta").modal("hide");
+                        agenda.recuperarEventos();
+                    }
+                });
+
             }
         });
+
+        
 
     }
 
