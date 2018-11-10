@@ -15,8 +15,8 @@ var Relatorios = function () {
             url: "/Relatorios/GerarFechamentoFinanceiro?dtInicio=" + dataInicio + "&dtFim=" + dataFim,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                
-
+                var arquivoPdf = data + ".pdf";
+                window.open("/Relatorios/" + arquivoPdf, "_blank");
             }
         });
     }
@@ -32,8 +32,8 @@ var Relatorios = function () {
                 url: "/Relatorios/GerarRepasseProfissional?codigoProfissional=" + codProfissional + "&dtInicio=" + dataInicio + "&dtFim=" + dataFim,
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-
-
+                    var arquivoPdf = data + ".pdf";
+                    window.open("/Relatorios/" + arquivoPdf, "_blank");
                 }
             });
     }
@@ -46,8 +46,8 @@ var Relatorios = function () {
             url: "/Relatorios/GerarHistoricoCliente?codigoCliente=" + codigoCliente,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-
-
+                var arquivoPdf = data + ".pdf";                
+                window.open("/Relatorios/" + arquivoPdf, "_blank");
             }
         });
     }

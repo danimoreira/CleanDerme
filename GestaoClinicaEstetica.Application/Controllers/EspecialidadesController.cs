@@ -54,7 +54,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Descricao,TipoAtendimento,TempoAtendimentoPadrao,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Especialidade especialidade)
+        public ActionResult Create(Especialidade especialidade)
         {
             UpdateBag();
 
@@ -97,7 +97,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Descricao,TipoAtendimento,TempoAtendimentoPadrao,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Especialidade especialidade)
+        public ActionResult Edit(Especialidade especialidade)
         {
             especialidade.DataAlteracao = DateTime.Now;
             especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;

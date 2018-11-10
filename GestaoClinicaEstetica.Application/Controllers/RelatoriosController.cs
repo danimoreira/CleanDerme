@@ -50,17 +50,17 @@ namespace GestaoClinicaEstetica.Application.Controllers
         {
             return doc;
         }
-
+        
         [HttpGet]
         [Route("Relatorios/GerarHistoricoCliente")]
-        public void GerarHistoricoCliente(int codigoCliente)
+        public string GerarHistoricoCliente(int codigoCliente)
         {
-            string dirArquivo = "C:\\Users\\dmlur\\Desktop\\relatorios";
+            string dirArquivo = Server.MapPath("~/Relatorios");
             string nomeArquivo = "RelHistoricoCliente_" + DateTime.Now.ToString("ddMMyyyyhhmss");
             string caminhoCompleto = dirArquivo + "\\" + nomeArquivo + ".pdf";
 
             Document doc = InicializarDocumento(caminhoCompleto);
-
+            
             doc.Open();
 
             doc = EscreverCabeçalho(doc);
@@ -119,6 +119,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
             doc.Add(tbPagamento);
 
             doc.Close();
+
+            return nomeArquivo;
         }
 
         public ActionResult FechamentoFinanceiro()
@@ -129,11 +131,11 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
         [HttpGet]
         [Route("Relatorios/GerarFechamentoFinanceiro")]
-        public void GerarFechamentoFinanceiro(DateTime dtInicio, DateTime dtFim)
+        public string GerarFechamentoFinanceiro(DateTime dtInicio, DateTime dtFim)
         {
             PdfPTable tabela = new PdfPTable(3);
 
-            string dirArquivo = "C:\\Users\\dmlur\\Desktop\\relatorios";
+            string dirArquivo = Server.MapPath("~/Relatorios");
             string nomeArquivo = "RelFechamentoFinanceiro_" + DateTime.Now.ToString("ddMMyyyyhhmss");
             string caminhoCompleto = dirArquivo + "\\" + nomeArquivo + ".pdf";
 
@@ -169,6 +171,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
             doc.Add(table);
 
             doc.Close();
+
+            return nomeArquivo;
         }
 
         public ActionResult RepasseProfissional()
@@ -179,11 +183,11 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
         [HttpGet]
         [Route("Relatorios/GerarRepasseProfissional")]
-        public void GerarRepasseProfissional(int codigoProfissional, DateTime dtInicio, DateTime dtFim)
+        public string GerarRepasseProfissional(int codigoProfissional, DateTime dtInicio, DateTime dtFim)
         {
             PdfPTable tabela = new PdfPTable(3);
 
-            string dirArquivo = "C:\\Users\\dmlur\\Desktop\\relatorios";
+            string dirArquivo = Server.MapPath("~/Relatorios");
             string nomeArquivo = "RelRepasseProfissional_" + DateTime.Now.ToString("ddMMyyyyhhmss");
             string caminhoCompleto = dirArquivo + "\\" + nomeArquivo + ".pdf";
 
@@ -225,7 +229,9 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
             doc.Add(table);
 
-            doc.Close();            
+            doc.Close();
+
+            return nomeArquivo;
         }
 
         public override void UpdateBag()

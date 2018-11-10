@@ -21,34 +21,46 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-inline">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-inline">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                @Html.HiddenFor(model => model.Id)
-                @Html.HiddenFor(model => model.DataCadastro)
-                @Html.HiddenFor(model => model.UsuarioCadastro)
-                @Html.HiddenFor(model => model.DataAlteracao)
-                @Html.HiddenFor(model => model.UsuarioAlteracao)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.DataCadastro)
+            @Html.HiddenFor(model => model.UsuarioCadastro)
+            @Html.HiddenFor(model => model.DataAlteracao)
+            @Html.HiddenFor(model => model.UsuarioAlteracao)
 
-                <div class="form-group col-xs-12 col-md-12 col-sm-12">
-                    <label class="control-label label-obrigatorio">Descrição</label>
-                    @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group col-xs-12 col-md-6 col-sm-6">
-                    <label class="control-label label-obrigatorio">Tipo de Atendimento</label>
-                    @Html.EnumDropDownListFor(model => model.TipoAtendimento, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.TipoAtendimento, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="form-group col-xs-12 col-md-6 col-sm-6">
-                    <label class="control-label label-obrigatorio">Tempo de Atendimento Padrão</label>
-                    @Html.EditorFor(model => model.TempoAtendimentoPadrao, new { htmlAttributes = new { @class = "form-control time" } })
-                    @Html.ValidationMessageFor(model => model.TempoAtendimentoPadrao, "", new { @class = "text-danger" })
-                </div>
-
+            <div class="form-group col-xs-12 col-md-12 col-sm-12">
+                <label class="control-label label-obrigatorio">Descrição</label>
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
+
+            <div class="form-group col-xs-12 col-md-6 col-sm-6">
+                <label class="control-label label-obrigatorio">Tipo de Atendimento</label>
+                @Html.EnumDropDownListFor(model => model.TipoAtendimento, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TipoAtendimento, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-xs-12 col-md-6 col-sm-6">
+                <label class="control-label label-obrigatorio">Tempo de Atendimento Padrão</label>
+                @Html.EditorFor(model => model.TempoAtendimentoPadrao, new { htmlAttributes = new { @class = "form-control time" } })
+                @Html.ValidationMessageFor(model => model.TempoAtendimentoPadrao, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-xs-12 col-md-6 col-sm-6">
+                <label class="control-label label-obrigatorio">Percentual de Repasse</label>
+                @Html.EditorFor(model => model.PercentualRepasse, new { htmlAttributes = new { @class = "form-control money2" } })
+                @Html.ValidationMessageFor(model => model.PercentualRepasse, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-xs-12 col-md-6 col-sm-6">
+                <label class="control-label label-obrigatorio">Cor do evento</label>
+                @Html.EditorFor(model => model.CorEvento, new { htmlAttributes = new { @type = "color", @class = "form-control" } })                
+                @Html.ValidationMessageFor(model => model.CorEvento, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
         }
 
     </div>
