@@ -138,10 +138,10 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
         public bool VerificarExistenciaCompromisso(int codigoCliente, int codigoProfissional, DateTime dataInicio, DateTime dataFim)
         {
-            bool existeCompromisso = _agendaService.List().Where(x => x.CodigoCliente.Equals(codigoCliente) && ((x.DataInicio >= dataInicio && x.DataInicio <= dataFim) || (x.DataFim >= dataInicio && x.DataFim <= dataFim))).Count() > 0;
+            bool existeCompromisso = _agendaService.List().Where(x => !x.SituacaoPresenca.Equals(SituacaoPresenca.Falta) && x.CodigoCliente.Equals(codigoCliente) && ((x.DataInicio >= dataInicio && x.DataInicio <= dataFim) || (x.DataFim >= dataInicio && x.DataFim <= dataFim))).Count() > 0;
 
             if (!existeCompromisso)
-                existeCompromisso = _agendaService.List().Where(x => x.CodigoProfissional.Equals(codigoCliente) && ((x.DataInicio >= dataInicio && x.DataInicio <= dataFim) || (x.DataFim >= dataInicio && x.DataFim <= dataFim))).Count() > 0;
+                existeCompromisso = _agendaService.List().Where(x => !x.SituacaoPresenca.Equals(SituacaoPresenca.Falta) && x.CodigoProfissional.Equals(codigoCliente) && ((x.DataInicio >= dataInicio && x.DataInicio <= dataFim) || (x.DataFim >= dataInicio && x.DataFim <= dataFim))).Count() > 0;
 
             return existeCompromisso;
         }
@@ -150,7 +150,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         {
             List<EventosDto> eventos = new List<EventosDto>();
 
-            eventos.AddRange(_agendaService.List().Select(x => new EventosDto
+            eventos.AddRange(_agendaService.List().Where(y => !y.SituacaoPresenca.Equals(SituacaoPresenca.Falta)).Select(x => new EventosDto
             {
                 Title = _clienteService.GetById(x.CodigoCliente).Nome + "(" + _especialidadeService.GetById(x.CodigoEspecialidade).Descricao + ")",
                 Start = x.DataInicio.ToString("yyyy-MM-dd hh:mm"),
