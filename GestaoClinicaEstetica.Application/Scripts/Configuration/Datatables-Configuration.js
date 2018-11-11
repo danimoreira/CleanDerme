@@ -1,5 +1,5 @@
 ﻿function InitDataTable(idTable, columnsDefinition) {
-    $('#' + idTable).DataTable({
+    return $('#' + idTable).DataTable({
         destroy: true,
         language: {
             processing: "Aguarde! Recuperando as informações...",

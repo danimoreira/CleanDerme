@@ -22,7 +22,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Login
         public ActionResult Index(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl ?? "/GEPV/Home";
+            ViewBag.ReturnUrl = returnUrl ?? "Home";
             return View();
         }
 
@@ -30,7 +30,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         public ActionResult Entrar(LoginModel loginDto, string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-
+            
             Usuario usuario = new Usuario
             {
                 Login = loginDto.Usuario,
@@ -44,15 +44,21 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
             FormsAuthentication.SetAuthCookie(loginDto.Usuario, false);
 
-            Session["displayName"] = usuarioDados.Nome;
-            Session["loginUsuario"] = usuarioDados.Login;
-            
-            return RedirectToAction("Index", "Home");
+            Response.Cookies.Remove("displayName");
+            HttpCookie cookie = new HttpCookie("displayName", usuarioDados.Nome);
+            Response.Cookies.Add(cookie);
+
+            Response.Cookies.Remove("loginUsuario");
+            HttpCookie cookieEmailUsuario = new HttpCookie("loginUsuario", usuarioDados.Login);
+            Response.Cookies.Add(cookieEmailUsuario);            
+
+            return RedirectToAction("Index", "Home");            
         }
 
         public ActionResult LogOut()
         {
             Session.Abandon();
+            Response.Cookies.Clear();
             FormsAuthentication.SignOut();
             return View("Index", new LoginModel());
         }

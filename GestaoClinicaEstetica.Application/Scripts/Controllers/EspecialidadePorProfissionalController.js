@@ -25,7 +25,7 @@ var Especialidades = function () {
                 for (item in data)
                 {               
                     var selecionado = data[item].Selecionado ? "checked" : "";
-                    var strHtml = '<div class="col-xs-3 col-md-3 col-sm-3"> <input type="checkbox" name="chkEspecialidadeSelecionada" data-id="' + data[item].IdObjeto + '" data-idEspecialidade="' + data[item].CodEspecialidade + '" ' + selecionado + ' /><span class="control-label" name="dscEspecialidade" data-idEspecialidade="' + data[item].CodEspecialidade + '">' + data[item].DescricaoEspecialidade + '</span> </div>';                    
+                    var strHtml = '<div class="col-xs-3 col-md-3 col-sm-3"> <input type="checkbox"  name="chkEspecialidadeSelecionada" data-id="' + data[item].IdObjeto + '" data-idEspecialidade="' + data[item].CodEspecialidade + '" ' + selecionado + ' /><span class="control-label" name="dscEspecialidade" data-idEspecialidade="' + data[item].CodEspecialidade + '"> ' + data[item].DescricaoEspecialidade + '</span> </div>';                    
                     $("#ItemEspecialidade").append(strHtml);                    
                 }                
             }

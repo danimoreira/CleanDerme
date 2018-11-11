@@ -25,6 +25,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clientes
         public ActionResult Index()
         {
+            UpdateBag();
             return View(_clienteService.List());
         }
 

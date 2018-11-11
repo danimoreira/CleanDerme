@@ -24,7 +24,7 @@ var Atendimento = function () {
             { "targets": 6, "name": "IdAgenda", "Visible": false, "class": "hidden" }
         ]
 
-        InitDataTable("AtendimentosCliente", definicao);
+        return InitDataTable("AtendimentosCliente", definicao);
     }
 
     this.pesquisarAtendimentos = function () {
@@ -39,7 +39,7 @@ var Atendimento = function () {
             dataType: "json",
             success: function (data) {
 
-                var tbAtendimento = $('#AtendimentosCliente').DataTable();
+                var tbAtendimento = atendimento.iniciaDataTable();
                 tbAtendimento.clear().draw();
 
                 if (data.length != 0) {
@@ -50,7 +50,7 @@ var Atendimento = function () {
                             moment(linha.DataInicioEvento).format("DD/MM/YYYY hh:mm"),
                             moment(linha.DataFimEvento).format("DD/MM/YYYY hh:mm"),
                             linha.Atendimento,
-                            "<a onclick='modalAtendimento.indicarAtendimento(" + linha.IdAgenda + ")'>Informar Atendimento</a>",
+                            "<a class='btn-link icon-acao icon-acao-editar' onclick='modalAtendimento.indicarAtendimento(" + linha.IdAgenda + ")' data-toggle='tooltip' data-placement='right' title='Informar atendimento'><i class='fa fa-id-card'></i></a>",
                             linha.IdAgenda
                         ]);
                     });
@@ -75,6 +75,7 @@ var ModalAtendimento = function () {
     }
 
     this.limparCamposModal = function () {
+        $("#ClienteAtendimento").html("");
         $("#ProfissionalAtendimento").html("");
         $("#EspecialidadeAtendimento").html("");
         $("#InicioConsultaAtendimento").html("");
@@ -96,6 +97,7 @@ var ModalAtendimento = function () {
             dataType: "json",
             success: function (data) {
 
+                $("#ClienteAtendimento").html(data.NomeCliente);
                 $("#ProfissionalAtendimento").html(data.NomeProfissional);
                 $("#EspecialidadeAtendimento").html(data.DescricaoEspecialidade);
                 $("#InicioConsultaAtendimento").html(moment(data.DataInicioEvento).format("DD/MM/YYYY hh:mm"));
@@ -108,7 +110,6 @@ var ModalAtendimento = function () {
     }
 
     this.indicarAtendimento = function (codAgenda) {
-        debugger;
 
         modalAtendimento.limparCamposModal();
 

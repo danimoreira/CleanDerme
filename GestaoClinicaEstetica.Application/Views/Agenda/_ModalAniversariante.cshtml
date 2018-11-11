@@ -9,10 +9,23 @@
                 <h4 class="modal-title"><span class="titulo-evento" id="paciente-aniversariante"></span></h4>
             </div>
             <div class="modal-body modal-lg">
-                <input type="hidden" id="idCliente" />
-                <p><label class="control-label">Aniversário: <br /> </label><span class="texto-evento" id="data-aniversario"></span></p>
-                <p><label class="control-label">Telefone Fixo: </label><span class="texto-evento" id="tel-fixo-aniversario"></span></p>
-                <p><label class="control-label">Telefone Celular: </label><span class="texto-evento" id="tel-celular-aniversario"></span></p>
+
+                <div class="form-inline">
+
+                    <input type="hidden" id="idCliente" />
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-birthday-cake fa-2x"></i> <span class="texto-evento" id="data-aniversario"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-phone fa-2x"></i> <span class="texto-evento" id="tel-fixo-aniversario"></span> / <span class="texto-evento" id="tel-celular-aniversario"></span>
+                    </div>
+                                        
+                </div>
+
+                <br />
+
             </div>
 
             <div class="modal-footer">                

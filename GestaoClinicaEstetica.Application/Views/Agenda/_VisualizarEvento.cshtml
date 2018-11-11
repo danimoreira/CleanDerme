@@ -8,20 +8,39 @@
                 <h4 class="modal-title"><span class="titulo-evento" id="paciente-evento"></span></h4>
             </div>
             <div class="modal-body modal-lg">
-                <input type="hidden" id="idEventoVisualizar" />
-                <p class="profissional-evento" id="profissional-evento"></p>
-                <p class="especialidade-evento" id="especialidade-evento"></p>
-                <p><label class="control-label">Data: <br /> </label><span class="texto-evento" id="data-evento"></span></p>
-                <p><label class="control-label">Hora início: </label><span class="texto-evento" id="hora-inicio-evento"></span></p>
-                <p><label class="control-label">Hora fim: </label><span class="texto-evento" id="hora-fim-evento"></span></p>
-                <p><label class="control-label">Observação: </label><span class="texto-evento" id="observacao-evento"></span></p>
-            </div>
 
+                <div class="form-inline">
+
+                    <input type="hidden" id="idEventoVisualizar" />
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-user-md fa-2x"></i> <span class="texto-evento" id="profissional-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-cogs fa-2x"></i> <span class="texto-evento" id="especialidade-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="data-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-clock-o fa-2x"></i> <span class="texto-evento" id="hora-inicio-evento"></span> -
+                        <span class="texto-evento" id="hora-fim-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                        <i class="fa fa-file-text fa-2x"></i> <span class="texto-evento" id="observacao-evento"></span>
+                    </div>
+
+                </div>
+            </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" onclick="modalConsulta.informarAtendimento()">Incluir atendimento</button>
-                <button type="button" class="btn btn-primary" onclick="modalConsulta.editarEvento()">Reagendar</button>
-                <button type="button" class="btn btn-warning" onclick="modalConsulta.indicarPresenca()">Informar Presença</button>
+                <button type="button" class="btn btn-warning" onclick="modalConsulta.editarEvento()">Reagendar</button>
+                <button type="button" class="btn btn-success" onclick="modalConsulta.indicarPresenca()">Informar Presença</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>

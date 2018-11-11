@@ -12,17 +12,31 @@
         <div class="col-xs-12 col-md-12 col-sm-12">
             <div class="row layout-topo">
                 <div class="col-xs-12 col-sm-12 col-md-12 ">
-                    <div class="col-xs-3 col-sm-3 col-md-3 layout-topo__logo">
-                        <span class="topo-logo">Clean Derme</span>
+                    <div class="col-xs-6 col-sm-6 col-md-3 layout-topo__logo">
+                        <p class="topo-logo">Clean Derme</p>
+                        <p class="topo-sistema">Sistema de Gestão de Agenda</p>
                     </div>
 
-                    <div class="col-xs-9 col-sm-9 col-md-9 layout-topo__barra-superior">
-                        <div class="col-xs-9 col-sm-9 col-md-9">
+                    <div class="col-xs-6 col-sm-6 col-md-9 layout-topo__barra-superior">
+
+                        <div class="col-xs-2 col-sm-2 col-md-2 grupo-loading">
+                           
+                        </div>
+
+                        <div class="col-xs-7 col-sm-7 col-md-7 grupo-navbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="@Url.Action("Index", "Home")" data-toggle="tooltip" title="Home"><i class="fa fa-home fa-lg fa-2x"></i></a></li>
+                                <li><a href="@Url.Action("Index", "Agenda")" data-toggle="tooltip" title="Ver agenda"><i class="fa fa-calendar fa-lg fa-2x"></i></a></li>
+                                <li><a href="@Url.Action("Create", "Clientes")" data-toggle="tooltip" title="Cadastrar cliente"><i class="fa fa-user-plus fa-lg fa-2x"></i></a></li>
+                                <li><a href="@Url.Action("Index", "Financeiro")" data-toggle="tooltip" title="Receber pagamento"><i class="fa fa-dollar fa-lg fa-2x"></i></a></li>
+                                <li><a href="@Url.Action("Index", "Presenca")" data-toggle="tooltip" title="Informar presença"><i class="fa fa-calendar-check-o fa-lg fa-2x"></i></a></li>
+                                <li><a href="@Url.Action("Index", "Atendimento")" data-toggle="tooltip" title="Incluir atendimento"><i class="fa fa-list fa-lg fa-2x"></i></a></li>
+                            </ul>
 
                         </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
-                            <p class="topo-usuario">Olá, @ViewBag.UsuarioNome</p>
-                            <p><a href="@Url.Action("Logout", "Seguranca")">Sair</a> </p>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-center grupo-usuario">
+                            <span class="topo-usuario"><i class="fa fa-user"></i> Olá, @ViewBag.UsuarioNome</span>
+                            <span class="topo-sair pull-right"><a href="@Url.Action("Logout", "Seguranca")"><i class="fa fa-sign-out fa-lg"></i></a> </span>
                         </div>
                     </div>
                 </div>
@@ -31,32 +45,80 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="col-xs-2 col-sm-2 col-md-2 layout-menu-lateral">
-                        <ul class="menu-lateral">
-                            <li class="menu-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
-                            <li class="menu-titulo">Cadastros Gerais</li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Clinicas")">Dados da Clínica</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Especialidades")">Especialidades</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Servicos")">Serviços</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Usuarios")">Usuários</a></li>
-                            <li class="menu-titulo">Profissional</li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Profissionais")">Cadastrar</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "EspecialidadePorProfissional")">Incluir Especilidade</a></li>
-                            <li class="menu-titulo">Clientes</li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Presenca")">Ver presenças</a></li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Atendimento")">Ver atendimentos</a></li>
-                            <li class="menu-titulo">Financeiro</li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Financeiro")">Receber pagamento</a></li>
-                            <li class="menu-titulo">Agenda</li>
-                            <li class="menu-item"><a href="@Url.Action("Index", "Agenda")">Ver agenda</a></li>
-                            <li class="menu-titulo">Relatórios</li>
-                            <li class="menu-item"><a href="@Url.Action("HistoricoCliente", "Relatorios")">Histórico do Cliente</a></li>
-                            <li class="menu-item"><a href="@Url.Action("FechamentoFinanceiro", "Relatorios")">Fechamento Financeiro</a></li>
-                            <li class="menu-item"><a href="@Url.Action("RepasseProfissional", "Relatorios")">Repasse ao profissional</a></li>
 
-                        </ul>
+                        <div class="nav-side-menu">
+
+                            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+                            <div class="menu-list">
+
+                                <ul id="menu-content" class="menu-content collapse out">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")">
+                                            <i class="fa fa-home fa-lg"></i> Home
+                                        </a>
+                                    </li>
+                                    <li data-toggle="collapse" data-target="#menucadGeral" class="collapsed">
+                                        <a href="#"><i class="fa fa-cogs fa-lg"></i> Configurações <span class="arrow"></span></a>
+                                    </li>
+                                    <ul class="sub-menu collapse" id="menucadGeral">
+                                        <li><a href="@Url.Action("Index", "Clinicas")">Dados da Clínica</a></li>
+                                        <li><a href="@Url.Action("Index", "Especialidades")">Especialidades</a></li>
+                                        <li><a href="@Url.Action("Index", "Servicos")">Serviços</a></li>
+                                        <li><a href="@Url.Action("Index", "Usuarios")">Usuários</a></li>
+                                    </ul>
+
+                                    <li data-toggle="collapse" data-target="#menuProfissional" class="collapsed">
+                                        <a href="#"><i class="fa fa-user-md fa-lg"></i> Profissional <span class="arrow"></span></a>
+                                    </li>
+                                    <ul class="sub-menu collapse" id="menuProfissional">
+                                        <li><a href="@Url.Action("Index", "Profissionais")">Cadastrar</a></li>
+                                        <li><a href="@Url.Action("Index", "EspecialidadePorProfissional")">Incluir Especilidade</a></li>
+                                    </ul>
+
+                                    <li data-toggle="collapse" data-target="#menuCliente" class="collapsed">
+                                        <a href="#"><i class="fa fa-user fa-lg"></i> Cliente <span class="arrow"></span></a>
+                                    </li>
+                                    <ul class="sub-menu collapse" id="menuCliente">
+                                        <li><a href="@Url.Action("Index", "Clientes")">Cadastrar</a></li>
+                                        <li><a href="@Url.Action("Index", "Presenca")">Ver presenças</a></li>
+                                        <li><a href="@Url.Action("Index", "Atendimento")">Ver atendimentos</a></li>
+                                    </ul>
+
+                                    <li data-toggle="collapse" data-target="#menuFinanceiro" class="collapsed">
+                                        <a href="#"><i class="fa fa-dollar fa-lg"></i> Financeiro <span class="arrow"></span></a>
+                                    </li>
+                                    <ul class="sub-menu collapse" id="menuFinanceiro">
+                                        <li><a href="@Url.Action("Index", "Financeiro")">Receber pagamento</a></li>
+                                    </ul>
+
+                                    <li data-toggle="collapse" data-target="#menuAgenda" class="collapsed">
+                                        <a href="#"><i class="fa fa-calendar fa-lg"></i> Agenda <span class="arrow"></span></a>
+                                    </li>
+                                    <ul class="sub-menu collapse" id="menuAgenda">
+                                        <li><a href="@Url.Action("Index", "Agenda")">Ver agenda</a></li>
+                                    </ul>
+
+                                    <li data-toggle="collapse" data-target="#menuRelatorios" class="collapsed">
+                                        <a href="#"><i class="fa fa-line-chart fa-lg"></i> Relatórios <span class="arrow"></span></a>
+                                    </li>
+                                    <ul class="sub-menu collapse" id="menuRelatorios">
+                                        <li><a href="@Url.Action("HistoricoCliente", "Relatorios")">Histórico do Cliente</a></li>
+                                        <li><a href="@Url.Action("FechamentoFinanceiro", "Relatorios")">Fechamento Financeiro</a></li>
+                                        <li><a href="@Url.Action("RepasseProfissional", "Relatorios")">Repasse ao profissional</a></li>
+                                    </ul>
+
+                                </ul>
+                            </div>
+                        </div>
 
 
+                    </div>
+
+                    <div class="text-white" id="loadingDiv">
+                        <i class="fa fa-spinner fa-spin fa-2x" id="loading-spin"></i>
+                        <br />
+                        <span>Aguarde...</span>
                     </div>
 
                     <div class="col-xs-10 col-sm-10 col-md-10 layout-conteudo">

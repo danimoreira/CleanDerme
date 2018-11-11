@@ -29,6 +29,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Servico5s
         public ActionResult Index()
         {
+            UpdateBag();
             return View(_servicoService.List());
         }
 

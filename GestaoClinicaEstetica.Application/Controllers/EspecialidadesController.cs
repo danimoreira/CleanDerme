@@ -25,6 +25,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades
         public ActionResult Index()
         {
+            UpdateBag();
             return View(_especialidadeService.List());
         }
 

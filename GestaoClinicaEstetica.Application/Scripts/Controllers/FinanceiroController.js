@@ -58,7 +58,7 @@ var Financeiro = function () {
                             "R$ " + FormatDecimal(linha.ValorDevido),
                             linha.TipoPagamento,
                             linha.SituacaoPagamento,
-                            "<a onclick='modalServico.receberServico(" + linha.IdRecebimento + ")'>Receber</a>",
+                            "<a class='btn-link icon-acao icon-acao-editar' onclick='modalServico.receberServico(" + linha.IdRecebimento + ")' data-toggle='tooltip' data-placement='right' title='Receber pagamento'><i class='fa fa-credit-card'></i></a>",
                             linha.IdRecebimento
                         ]);
 

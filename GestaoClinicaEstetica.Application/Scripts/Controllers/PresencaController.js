@@ -24,7 +24,7 @@ var Presenca = function () {
             { "targets": 6, "name": "IdAgenda", "Visible": false, "class": "hidden" }
         ]
 
-        InitDataTable("PresencaCliente", definicao);
+        return InitDataTable("PresencaCliente", definicao);
     }
 
     this.pesquisarPresencas = function () {
@@ -39,7 +39,7 @@ var Presenca = function () {
             dataType: "json",
             success: function (data) {
 
-                var tablePresencas = $('#PresencaCliente').DataTable();
+                var tablePresencas = presenca.iniciaDataTable();
                 tablePresencas.clear().draw();
 
                 if (data.length != 0) {
@@ -50,7 +50,7 @@ var Presenca = function () {
                             moment(linha.DataInicioEvento).format("DD/MM/YYYY hh:mm"),
                             moment(linha.DataFimEvento).format("DD/MM/YYYY hh:mm"),
                             linha.SituacaoPresenca,
-                            "<a onclick='modalPresenca.indicarPresenca(" + linha.IdAgenda + ")'>Indicar Presença</a>",
+                            "<a class='btn-link icon-acao icon-acao-editar' onclick='modalPresenca.indicarPresenca(" + linha.IdAgenda + ")' data-toggle='tooltip' data-placement='right' title='Informar presença/ausência'><i class='fa fa-calendar-check-o'></i></a>",
                             linha.IdAgenda
                         ]);
                     });
@@ -75,6 +75,7 @@ var ModalPresenca = function () {
     }
 
     this.limparCamposModal = function () {
+        $("#ClientePresenca").html("");
         $("#ProfissionalPresenca").html("");
         $("#EspecialidadePresenca").html("");
         $("#InicioConsultaPresenca").html("");
@@ -97,6 +98,7 @@ var ModalPresenca = function () {
             dataType: "json",
             success: function (data) {
 
+                $("#ClientePresenca").html(data.NomeCliente);
                 $("#ProfissionalPresenca").html(data.NomeProfissional);
                 $("#EspecialidadePresenca").html(data.DescricaoEspecialidade);
                 $("#InicioConsultaPresenca").html(moment(data.DataInicioEvento).format("DD/MM/YYYY hh:mm"));

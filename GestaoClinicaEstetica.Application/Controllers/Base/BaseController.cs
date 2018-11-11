@@ -6,17 +6,18 @@ namespace GestaoClinicaEstetica.Application.Controllers.Base
     {
         public BaseController()
         {
-            
+
         }
 
         public virtual void UpdateBag()
         {
             var login = string.Empty;
             var usuarioName = string.Empty;
-            if (Session["loginUsuario"] != null)
+
+            if (HttpContext.Request.Cookies["displayName"] != null)
             {
-                login = Session["loginUsuario"].ToString();
-                usuarioName = Session["displayName"].ToString();
+                login = HttpContext.Request.Cookies["loginUsuario"].Value;
+                usuarioName = HttpContext.Request.Cookies["displayName"].Value;
             }
 
             ViewBag.UsuarioLogin = login;
