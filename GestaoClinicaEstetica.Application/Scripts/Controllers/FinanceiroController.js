@@ -56,9 +56,9 @@ var Financeiro = function () {
                             linha.DescricaoServico,
                             moment(linha.DataVencimento).format("DD/MM/YYYY"),
                             "R$ " + FormatDecimal(linha.ValorDevido),
-                            linha.TipoPagamento,
+                            linha.SituacaoPagamento == "Pendente" ? "-" : linha.TipoPagamento,
                             linha.SituacaoPagamento,
-                            "<a class='btn-link icon-acao icon-acao-editar' onclick='modalServico.receberServico(" + linha.IdRecebimento + ")' data-toggle='tooltip' data-placement='right' title='Receber pagamento'><i class='fa fa-credit-card'></i></a>",
+                            linha.SituacaoPagamento != "Pendente" ? "" : "<a class='btn-link icon-acao icon-acao-editar' onclick='modalServico.receberServico(" + linha.IdRecebimento + ")' data-toggle='tooltip' data-placement='right' title='Receber pagamento'><i class='fa fa-credit-card'></i></a>",
                             linha.IdRecebimento
                         ]);
 
@@ -66,6 +66,8 @@ var Financeiro = function () {
 
                     tableRecebimento.draw();
                 }
+
+                tableRecebimento.column(6).visible(false);
 
                 $("#groupParcelasReceber").removeClass("hidden");
             }

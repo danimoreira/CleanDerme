@@ -17,39 +17,39 @@
                             <input type="hidden" name="IdAgendaPresenca" id="IdAgendaPresenca" value="0" />
 
                             <div class="form-group col-xs-12 col-sm-12 col-md-12">
-                                <label class="control-label">Cliente</label>
-                                <p class="" id="ClientePresenca"></p>
+                                <i class="fa fa-user fa-2x"></i> <span class="texto-evento" id="ClientePresenca"></span>
                             </div>
 
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <label class="control-label">Profissional</label>
-                                <p class="" id="ProfissionalPresenca"></p>
+                                <i class="fa fa-user-md fa-2x"></i> <span class="texto-evento" id="ProfissionalPresenca"></span>
                             </div>
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <label class="control-label">Especialidade</label>
-                                <p class="" id="EspecialidadePresenca"></p>
+                                <i class="fa fa-cogs fa-2x"></i> <span class="texto-evento" id="EspecialidadePresenca"></span>                                
                             </div>
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <label class="control-label">Data/Hora Início</label>
-                                <p class="" id="InicioConsultaPresenca"></p>
+                                <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="InicioConsultaPresenca"></span>                                
                             </div>
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <label class="control-label">Data/Hora Fim</label>
-                                <p class="" id="FimConsultaPresenca"></p>
+                                <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="FimConsultaPresenca"></span>
                             </div>
 
                             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                                 <label class="control-label label-obrigatorio">Situação</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="SituacaoPresenca" value="1" checked>Presente
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="SituacaoPresenca" value="2">Ausente
-                                </label>
+                                <br />
+                                <div class="col-xs-2 col-md-2 col-sm-2">
+                                    <label class="radio">
+                                        <input type="radio" class="hidden chkSituacaoPresenca" name="SituacaoPresenca" value="1" checked> <i class="fa fa-thumbs-up fa-2x text-success" for="SituacaoPresenca"  data-toggle="tooltip" title="Presente"></i>
+                                    </label>
+                                </div>
+                                <div class="col-xs-2 col-md-2 col-sm-2">
+                                    <label class="radio">
+                                        <input type="radio" class="hidden chkSituacaoPresenca" name="SituacaoPresenca" value="1" checked> <i class="fa fa-thumbs-down fa-2x text-danger" for="SituacaoPresenca"  data-toggle="tooltip" title="Falta"></i>
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="form-group col-xs-12 col-sm-12 col-md-12">

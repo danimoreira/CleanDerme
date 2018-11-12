@@ -21,7 +21,7 @@ var Presenca = function () {
             { "targets": 3, "name": "DtFim" },
             { "targets": 4, "name": "Presenca" },
             { "targets": 5, "name": "BotoesAcao" },
-            { "targets": 6, "name": "IdAgenda", "Visible": false, "class": "hidden" }
+            { "targets": 6, "name": "IdAgenda", "visible": false }
         ]
 
         return InitDataTable("PresencaCliente", definicao);
@@ -47,8 +47,8 @@ var Presenca = function () {
                         tablePresencas.row.add([
                             linha.NomeProfissional,
                             linha.DescricaoEspecialidade,
-                            moment(linha.DataInicioEvento).format("DD/MM/YYYY hh:mm"),
-                            moment(linha.DataFimEvento).format("DD/MM/YYYY hh:mm"),
+                            moment(linha.DataInicioEvento).format("DD/MM/YYYY HH:mm"),
+                            moment(linha.DataFimEvento).format("DD/MM/YYYY HH:mm"),
                             linha.SituacaoPresenca,
                             "<a class='btn-link icon-acao icon-acao-editar' onclick='modalPresenca.indicarPresenca(" + linha.IdAgenda + ")' data-toggle='tooltip' data-placement='right' title='Informar presença/ausência'><i class='fa fa-calendar-check-o'></i></a>",
                             linha.IdAgenda
@@ -56,6 +56,8 @@ var Presenca = function () {
                     });
                     tablePresencas.draw();
                 }
+
+                tablePresencas.column(6).visible(false);
 
                 $("#groupPresencaCliente").removeClass("hidden");
             }

@@ -47,8 +47,8 @@ var Atendimento = function () {
                         tbAtendimento.row.add([
                             linha.NomeProfissional,
                             linha.DescricaoEspecialidade,
-                            moment(linha.DataInicioEvento).format("DD/MM/YYYY hh:mm"),
-                            moment(linha.DataFimEvento).format("DD/MM/YYYY hh:mm"),
+                            moment(linha.DataInicioEvento).format("DD/MM/YYYY HH:mm"),
+                            moment(linha.DataFimEvento).format("DD/MM/YYYY HH:mm"),
                             linha.Atendimento,
                             "<a class='btn-link icon-acao icon-acao-editar' onclick='modalAtendimento.indicarAtendimento(" + linha.IdAgenda + ")' data-toggle='tooltip' data-placement='right' title='Informar atendimento'><i class='fa fa-id-card'></i></a>",
                             linha.IdAgenda
@@ -56,6 +56,8 @@ var Atendimento = function () {
                     });
                     tbAtendimento.draw();
                 }
+
+                tbAtendimento.column(6).visible(false);
 
                 $("#groupAtendimentoCliente").removeClass("hidden");
             }
