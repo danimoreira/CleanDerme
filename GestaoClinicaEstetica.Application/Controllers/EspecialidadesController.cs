@@ -47,6 +47,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades/Create
         public ActionResult Create()
         {
+            UpdateBag();
             return View();
         }
 
@@ -80,6 +81,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -100,6 +103,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Especialidade especialidade)
         {
+            UpdateBag();
+
             especialidade.DataAlteracao = DateTime.Now;
             especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;
 
@@ -117,6 +122,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -135,6 +142,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Especialidade especialidade = _especialidadeService.GetById(id);
             _especialidadeService.Delete(especialidade);
             

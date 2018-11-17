@@ -99,16 +99,26 @@ var ModalPresenca = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
+                if (!$("#msgPresencaInformada").hasClass("hidden"))
+                    $("#msgPresencaInformada").addClass("hidden");
 
                 $("#ClientePresenca").html(data.NomeCliente);
                 $("#ProfissionalPresenca").html(data.NomeProfissional);
                 $("#EspecialidadePresenca").html(data.DescricaoEspecialidade);
-                $("#InicioConsultaPresenca").html(moment(data.DataInicioEvento).format("DD/MM/YYYY hh:mm"));
-                $("#FimConsultaPresenca").html(moment(data.DataFimEvento).format("DD/MM/YYYY hh:mm"));
-
-                $("input[name=SituacaoPresenca][value=" + data.CodSituacaoPresenca + "]").prop('checked', true);                
+                $("#DataConsultaPresenca").html(moment(data.DataInicioEvento).format("DD/MM/YYYY"));
+                $("#InicioConsultaPresenca").html(moment(data.DataInicioEvento).format("HH:mm"));
+                $("#FimConsultaPresenca").html(moment(data.DataFimEvento).format("HH:mm"));
                 $("[name=Justificativa]").val(data.Justificativa);
-                $("#IdAgendaPresenca").val(data.IdAgenda);               
+                $("#IdAgendaPresenca").val(data.IdAgenda);   
+
+                
+                if (data.CodSituacaoPresenca > 0) {
+                    $("input[name=SituacaoPresenca][value=" + data.CodSituacaoPresenca + "]").prop('checked', true);
+                    $("#msgPresencaInformada").removeClass("hidden");
+                } else {
+                    $("input[name=SituacaoPresenca]").prop('checked', false);
+                }
+                    
             }
         });
     }
@@ -126,6 +136,11 @@ var ModalPresenca = function () {
             CodigoAgenda: $("#IdAgendaPresenca").val(),
             SituacaoPresenca: $("input[name=SituacaoPresenca]:checked").prop("value"),
             Justificativa: $("[name=Justificativa]").val()
+        }
+
+        if (presenca.SituacaoPresenca == undefined || presenca.SituacaoPresenca == 0) {
+            toastr.error("Indique uma situação de presença ou falta para salvar!");
+            return;
         }
 
         $.ajax({

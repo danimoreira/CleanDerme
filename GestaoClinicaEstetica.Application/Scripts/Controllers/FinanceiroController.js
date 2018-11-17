@@ -282,17 +282,11 @@ var ModalServico = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                //modalServico.limparCamposReceberPagamento();
-
-                debugger;
                 $("[name=IdRecebimento]").val(data.IdRecebimento);
                 $("[name=DataAquisicao]").val(moment(data.DataAquisicao).format("DD/MM/YYYY"));
                 $("[name=CodClienteIncServico]").val(data.CodigoCliente);
                 $("[name=CodEspecialidadeIncServico]").val(data.CodigoEspecialidade);                
-
-                //modalServico.preencherServicos(data.CodigoEspecialidade);
-                //modalServico.preencherProfissionais(data.CodigoEspecialidade);
-
+                
                 $("[name=CodProfissionalIncServico]").val(data.CodigoProfissional);
                 $("[name=CodServicoIncServico]").val(data.CodigoServico);
                 $("[name=FormaPagamento]").val(data.CodTipoPagamento);

@@ -16,25 +16,33 @@
 
                             <input type="hidden" name="IdAgendaPresenca" id="IdAgendaPresenca" value="0" />
 
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 hidden" id="msgPresencaInformada">
+                                <div class="alert alert-warning">
+                                    <strong>Atenção!</strong> Você já informou presença para esta consulta!
+                                </div>
+                                
+                            </div>
+
                             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                                 <i class="fa fa-user fa-2x"></i> <span class="texto-evento" id="ClientePresenca"></span>
                             </div>
-
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
                                 <i class="fa fa-user-md fa-2x"></i> <span class="texto-evento" id="ProfissionalPresenca"></span>
                             </div>
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <i class="fa fa-cogs fa-2x"></i> <span class="texto-evento" id="EspecialidadePresenca"></span>                                
+                                <i class="fa fa-cogs fa-2x"></i> <span class="texto-evento" id="EspecialidadePresenca"></span>
                             </div>
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="InicioConsultaPresenca"></span>                                
+                                <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="DataConsultaPresenca"></span>
                             </div>
 
                             <div class="form-group col-xs-6 col-sm-6 col-md-6">
-                                <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="FimConsultaPresenca"></span>
+                                <i class="fa fa-clock-o fa-2x"></i>
+                                <span class="texto-evento" id="InicioConsultaPresenca"></span> -
+                                <span class="texto-evento" id="FimConsultaPresenca"></span>
                             </div>
 
                             <div class="form-group col-xs-12 col-sm-12 col-md-12">
@@ -42,12 +50,12 @@
                                 <br />
                                 <div class="col-xs-2 col-md-2 col-sm-2">
                                     <label class="radio">
-                                        <input type="radio" class="hidden chkSituacaoPresenca" name="SituacaoPresenca" value="1" checked> <i class="fa fa-thumbs-up fa-2x text-success" for="SituacaoPresenca"  data-toggle="tooltip" title="Presente"></i>
+                                        <input type="radio" class="hidden chkSituacaoPresenca" name="SituacaoPresenca" value="1" checked> <i class="fa fa-thumbs-up fa-2x text-success" for="SituacaoPresenca" data-toggle="tooltip" title="Presente"></i>
                                     </label>
                                 </div>
                                 <div class="col-xs-2 col-md-2 col-sm-2">
                                     <label class="radio">
-                                        <input type="radio" class="hidden chkSituacaoPresenca" name="SituacaoPresenca" value="1" checked> <i class="fa fa-thumbs-down fa-2x text-danger" for="SituacaoPresenca"  data-toggle="tooltip" title="Falta"></i>
+                                        <input type="radio" class="hidden chkSituacaoPresenca" name="SituacaoPresenca" value="2" checked> <i class="fa fa-thumbs-down fa-2x text-danger" for="SituacaoPresenca" data-toggle="tooltip" title="Falta"></i>
                                     </label>
                                 </div>
                             </div>

@@ -47,6 +47,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Profissionais/Create
         public ActionResult Create()
         {
+            UpdateBag();
+
             return View();
         }
 
@@ -80,6 +82,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Profissionais/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,6 +103,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Cpf,DataNascimento,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Profissional profissional)
         {
+            UpdateBag();
+
             profissional.DataAlteracao = DateTime.Now;
             profissional.UsuarioAlteracao = ViewBag.UsuarioLogin;
 
@@ -116,6 +122,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Profissionais/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -133,6 +141,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Profissional profissional = _profissionalService.GetById(id);
             _profissionalService.Delete(profissional);
             

@@ -68,13 +68,13 @@ body {
 
     .topo-sair a {
         text-decoration: none !important;
-        color: #fff;
-        font-size: 20px;
+        color: rgba(255, 255, 255, .8);
+        font-size: 18px;
     }
 
 .topo-usuario {
     font-size: 16px;
-    color: #fff;
+    color: rgba(255, 255, 255, .6);
 }
 
 .layout-menu-lateral {
@@ -107,8 +107,9 @@ body {
 }
 
 .font-bem-vindo {
-    color: var(--secondary-bg-color);
-    font-size: 16px;
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .font-cor-padrao {

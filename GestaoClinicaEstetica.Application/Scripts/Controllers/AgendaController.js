@@ -131,13 +131,14 @@ var ModalConsulta = function () {
     }
 
     this.recuperarCombosDependentes = function () {
+        
         $('#CodServicoConsulta').val("");
         $('#CodProfissionalConsulta').val("");
         this.recuperarProfissional();
         this.recuperarServicos();
     }
 
-    this.recuperarProfissional = function () {
+    this.recuperarProfissional = function (codProfissionalSel) {
         var codEspecialidade = $("#CodEspecialidadeConsulta").val();
 
         if (codEspecialidade != undefined) {
@@ -154,12 +155,15 @@ var ModalConsulta = function () {
                     $.each(data, function () {
                         options.append($("<option />").val(this.Value).text(this.Text));
                     });
+
+                    if (codProfissionalSel != undefined)
+                        $("#CodProfissionalConsulta").val(codProfissionalSel);
                 }
             });
         }
     }
 
-    this.recuperarServicos = function () {
+    this.recuperarServicos = function (codServicoSel) {
         var codEspecialidade = $("#CodEspecialidadeConsulta").val();
 
         if (codEspecialidade != undefined) {
@@ -176,6 +180,9 @@ var ModalConsulta = function () {
                     $.each(data, function () {
                         options.append($("<option />").val(this.Value).text(this.Text));
                     });
+
+                    if (codServicoSel != undefined)
+                        $("#CodServicoConsulta").val(codServicoSel);
                 }
             });
         }
@@ -191,13 +198,17 @@ var ModalConsulta = function () {
             success: function (data) {
 
                 $("#idEventoVisualizar").val(data.Id);
-                $("#paciente-evento").html(data.NomeCliente);
+                $("#paciente-evento").html(data.NomeCliente + "<br /> <i class='fa fa-phone'></i> " + data.Telefones + "");
                 $("#profissional-evento").html(data.NomeProfissional);
                 $("#especialidade-evento").html(data.DescricaoEspecialidade);
                 $("#data-evento").html(moment(data.DataInicioEvento).format("DD/MM/YYYY"));
-                $("#hora-inicio-evento").html(moment(data.DataInicioEvento).format("h:mm"));
-                $("#hora-fim-evento").html(moment(data.DataFimEvento).format("h:mm"));
-                $("#observacao-evento").html(data.Procedimento);
+                $("#hora-inicio-evento").html(moment(data.DataInicioEvento).format("HH:mm"));
+                $("#hora-fim-evento").html(moment(data.DataFimEvento).format("HH:mm"));
+                if (data.Procedimento == null)
+                    $(".fa-file-text").addClass("hidden");
+                else
+                    $("#observacao-evento").html(data.Procedimento);
+                
                 $("#modalVisualizar").modal("show");
             }
         });
@@ -225,17 +236,16 @@ var ModalConsulta = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
+                
                 $("#modalVisualizar").modal("hide");
                 $("[name=IdConsulta]").val(data.Id);
                 $("#CodClienteConsulta").val(data.CodigoCliente);
                 $("#CodEspecialidadeConsulta").val(data.CodigoEspecialidade);
-                modalConsulta.recuperarProfissional();
-                modalConsulta.recuperarServicos();
-                $("#CodProfissionalConsulta").val(data.CodigoProfissional);
-                $("#CodServicoConsulta").val("");
+                modalConsulta.recuperarProfissional(data.CodigoProfissional);
+                modalConsulta.recuperarServicos(data.CodigoServico);
                 $("#DataConsulta").val(moment(data.DataInicioEvento).format("YYYY-MM-DD"));
-                $("#HoraInicioConsulta").val(moment(data.DataInicioEvento).format("hh:mm"));
-                $("#HoraFimConsulta").val(moment(data.DataFimEvento).format("hh:mm"));
+                $("#HoraInicioConsulta").val(moment(data.DataInicioEvento).format("HH:mm"));
+                $("#HoraFimConsulta").val(moment(data.DataFimEvento).format("HH:mm"));
                 $("#ObservacaoConsulta").val(data.Procedimento);
                 $("#modalConsulta").modal("show");
             }
@@ -280,8 +290,8 @@ var ModalConsulta = function () {
             CodigoEspecialidade: $("#CodEspecialidadeConsulta").val(),
             CodigoProfissional: $("#CodProfissionalConsulta").val(),
             CodigoServico: $("#CodServicoConsulta").val(),
-            DataInicio: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraInicioConsulta").val(), "hh:mm A").format("hh:mm A")).format("YYYY-MM-DD hh:mm A"),
-            DataFim: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraFimConsulta").val(), "hh:mm A").format("hh:mm A")).format("YYYY-MM-DD hh:mm A"),
+            DataInicio: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraInicioConsulta").val(), "hh:mm A").format("hh:mm A")).format("YYYY-MM-DD HH:mm"),
+            DataFim: moment(moment($("#DataConsulta").val()).format("YYYY-MM-DD") + " " + moment($("#HoraFimConsulta").val(), "hh:mm A").format("hh:mm A")).format("YYYY-MM-DD HH:mm"),
             Procedimento: $("#ObservacaoConsulta").val()
         }
 
@@ -334,7 +344,6 @@ var ModalConsulta = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                debugger;
                 $("#idCliente").val(data.Id);
                 $("#paciente-aniversariante").html(data.Nome);
                 $("#data-aniversario").html(moment(data.DataAniversario).format("DD/MM"));

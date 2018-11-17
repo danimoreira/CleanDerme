@@ -80,9 +80,9 @@ var ModalAtendimento = function () {
         $("#ClienteAtendimento").html("");
         $("#ProfissionalAtendimento").html("");
         $("#EspecialidadeAtendimento").html("");
+        $("#DataConsultaAtendimento").html("");        
         $("#InicioConsultaAtendimento").html("");
         $("#FimConsultaAtendimento").html("");
-
         $("[name=ObsAtendimento]").val("");
         $("#IdAgendaAtendimento").val("");
     }
@@ -102,8 +102,11 @@ var ModalAtendimento = function () {
                 $("#ClienteAtendimento").html(data.NomeCliente);
                 $("#ProfissionalAtendimento").html(data.NomeProfissional);
                 $("#EspecialidadeAtendimento").html(data.DescricaoEspecialidade);
-                $("#InicioConsultaAtendimento").html(moment(data.DataInicioEvento).format("DD/MM/YYYY hh:mm"));
-                $("#FimConsultaAtendimento").html(moment(data.DataFimEvento).format("DD/MM/YYYY hh:mm"));
+
+                $("#DataConsultaAtendimento").html(moment(data.DataInicioEvento).format("DD/MM/YYYY"));
+
+                $("#InicioConsultaAtendimento").html(moment(data.DataInicioEvento).format("HH:mm"));
+                $("#FimConsultaAtendimento").html(moment(data.DataFimEvento).format("HH:mm"));
 
                 $("[name=ObsAtendimento]").val(data.Atendimento);
                 $("#IdAgendaAtendimento").val(data.IdAgenda);
