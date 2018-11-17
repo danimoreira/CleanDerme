@@ -17,9 +17,9 @@ namespace GestaoClinicaEstetica.Domain.Dto
         public string DescricaoServico { get; set; }
         public DateTime DataAquisicao { get; set; }
         public DateTime DataVencimento { get; set; }
-        public DateTime DataPagamento { get; set; }
+        public DateTime? DataPagamento { get; set; }
         public Decimal ValorDevido { get; set; }
-        public Decimal ValorRecebido { get; set; }
+        public Decimal? ValorRecebido { get; set; }
         public string SituacaoPagamento { get; set; }
         public string UsuarioRecebimento { get; set; }
         public int CodTipoPagamento { get; set; }

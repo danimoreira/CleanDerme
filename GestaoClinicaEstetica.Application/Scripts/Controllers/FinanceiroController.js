@@ -275,7 +275,7 @@ var ModalServico = function () {
     }
 
     this.receberServico = function (codRecebimento) {       
-
+        
         $.ajax({
             type: "GET",
             url: "/Financeiro/RecuperarDadosRecebimento?codigoRecebimento=" + codRecebimento,

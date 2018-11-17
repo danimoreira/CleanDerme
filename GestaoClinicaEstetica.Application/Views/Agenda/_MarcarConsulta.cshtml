@@ -22,7 +22,7 @@
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.ListaClientes)
                                     {
-                                        <option value="@item.Value">@item.Text</option>
+                                        <option value="@item.Value">@item.Text.Trim()</option>
                                     }
                                 </select>
                             </div>
@@ -51,7 +51,7 @@
 
                             <div class="form-group col-xs-12 col-md-12 col-sm-12">
                                 <label class="control-label">Serviço:</label>
-                                <select class="form-control" name="CodServico" id="CodServicoConsulta" required data-LabelError="Serviço" disabled>
+                                <select class="form-control" name="CodServico" id="CodServicoConsulta" data-LabelError="Serviço" disabled>
                                     <option value=""></option>
                                     @foreach (var item in ViewBag.ListaServicos)
                                     {

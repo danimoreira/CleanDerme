@@ -139,6 +139,14 @@
     <Compile Include="Migrations\201811171058233_alterServico_addObrigatorios.Designer.cs">
       <DependentUpon>201811171058233_alterServico_addObrigatorios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811171500037_alterServico_renameCodEspecialidade.cs" />
+    <Compile Include="Migrations\201811171500037_alterServico_renameCodEspecialidade.Designer.cs">
+      <DependentUpon>201811171500037_alterServico_renameCodEspecialidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.cs" />
+    <Compile Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.Designer.cs">
+      <DependentUpon>201811171556111_alterRecebimentos_nullableDtPagamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -200,6 +208,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811171058233_alterServico_addObrigatorios.resx">
       <DependentUpon>201811171058233_alterServico_addObrigatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811171500037_alterServico_renameCodEspecialidade.resx">
+      <DependentUpon>201811171500037_alterServico_renameCodEspecialidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.resx">
+      <DependentUpon>201811171556111_alterRecebimentos_nullableDtPagamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

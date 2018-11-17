@@ -107,6 +107,11 @@ body {
 }
 
 .font-bem-vindo {
+    color: var(--secondary-bg-color);
+    font-size: 16px;
+}
+
+.font-ident-user {
     color: #fff !important;
     font-size: 18px;
     font-weight: bold;

@@ -130,8 +130,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 DescricaoEspecialidade = evento.Especialidade.Descricao,
                 NomeCliente = evento.Cliente.Nome,
                 NomeProfissional = evento.Profissional.Nome,
-                CodigoServico = evento.CodigoServico,
-                DescricaoServico = evento.Servico.Descricao,
+                CodigoServico = evento.Servico != null ? evento.CodigoServico : null,
+                DescricaoServico = evento.Servico != null ? evento.Servico.Descricao : "",
                 Procedimento = evento.Procedimento,
                 Telefones = (evento.Cliente.TelefoneCelular ?? "") + ((evento.Cliente.TelefoneFixo == null || evento.Cliente.TelefoneFixo == string.Empty ? "" : "/") + evento.Cliente.TelefoneFixo ?? "")
             };
@@ -210,7 +210,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             ViewBag.ListaClientes = _clienteService.List().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = x.Nome
+                Text = x.Nome.Trim()
             });
 
             ViewBag.ListaEspecialidades = _especialidadeService.List().Select(x => new SelectListItem()

@@ -216,7 +216,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 pcell.BorderColor = BaseColor.LIGHT_GRAY;
                 table.AddCell(pcell);
 
-                pcell = new PdfPCell(new Phrase(item.Servico.Descricao, normalFont));
+                pcell = new PdfPCell(new Phrase(item.Servico == null ? "" : item.Servico.Descricao, normalFont));
                 pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
                 pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                 pcell.Border = PdfPCell.BOTTOM_BORDER;
@@ -283,16 +283,16 @@ namespace GestaoClinicaEstetica.Application.Controllers
             pcell.BorderColor = BaseColor.GRAY;
             table.AddCell(pcell);
 
-            foreach (var item in dadosCliente.Recebimentos.OrderBy(x => x.DataPagamento).OrderBy(y => y.DataPagamento).ToList())
+            foreach (var item in dadosCliente.Recebimentos.Where(x => x.SituacaoPagamento.Equals(SituacaoPagamento.Recebido)).OrderBy(x => x.DataPagamento).OrderBy(y => y.DataPagamento).ToList())
             {
-                pcell = new PdfPCell(new Phrase(item.DataPagamento.ToString("dd/MM/yyyy"), normalFont));
+                pcell = new PdfPCell(new Phrase(item.DataPagamento.Value.ToString("dd/MM/yyyy"), normalFont));
                 pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
                 pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                 pcell.Border = PdfPCell.BOTTOM_BORDER;
                 pcell.BorderColor = BaseColor.LIGHT_GRAY;
                 table.AddCell(pcell);
 
-                pcell = new PdfPCell(new Phrase(item.Servico.Descricao, normalFont));
+                pcell = new PdfPCell(new Phrase(item.Servico == null ? "" : item.Servico.Descricao, normalFont));
                 pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
                 pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                 pcell.Border = PdfPCell.BOTTOM_BORDER;
@@ -418,7 +418,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
                     foreach (var item in recebimentoPorPagamento)
                     {
 
-                        pcell = new PdfPCell(new Phrase(item.DataPagamento.ToString("dd/MM/yyyy"), cellFont));
+                        pcell = new PdfPCell(new Phrase(item.DataPagamento.Value.ToString("dd/MM/yyyy"), cellFont));
                         pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
                         pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                         pcell.Border = PdfPCell.BOTTOM_BORDER;
@@ -608,7 +608,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
             foreach (var item in recebimentos)
             {
-                pcell = new PdfPCell(new Phrase(item.DataPagamento.ToString("dd/MM/yyyy"), cellFont));
+                pcell = new PdfPCell(new Phrase(item.DataPagamento.Value.ToString("dd/MM/yyyy"), cellFont));
                 pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
                 pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                 pcell.Border = PdfPCell.BOTTOM_BORDER;
