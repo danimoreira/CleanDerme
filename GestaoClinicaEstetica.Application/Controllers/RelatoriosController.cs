@@ -71,13 +71,15 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 paragrafo.Add(new Chunk("CNPJ: " + empresa.Cnpj.ToUpper() + "\n", boldFont));
 
             if (empresa.TelefoneCelular != null && empresa.TelefoneCelular != "")
-                paragrafo.Add(new Chunk("Celular: " + empresa.TelefoneCelular + " ", boldFont));
+                paragrafo.Add(new Chunk("Contato: " + empresa.TelefoneCelular + " ", boldFont));
 
             if (empresa.TelefoneFixo != null && empresa.TelefoneFixo != "")
-                paragrafo.Add(new Chunk("Tel: " + empresa.TelefoneFixo.ToUpper() + "\n", boldFont));
+                paragrafo.Add(new Chunk("/ " + empresa.TelefoneFixo.ToUpper() + "\n", boldFont));
+            else
+                paragrafo.Add(new Chunk("\n", boldFont));
 
             if (empresa.Email != null && empresa.Email != "")
-                paragrafo.Add(new Chunk("Email: " + empresa.Email.ToLower() + "\n", boldFont));
+                paragrafo.Add(new Chunk("E-mail: " + empresa.Email.ToLower() + "\n", boldFont));
 
             doc.Add(paragrafo);
 
@@ -358,7 +360,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
             PdfPTable table = new PdfPTable(4);
             PdfPCell pcell = new PdfPCell();
-            float[] widths = new float[] { 20, 50, 20, 20 };
+            float[] widths = new float[] { 20, 20, 50, 20 };
             Paragraph lineP = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.LIGHT_GRAY, Element.ALIGN_LEFT, 1)));
 
             var recebimentos = _recebimento.List().Where(x => x.DataPagamento >= dtInicio && x.DataPagamento <= dtFim).ToList();
@@ -392,19 +394,19 @@ namespace GestaoClinicaEstetica.Application.Controllers
                     pcell.BorderColor = BaseColor.GRAY;
                     table.AddCell(pcell);
 
-                    pcell = new PdfPCell(new Phrase("Descrição", boldFont));
-                    pcell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    pcell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    pcell.Border = PdfPCell.BOTTOM_BORDER;
-                    pcell.BorderColor = BaseColor.GRAY;
-                    table.AddCell(pcell);
-
-                    pcell = new PdfPCell(new Phrase("Forma Pagto", boldFont));
+                    pcell = new PdfPCell(new Phrase("Dt Vencimento", boldFont));
                     pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
                     pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                     pcell.Border = PdfPCell.BOTTOM_BORDER;
                     pcell.BorderColor = BaseColor.GRAY;
                     table.AddCell(pcell);
+
+                    pcell = new PdfPCell(new Phrase("Descrição", boldFont));
+                    pcell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pcell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                    pcell.Border = PdfPCell.BOTTOM_BORDER;
+                    pcell.BorderColor = BaseColor.GRAY;
+                    table.AddCell(pcell);                    
 
                     pcell = new PdfPCell(new Phrase("Valor Recebido", boldFont));
                     pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
@@ -422,17 +424,17 @@ namespace GestaoClinicaEstetica.Application.Controllers
                         pcell.Border = PdfPCell.BOTTOM_BORDER;
                         pcell.BorderColor = BaseColor.LIGHT_GRAY;
                         table.AddCell(pcell);
-
-                        pcell = new PdfPCell();
-                        pcell.AddElement(new Phrase("Serviço: " + item.Servico.Descricao, cellFont));
-                        pcell.AddElement(new Phrase(new Phrase("Cliente: " + item.Cliente.Nome, cellFont)));
+                        
+                        pcell = new PdfPCell(new Phrase(item.DataVencimento.ToString("dd/MM/yyyy"), cellFont));
                         pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
                         pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                         pcell.Border = PdfPCell.BOTTOM_BORDER;
                         pcell.BorderColor = BaseColor.LIGHT_GRAY;
                         table.AddCell(pcell);
 
-                        pcell = new PdfPCell(new Phrase(FuncoesGerais.GetEnumDescription(item.TipoPagamento), cellFont));
+                        pcell = new PdfPCell();
+                        pcell.AddElement(new Phrase("Serviço: " + item.Servico.Descricao, cellFont));
+                        pcell.AddElement(new Phrase(new Phrase("Cliente: " + item.Cliente.Nome, cellFont)));
                         pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
                         pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                         pcell.Border = PdfPCell.BOTTOM_BORDER;

@@ -1,8 +1,10 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function () {    
+
     agenda = new Agenda();
     modalConsulta = new ModalConsulta();
 
     agenda.inicializarCalendar();
+    modalConsulta.inicializar();
 })
 
 var Agenda = function () {
@@ -223,7 +225,7 @@ var ModalConsulta = function () {
         $("#DataConsulta").val("");
         $("#HoraInicioConsulta").val("");
         $("#HoraFimConsulta").val("");
-        $("#ObservacaoConsulta").val("");
+        $("#ObservacaoConsulta").val("");        
     }
 
     this.editarEvento = function () {
