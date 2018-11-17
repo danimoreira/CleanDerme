@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.Designer.cs">
       <DependentUpon>201811031541513_alterAgenda_addObsAtendimento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811171058233_alterServico_addObrigatorios.cs" />
+    <Compile Include="Migrations\201811171058233_alterServico_addObrigatorios.Designer.cs">
+      <DependentUpon>201811171058233_alterServico_addObrigatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.resx">
       <DependentUpon>201811031541513_alterAgenda_addObsAtendimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811171058233_alterServico_addObrigatorios.resx">
+      <DependentUpon>201811171058233_alterServico_addObrigatorios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

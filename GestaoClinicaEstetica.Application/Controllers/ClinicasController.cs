@@ -47,6 +47,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clinicas/Create
         public ActionResult Create()
         {
+            UpdateBag();
             return View();
         }
 
@@ -79,6 +80,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clinicas/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -98,6 +101,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Cnpj,DataFundacao,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Clinica clinica)
         {
+            UpdateBag();
+
             clinica.DataAlteracao = DateTime.Now;
             clinica.UsuarioAlteracao = ViewBag.UsuarioLogin;
 
@@ -115,6 +120,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clinicas/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,6 +139,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Clinica clinica = _clinicaService.GetById(id);
             _clinicaService.Delete(clinica);
             return RedirectToAction("Index");

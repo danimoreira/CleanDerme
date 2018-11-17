@@ -71,7 +71,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [HttpPost]
         public void ExcluirEvento(int idEvento)
         {
-            if(idEvento != 0)
+            if (idEvento != 0)
             {
                 _agendaService.Delete(idEvento);
             }
@@ -130,7 +130,10 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 DescricaoEspecialidade = evento.Especialidade.Descricao,
                 NomeCliente = evento.Cliente.Nome,
                 NomeProfissional = evento.Profissional.Nome,
-                Procedimento = evento.Procedimento
+                CodigoServico = evento.CodigoServico,
+                DescricaoServico = evento.Servico.Descricao,
+                Procedimento = evento.Procedimento,
+                Telefones = (evento.Cliente.TelefoneCelular ?? "") + ((evento.Cliente.TelefoneFixo == null || evento.Cliente.TelefoneFixo == string.Empty ? "" : "/") + evento.Cliente.TelefoneFixo ?? "")
             };
 
             return Json(agendaDto, JsonRequestBehavior.AllowGet);
@@ -153,37 +156,34 @@ namespace GestaoClinicaEstetica.Application.Controllers
             eventos.AddRange(_agendaService.List().Where(y => !y.SituacaoPresenca.Equals(SituacaoPresenca.Falta)).Select(x => new EventosDto
             {
                 Title = _clienteService.GetById(x.CodigoCliente).Nome + "(" + _especialidadeService.GetById(x.CodigoEspecialidade).Descricao + ")",
-                Start = x.DataInicio.ToString("yyyy-MM-dd hh:mm"),
-                End = x.DataFim.ToString("yyyy-MM-dd hh:mm"),
+                Start = x.DataInicio.ToString("yyyy-MM-dd HH:mm"),
+                End = x.DataFim.ToString("yyyy-MM-dd HH:mm"),
                 Id = x.Id,
                 BackgroundColor = _especialidadeService.GetById(x.CodigoEspecialidade).CorEvento,
                 TipoEvento = 0
-            })
-                                .ToList());
+            }).ToList());
 
             eventos.AddRange(_clienteService.List().Select(x => new EventosDto
             {
                 Title = x.Nome,
-                Start = x.DataNascimento.Value.ToString(DateTime.Now.Year + "-MM-dd hh:mm"),
+                Start = x.DataNascimento.Value.ToString(DateTime.Now.Year + "-MM-dd HH:mm"),
                 AllDay = true,
                 BackgroundColor = "#ffee05",
                 Icone = "birthday-cake",
                 TipoEvento = 1,
                 CodigoCliente = x.Id
-            })
-                            .ToList());
+            }).ToList());
 
             eventos.AddRange(_recebimentoService.List().Where(y => y.SituacaoPagamento.Equals(SituacaoPagamento.Pendente)).Select(x => new EventosDto
             {
                 Title = _clienteService.GetById(x.CodigoCliente).Nome + "( R$ " + x.ValorDevido + ")",
-                Start = x.DataVencimento.ToString("yyyy-MM-dd hh:mm"),
+                Start = x.DataVencimento.ToString("yyyy-MM-dd HH:mm"),
                 AllDay = true,
                 BackgroundColor = "#40c42f",
                 Icone = "dollar-sign",
                 TipoEvento = 2,
                 CodigoRecebimento = x.Id
-            })
-                            .ToList());
+            }).ToList());
 
             return eventos;
         }
@@ -192,13 +192,13 @@ namespace GestaoClinicaEstetica.Application.Controllers
         public JsonResult RecuperarDadosAniversariante(int codigoCliente)
         {
             AniversarianteDto aniversariante = _clienteService.List().Where(x => x.Id.Equals(codigoCliente)).Select(x => new AniversarianteDto
-                                                {
-                                                    Id = x.Id,
-                                                    Nome = x.Nome,
-                                                    DataAniversario = x.DataNascimento,
-                                                    TelefoneCelular = x.TelefoneCelular,
-                                                    TelefoneFixo = x.TelefoneFixo
-                                                }).FirstOrDefault();
+            {
+                Id = x.Id,
+                Nome = x.Nome,
+                DataAniversario = x.DataNascimento,
+                TelefoneCelular = x.TelefoneCelular,
+                TelefoneFixo = x.TelefoneFixo
+            }).FirstOrDefault();
 
             return Json(aniversariante, JsonRequestBehavior.AllowGet);
         }

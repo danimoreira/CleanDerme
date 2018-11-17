@@ -106,6 +106,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Descricao,ValorServico,Periodicidade,CodigoEspecialidade,QuantidadeSessoes,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Servico servico)
         {
+            UpdateBag();
+
             servico.DataAlteracao = DateTime.Now;
             servico.UsuarioAlteracao = ViewBag.UsuarioLogin;
 
@@ -123,6 +125,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Servicos/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -140,6 +144,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Servico servico = _servicoService.GetById(id);
             _servicoService.Delete(servico);
             
