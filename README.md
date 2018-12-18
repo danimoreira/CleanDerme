@@ -2,7 +2,7 @@
 Clean Derme - Sistema de Gestão de Agendas
 - C#
 - MySQL
-- Injeção de Dependência (IoC)
+- Injeção de Dependência (IoC) com Ninject
 - Repository
 - DDD
 - MVC 5
@@ -10,3 +10,6 @@ Clean Derme - Sistema de Gestão de Agendas
 - Bootstrap
 - Jquery
 - FullCalendar
+- DataTables
+- Select2
+- Moments.js
