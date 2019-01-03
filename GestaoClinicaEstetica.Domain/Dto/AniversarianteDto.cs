@@ -12,6 +12,6 @@ namespace GestaoClinicaEstetica.Domain.Dto
         public string Nome { get; set; }
         public string TelefoneFixo { get; set; }
         public string TelefoneCelular { get; set; }
-        public DateTime? DataAniversario { get; set; }
+        public string DataAniversario { get; set; }
     }
 }

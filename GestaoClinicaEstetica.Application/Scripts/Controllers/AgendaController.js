@@ -352,9 +352,10 @@ var ModalConsulta = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
+                debugger;
                 $("#idCliente").val(data.Id);
                 $("#paciente-aniversariante").html(data.Nome);
-                $("#data-aniversario").html(moment(data.DataAniversario).format("DD/MM"));
+                $("#data-aniversario").html(data.DataAniversario);
                 $("#tel-fixo-aniversario").html(data.TelefoneFixo);
                 $("#tel-celular-aniversario").html(data.TelefoneCelular);
 

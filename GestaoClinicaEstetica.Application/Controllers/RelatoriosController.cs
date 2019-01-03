@@ -696,13 +696,13 @@ namespace GestaoClinicaEstetica.Application.Controllers
             {
                 Value = x.Id.ToString(),
                 Text = x.Nome
-            });
+            }).OrderBy(y => y.Text).ToList();
 
             ViewBag.ListaProfissionais = _profissionalService.List().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Nome
-            });
+            }).OrderBy(y => y.Text).ToList();
         }
     }
 }

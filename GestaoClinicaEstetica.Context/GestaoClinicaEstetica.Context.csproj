@@ -147,6 +147,10 @@
     <Compile Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.Designer.cs">
       <DependentUpon>201811171556111_alterRecebimentos_nullableDtPagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901032050412_AlterarCorEventosClinica.cs" />
+    <Compile Include="Migrations\201901032050412_AlterarCorEventosClinica.Designer.cs">
+      <DependentUpon>201901032050412_AlterarCorEventosClinica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -214,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.resx">
       <DependentUpon>201811171556111_alterRecebimentos_nullableDtPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901032050412_AlterarCorEventosClinica.resx">
+      <DependentUpon>201901032050412_AlterarCorEventosClinica.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

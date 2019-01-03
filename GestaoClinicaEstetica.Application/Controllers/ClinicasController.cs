@@ -56,7 +56,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Cnpj,DataFundacao,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Clinica clinica)
+        public ActionResult Create([Bind(Include = "Id,Cnpj,DataFundacao,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao,CorEventoAniversariantes,CorEventoRecebimentos")] Clinica clinica)
         {
             UpdateBag();
 
@@ -99,7 +99,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Cnpj,DataFundacao,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Clinica clinica)
+        public ActionResult Edit([Bind(Include = "Id,Cnpj,DataFundacao,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao,CorEventoAniversariantes,CorEventoRecebimentos")] Clinica clinica)
         {
             UpdateBag();
 

@@ -13,6 +13,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
 {
     public class AgendaController : BaseController
     {
+        private readonly IClinicaService _clinicaService;
         private readonly IClienteService _clienteService;
         private readonly IEspecialidadeService _especialidadeService;
         private readonly IProfissionalService _profissionalService;
@@ -20,7 +21,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         private readonly IAgendaService _agendaService;
         private readonly IRecebimentoServicoPorClienteService _recebimentoService;
 
-        public AgendaController(IClienteService clienteService, IEspecialidadeService especialidadeService, IProfissionalService profissionalService, IServicoService servicoService, IAgendaService agendaService, IRecebimentoServicoPorClienteService recebimentoService)
+        public AgendaController(IClienteService clienteService, IEspecialidadeService especialidadeService, IProfissionalService profissionalService, IServicoService servicoService, IAgendaService agendaService, IRecebimentoServicoPorClienteService recebimentoService, IClinicaService clinicaService)
         {
             _clienteService = clienteService;
             _especialidadeService = especialidadeService;
@@ -28,6 +29,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             _servicoService = servicoService;
             _agendaService = agendaService;
             _recebimentoService = recebimentoService;
+            _clinicaService = clinicaService;
         }
 
         // GET: Agenda
@@ -151,6 +153,11 @@ namespace GestaoClinicaEstetica.Application.Controllers
 
         public List<EventosDto> RecuperarEventos()
         {
+            var dadosClinica = _clinicaService.List().FirstOrDefault();
+
+            string corEventoAniversariantes = dadosClinica.CorEventoAniversariantes;
+            string corEventoRecebimentos = dadosClinica.CorEventoRecebimentos;
+
             List<EventosDto> eventos = new List<EventosDto>();
 
             eventos.AddRange(_agendaService.List().Where(y => !y.SituacaoPresenca.Equals(SituacaoPresenca.Falta)).Select(x => new EventosDto
@@ -168,7 +175,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 Title = x.Nome,
                 Start = x.DataNascimento.Value.ToString(DateTime.Now.Year + "-MM-dd HH:mm"),
                 AllDay = true,
-                BackgroundColor = "#ffee05",
+                BackgroundColor = corEventoAniversariantes == null ? "#ffee05" : corEventoAniversariantes,
                 Icone = "birthday-cake",
                 TipoEvento = 1,
                 CodigoCliente = x.Id
@@ -179,7 +186,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 Title = _clienteService.GetById(x.CodigoCliente).Nome + "( R$ " + x.ValorDevido + ")",
                 Start = x.DataVencimento.ToString("yyyy-MM-dd HH:mm"),
                 AllDay = true,
-                BackgroundColor = "#40c42f",
+                BackgroundColor = corEventoRecebimentos == null ? "#40c42f" : corEventoRecebimentos,
                 Icone = "dollar-sign",
                 TipoEvento = 2,
                 CodigoRecebimento = x.Id
@@ -195,7 +202,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             {
                 Id = x.Id,
                 Nome = x.Nome,
-                DataAniversario = x.DataNascimento,
+                DataAniversario = x.DataNascimento.Value.ToString("dd/MM"),
                 TelefoneCelular = x.TelefoneCelular,
                 TelefoneFixo = x.TelefoneFixo
             }).FirstOrDefault();
