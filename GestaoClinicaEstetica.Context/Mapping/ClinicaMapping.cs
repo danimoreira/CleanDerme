@@ -11,7 +11,13 @@ namespace GestaoClinicaEstetica.Context.Mapping
     {
         public ClinicaMapping()
         {
-            ToTable("DADOS_CLINICA");            
+            ToTable("DADOS_CLINICA");
+
+            Property(x => x.CorEventoAniversariantes)
+                .HasColumnName("COR_EVENTO_ANIVERSARIANTE");
+
+            Property(x => x.CorEventoRecebimentos)
+                .HasColumnName("COR_EVENTO_RECEBIMENTOS");            
         }
     }
 }

@@ -169,7 +169,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             {
                 Text = x.Descricao,
                 Value = x.Id.ToString()
-            }).ToList();
+            }).OrderBy(y => y.Text).ToList();
         }
     }
 }

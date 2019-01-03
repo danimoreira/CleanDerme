@@ -23,9 +23,10 @@ var Financeiro = function () {
             { "targets": 1, "name": "DtVenc" },
             { "targets": 2, "name": "VlrDevido" },
             { "targets": 3, "name": "FormaPagto" },
-            { "targets": 4, "name": "Situacao" },
-            { "targets": 5, "name": "BotoesAcao" },
-            { "targets": 6, "name": "IdRecebimento", "bVisible": false, "class": "hidden" }
+            { "targets": 4, "name": "VlrRecebido" },
+            { "targets": 5, "name": "Situacao" },
+            { "targets": 6, "name": "BotoesAcao" },
+            { "targets": 7, "name": "IdRecebimento", "bVisible": false, "class": "hidden" }
         ]
 
         InitDataTable("RecebimentoCliente", definicao);
@@ -57,8 +58,9 @@ var Financeiro = function () {
                             moment(linha.DataVencimento).format("DD/MM/YYYY"),
                             "R$ " + FormatDecimal(linha.ValorDevido),
                             linha.SituacaoPagamento == "Pendente" ? "-" : linha.TipoPagamento,
+                            linha.ValorRecebido == null ? " - " : "R$ " + FormatDecimal(linha.ValorRecebido),
                             linha.SituacaoPagamento,
-                            linha.SituacaoPagamento != "Pendente" ? "" : "<a class='btn-link icon-acao icon-acao-editar' onclick='modalServico.receberServico(" + linha.IdRecebimento + ")' data-toggle='tooltip' data-placement='right' title='Receber pagamento'><i class='fa fa-credit-card'></i></a>",
+                            "<a class='btn-link icon-acao icon-acao-editar' onclick='modalServico.receberServico(" + linha.IdRecebimento + ")' data-toggle='tooltip' data-placement='right' title='Receber/Alterar pagamento'><i class='fa fa-credit-card'></i></a> <a class='btn-link icon-acao icon-acao-deletar' onclick='modalServico.excluirPagamento(" + linha.IdRecebimento + ")' data-toggle='tooltip' data-placement='right' title='Excluir pagamento'><i class='fa fa-trash'></i></a>",
                             linha.IdRecebimento
                         ]);
 
@@ -67,7 +69,7 @@ var Financeiro = function () {
                     tableRecebimento.draw();
                 }
 
-                tableRecebimento.column(6).visible(false);
+                tableRecebimento.column(7).visible(false);
 
                 $("#groupParcelasReceber").removeClass("hidden");
             }
@@ -171,6 +173,28 @@ var ModalServico = function () {
                 financeiro.recuperarDadosRecebimento();
 
                 $("#modalIncluirServico").modal('hide');
+            }
+        });
+
+
+    }
+
+    this.excluirPagamento = function (idRecebimento) {
+
+        var respostaConfirmacao = confirm("Deseja excluir este recebimento?");
+
+        if (respostaConfirmacao != true)
+            return;
+
+        $.ajax({
+            type: "POST",
+            url: "/Financeiro/ExcluirPagamento",
+            data: JSON.stringify({ codPagamento: idRecebimento }),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                financeiro.recuperarDadosRecebimento();
+
+                toastr.success("Recebimento excluído com sucesso!");
             }
         });
 
@@ -292,8 +316,16 @@ var ModalServico = function () {
                 $("[name=FormaPagamento]").val(data.CodTipoPagamento);
                 $("[name=ValorServico]").val(FormatDecimal(data.ValorDevido));
                 $("[name=DataVencimento]").val(moment(data.DataVencimento).format("DD/MM/YYYY"));
-                $("[name=DataPagamento]").val(moment().format("DD/MM/YYYY"));
-                $("[name=ValorPago]").val(FormatDecimal(data.ValorDevido));
+
+                if (data.DataPagamento == null)
+                    $("[name=DataPagamento]").val(moment().format("DD/MM/YYYY"));
+                else
+                    $("[name=DataPagamento]").val(moment(data.DataPagamento).format("DD/MM/YYYY"));
+
+                if (data.ValorRecebido == null)
+                    $("[name=ValorPago]").val(FormatDecimal(data.ValorDevido));
+                else
+                    $("[name=ValorPago]").val(FormatDecimal(data.ValorRecebido));
 
                 $("[name=CodClienteIncServico]").prop("disabled", true);
                 $("[name=CodEspecialidadeIncServico]").prop("disabled", true);

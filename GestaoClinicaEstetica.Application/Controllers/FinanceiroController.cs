@@ -166,6 +166,13 @@ namespace GestaoClinicaEstetica.Application.Controllers
             ;
         }
 
+        [HttpPost]
+        public void ExcluirPagamento(int codPagamento)
+        {
+            _recebimentoService.Delete(codPagamento);
+            return;
+        }
+
         public override void UpdateBag()
         {
             base.UpdateBag();
@@ -174,25 +181,25 @@ namespace GestaoClinicaEstetica.Application.Controllers
             {
                 Value = x.Id.ToString(),
                 Text = x.Nome
-            });
+            }).OrderBy(y => y.Text).ToList();
 
             ViewBag.ListaEspecialidades = _especialidadeService.List().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Descricao
-            });
+            }).OrderBy(y => y.Text).ToList();
 
             ViewBag.ListaServicos = _servicoService.List().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Descricao
-            });
+            }).OrderBy(y => y.Text).ToList();
 
             ViewBag.ListaProfissionais = _profissionalService.List().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = x.Nome
-            });
+            }).OrderBy(y => y.Text).ToList();
         }
     }
 }
