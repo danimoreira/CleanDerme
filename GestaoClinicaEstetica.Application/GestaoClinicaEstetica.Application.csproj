@@ -176,6 +176,7 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\DespesaController.cs" />
     <Compile Include="Controllers\EspecialidadePorProfissionalController.cs" />
     <Compile Include="Controllers\EspecialidadesController.cs" />
     <Compile Include="Controllers\FinanceiroController.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdicionarDespesaModel.cs" />
     <Compile Include="Models\ListaEspecialidadeViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -265,6 +267,7 @@
     <Content Include="Scripts\Controllers\AtendimentoController.js" />
     <Content Include="Scripts\Controllers\ClientesController.js" />
     <Content Include="Scripts\Controllers\ClinicasController.js" />
+    <Content Include="Scripts\Controllers\DespesaController.js" />
     <Content Include="Scripts\Controllers\EspecialidadePorProfissionalController.js" />
     <Content Include="Scripts\Controllers\EspecialidadesController.js" />
     <Content Include="Scripts\Controllers\FinanceiroController.js" />
@@ -483,6 +486,9 @@
     <Content Include="Views\Atendimento\Index.cshtml" />
     <Content Include="Views\Atendimento\_ModalAtendimento.cshtml" />
     <Content Include="Views\Presenca\_ModalIndicarPresenca.cshtml" />
+    <Content Include="Views\Despesa\Index.cshtml" />
+    <Content Include="Views\Despesa\_ModalDespesas.cshtml" />
+    <Content Include="Views\Despesa\_ModalLiquidarDespesa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

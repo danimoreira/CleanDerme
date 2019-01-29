@@ -11,20 +11,13 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEstetica.Services
 {
-    public class UsuarioService : ServiceBase<Usuario>, IUsuarioService
+    public class DespesaService : ServiceBase<Despesa>, IDespesaService
     {
-        private IUsuarioRepository _repository;
-        public UsuarioService(IUsuarioRepository repository) : base(repository)
+        private IDespesaRepository _repository;
+
+        public DespesaService(IDespesaRepository repository) : base(repository)
         {
             _repository = repository;
-        }
-
-        public Usuario Logar(Usuario dados)
-        {
-            var retorno = _repository.List();
-
-            return retorno.Where(x => x.Login == dados.Login && x.Senha == dados.Senha).FirstOrDefault();
-
         }
     }
 }

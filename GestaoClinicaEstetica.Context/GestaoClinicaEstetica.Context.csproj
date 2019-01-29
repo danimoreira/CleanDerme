@@ -69,6 +69,7 @@
     <Compile Include="Mapping\Base\PessoaMapping.cs" />
     <Compile Include="Mapping\ClienteMapping.cs" />
     <Compile Include="Mapping\ClinicaMapping.cs" />
+    <Compile Include="Mapping\DespesaMapping.cs" />
     <Compile Include="Mapping\EspecialidadeMapping.cs" />
     <Compile Include="Mapping\EspecialidadePorProfissionalMapping.cs" />
     <Compile Include="Mapping\ProfissionalMapping.cs" />
@@ -151,6 +152,14 @@
     <Compile Include="Migrations\201901032050412_AlterarCorEventosClinica.Designer.cs">
       <DependentUpon>201901032050412_AlterarCorEventosClinica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901232250490_incluirTabelaDespesa.cs" />
+    <Compile Include="Migrations\201901232250490_incluirTabelaDespesa.Designer.cs">
+      <DependentUpon>201901232250490_incluirTabelaDespesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901252130061_RetirarEmailObrigatorio.cs" />
+    <Compile Include="Migrations\201901252130061_RetirarEmailObrigatorio.Designer.cs">
+      <DependentUpon>201901252130061_RetirarEmailObrigatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -221,6 +230,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901032050412_AlterarCorEventosClinica.resx">
       <DependentUpon>201901032050412_AlterarCorEventosClinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901232250490_incluirTabelaDespesa.resx">
+      <DependentUpon>201901232250490_incluirTabelaDespesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901252130061_RetirarEmailObrigatorio.resx">
+      <DependentUpon>201901252130061_RetirarEmailObrigatorio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

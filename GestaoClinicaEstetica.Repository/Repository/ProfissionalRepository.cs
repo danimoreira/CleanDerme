@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoClinicaEstetica.Repository.Repository
+namespace GestaoClinicaEstetica.Repository
 {
     public class ProfissionalRepository : RepositoryBase<Profissional>, IProfissionalRepository
     {

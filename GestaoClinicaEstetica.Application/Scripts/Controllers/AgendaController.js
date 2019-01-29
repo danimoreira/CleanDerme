@@ -31,6 +31,8 @@ var Agenda = function () {
                 }
                 else if (event.tipoEvento == 2) {
                     modalServico.receberServico(event.codigoRecebimento);
+                } else if (event.tipoEvento == 3) {
+                    modalPagarDespesa.recuperarDadosPagarDespesa(event.codigoDespesa);
                 }
                 
             },
@@ -53,7 +55,8 @@ var Agenda = function () {
                                 Icon: linha.Icone,
                                 tipoEvento: linha.TipoEvento,
                                 codigoCliente: linha.CodigoCliente,
-                                codigoRecebimento: linha.CodigoRecebimento
+                                codigoRecebimento: linha.CodigoRecebimento,
+                                codigoDespesa: linha.CodigoDespesa
                             });
 
                         });

@@ -29,7 +29,6 @@ namespace GestaoClinicaEstetica.Domain.Entidades.Base
         [Display(Name = "Telefone Celular")]
         public string TelefoneCelular { get; set; }
 
-        [Required(ErrorMessage = "Favor informar o Email.", AllowEmptyStrings = false)]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }

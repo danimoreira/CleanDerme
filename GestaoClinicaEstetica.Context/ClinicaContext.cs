@@ -24,6 +24,8 @@ namespace GestaoClinicaEstetica.Context
         public virtual DbSet<RecebimentoServicoPorCliente> RecebimentoServicoPorCliente { get; set; }
         public virtual DbSet<Servico> Servico { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual EspecialidadePorProfissional EspecialidadePorProfissionals { get; set; }
+        public virtual DbSet<Despesa> Despesas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,10 +38,9 @@ namespace GestaoClinicaEstetica.Context
             modelBuilder.Configurations.Add(new ServicoMapping());
             modelBuilder.Configurations.Add(new UsuarioMapping());
             modelBuilder.Configurations.Add(new EspecialidadePorProfissionalMapping());
+            modelBuilder.Configurations.Add(new DespesaMapping());
 
             base.OnModelCreating(modelBuilder);            
-        }
-
-        public System.Data.Entity.DbSet<GestaoClinicaEstetica.Domain.Entidades.EspecialidadePorProfissional> EspecialidadePorProfissionals { get; set; }
+        }        
     }
 }

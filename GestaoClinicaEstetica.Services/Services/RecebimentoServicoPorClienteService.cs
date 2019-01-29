@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoClinicaEstetica.Services.Services
+namespace GestaoClinicaEstetica.Services
 {
     public class RecebimentoServicoPorClienteService : ServiceBase<RecebimentoServicoPorCliente>, IRecebimentoServicoPorClienteService
     {

@@ -16,6 +16,10 @@ namespace GestaoClinicaEstetica.Domain.Enums
         [Description("Cartão de Crédito")]
         Credito = 2,
         [Description("Cheque")]
-        Cheque = 3
+        Cheque = 3,
+        [Description("Boleto")]
+        Boleto = 4,
+        [Description("TED/DOC")]
+        TED = 5
     }
 }

@@ -3,7 +3,7 @@ using GestaoClinicaEstetica.Domain.Interfaces.Repository;
 using GestaoClinicaEstetica.Domain.Interfaces.Service;
 using GestaoClinicaEstetica.Services.Services.Base;
 
-namespace GestaoClinicaEstetica.Services.Services
+namespace GestaoClinicaEstetica.Services
 {
     public class ServicoService : ServiceBase<Servico>, IServicoService
     {

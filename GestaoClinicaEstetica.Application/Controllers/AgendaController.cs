@@ -20,8 +20,9 @@ namespace GestaoClinicaEstetica.Application.Controllers
         private readonly IServicoService _servicoService;
         private readonly IAgendaService _agendaService;
         private readonly IRecebimentoServicoPorClienteService _recebimentoService;
+        private readonly IDespesaService _despesaService;
 
-        public AgendaController(IClienteService clienteService, IEspecialidadeService especialidadeService, IProfissionalService profissionalService, IServicoService servicoService, IAgendaService agendaService, IRecebimentoServicoPorClienteService recebimentoService, IClinicaService clinicaService)
+        public AgendaController(IClienteService clienteService, IEspecialidadeService especialidadeService, IProfissionalService profissionalService, IServicoService servicoService, IAgendaService agendaService, IRecebimentoServicoPorClienteService recebimentoService, IClinicaService clinicaService, IDespesaService despesaService)
         {
             _clienteService = clienteService;
             _especialidadeService = especialidadeService;
@@ -30,6 +31,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
             _agendaService = agendaService;
             _recebimentoService = recebimentoService;
             _clinicaService = clinicaService;
+            _despesaService = despesaService;
         }
 
         // GET: Agenda
@@ -190,6 +192,17 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 Icone = "dollar-sign",
                 TipoEvento = 2,
                 CodigoRecebimento = x.Id
+            }).ToList());
+
+            eventos.AddRange(_despesaService.List().Select(x => new EventosDto
+            {
+                Title = x.Descricao + "( R$ " + x.ValorDespesa + ")",
+                Start = x.DataVencimento.ToString("yyyy-MM-dd HH:mm"),
+                AllDay = true,
+                BackgroundColor = "#cd5c5c",
+                Icone = "dollar-sign",
+                TipoEvento = 3,
+                CodigoDespesa = x.Id
             }).ToList());
 
             return eventos;

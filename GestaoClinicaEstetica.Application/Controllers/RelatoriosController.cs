@@ -18,13 +18,15 @@ namespace GestaoClinicaEstetica.Application.Controllers
         private readonly IProfissionalService _profissionalService;
         private readonly IRecebimentoServicoPorClienteService _recebimento;
         private readonly IClinicaService _clinicaService;
+        private readonly IDespesaService _despesaService;
 
-        public RelatoriosController(IClienteService clienteService, IProfissionalService profissionalService, IRecebimentoServicoPorClienteService recebimento, IClinicaService clinicaService)
+        public RelatoriosController(IClienteService clienteService, IProfissionalService profissionalService, IRecebimentoServicoPorClienteService recebimento, IClinicaService clinicaService, IDespesaService despesaService)
         {
             _clienteService = clienteService;
             _profissionalService = profissionalService;
             _recebimento = recebimento;
             _clinicaService = clinicaService;
+            _despesaService = despesaService;
         }
 
         // GET: Relatorios/HistoricoCliente
@@ -481,6 +483,194 @@ namespace GestaoClinicaEstetica.Application.Controllers
                 }
             }
 
+            paragrafo = new Paragraph();
+            paragrafo.Add("\n");
+            paragrafo.Alignment = Element.ALIGN_LEFT;
+            paragrafo.Add(new Phrase("DESPESAS \n", boldTextFont));
+            paragrafo.Add("\n");
+            doc.Add(paragrafo);
+
+            table = new PdfPTable(4);
+            pcell = new PdfPCell();
+            widths = new float[] { 20, 50, 20, 20 };
+            lineP = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.LIGHT_GRAY, Element.ALIGN_LEFT, 1)));
+            table.SetWidths(widths);
+            table.WidthPercentage = 100;
+
+            var despesas = _despesaService.List().Where(x => x.DataPagamento >= dtInicio && x.DataPagamento <= dtFim && x.Situacao.Equals(SituacaoDespesa.Liquidado)).ToList();
+
+            pcell = new PdfPCell();
+
+            pcell = new PdfPCell(new Phrase("Dt Vencimento", boldFont));
+            pcell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pcell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            pcell.Border = PdfPCell.BOTTOM_BORDER;
+            pcell.BorderColor = BaseColor.GRAY;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("Descrição", boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            pcell.Border = PdfPCell.BOTTOM_BORDER;
+            pcell.BorderColor = BaseColor.GRAY;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("Dt Pagamento", boldFont));
+            pcell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pcell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            pcell.Border = PdfPCell.BOTTOM_BORDER;
+            pcell.BorderColor = BaseColor.GRAY;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("Valor Pago", boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            pcell.Border = PdfPCell.BOTTOM_BORDER;
+            pcell.BorderColor = BaseColor.GRAY;
+            table.AddCell(pcell);
+            
+            foreach (var item in despesas)
+            {
+                pcell = new PdfPCell(new Phrase(item.DataVencimento.ToString("dd/MM/yyyy"), cellFont));
+                pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                pcell.Border = PdfPCell.BOTTOM_BORDER;
+                pcell.BorderColor = BaseColor.LIGHT_GRAY;
+                table.AddCell(pcell);
+                
+                pcell = new PdfPCell();
+                pcell.AddElement(new Phrase(item.Descricao, cellFont));
+                pcell.AddElement(new Phrase(new Phrase("Fornecedor: " + item.Fornecedor, cellFont)));
+                pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
+                pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                pcell.Border = PdfPCell.BOTTOM_BORDER;
+                pcell.BorderColor = BaseColor.LIGHT_GRAY;
+                table.AddCell(pcell);
+
+                pcell = new PdfPCell(new Phrase(item.DataPagamento == null ? "-" : item.DataPagamento.Value.ToString("dd/MM/yyyy"), cellFont));
+                pcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                pcell.Border = PdfPCell.BOTTOM_BORDER;
+                pcell.BorderColor = BaseColor.LIGHT_GRAY;
+                table.AddCell(pcell);
+
+                pcell = new PdfPCell(new Phrase(item.ValorPagamento == null ? "-" : "R$ " + item.ValorPagamento.ToString(), cellFont));
+                pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+                pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                pcell.Border = PdfPCell.BOTTOM_BORDER;
+                pcell.BorderColor = BaseColor.LIGHT_GRAY;
+                table.AddCell(pcell);
+                
+            }
+
+            doc.Add(table);
+
+            table = new PdfPTable(4);
+            widths = new float[] { 20, 20, 50, 20 };
+            table.WidthPercentage = 100;
+            table.SetWidths(widths);
+
+            pcell = new PdfPCell(new Phrase("", normalFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("Total", boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("", normalFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("R$ " + despesas.Sum(x => x.ValorPagamento).ToString(), boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            table.AddCell(pcell);
+
+            doc.Add(table);
+
+            widths = new float[] { 30, 40, 20, 20 };
+
+            paragrafo = new Paragraph();
+            paragrafo.Add("\n");
+            paragrafo.Add("\n");
+            doc.Add(paragrafo);
+
+            // TOTAL RECEITA
+            table = new PdfPTable(4);
+            table.DefaultCell.Border = Rectangle.BOTTOM_BORDER;
+            table.WidthPercentage = 100;
+            table.HorizontalAlignment = Element.ALIGN_MIDDLE;
+            table.SetWidths(widths);
+
+            pcell = new PdfPCell(new Phrase("TOTAL RECEITAS (+)", boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell();
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.AddElement(new Phrase("", normalFont));
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell();
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.AddElement(new Phrase("", normalFont));
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("R$ " + recebimentos.Sum(x => x.ValorRecebido).ToString(), boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            table.AddCell(pcell);
+
+            doc.Add(table);
+
+            // TOTAL DESPESA
+            table = new PdfPTable(4);
+            table.DefaultCell.Border = Rectangle.BOTTOM_BORDER;
+            table.WidthPercentage = 100;
+            table.HorizontalAlignment = Element.ALIGN_MIDDLE;
+            table.SetWidths(widths);
+
+            pcell = new PdfPCell(new Phrase("TOTAL DESPESAS (-)", boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell();
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.AddElement(new Phrase("", normalFont));
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell();
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.AddElement(new Phrase("", normalFont));
+            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            table.AddCell(pcell);
+
+            pcell = new PdfPCell(new Phrase("R$ " + despesas.Sum(x => x.ValorPagamento).ToString(), boldFont));
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            table.AddCell(pcell);
+
+            doc.Add(table);
+
+            // TOTAL GERAL
             table = new PdfPTable(4);
             table.DefaultCell.Border = Rectangle.BOTTOM_BORDER;
             table.WidthPercentage = 100;
@@ -488,28 +678,30 @@ namespace GestaoClinicaEstetica.Application.Controllers
             table.SetWidths(widths);
 
             pcell = new PdfPCell(new Phrase("TOTAL GERAL", boldFont));
-            pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
-            pcell.Border = PdfPCell.TOP_BORDER;
-            pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            pcell.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
+            pcell.Border = PdfPCell.NO_BORDER;
+            pcell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
             table.AddCell(pcell);
 
             pcell = new PdfPCell();
             pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
-            pcell.Border = PdfPCell.TOP_BORDER;
+            pcell.Border = PdfPCell.NO_BORDER;
             pcell.AddElement(new Phrase("", normalFont));
             pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
             table.AddCell(pcell);
 
             pcell = new PdfPCell();
             pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
-            pcell.Border = PdfPCell.TOP_BORDER;
+            pcell.Border = PdfPCell.NO_BORDER;
             pcell.AddElement(new Phrase("", normalFont));
             pcell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
             table.AddCell(pcell);
 
-            pcell = new PdfPCell(new Phrase("R$ " + recebimentos.Sum(x => x.ValorRecebido).ToString(), boldFont));
+            decimal totalGeral = recebimentos.Sum(x => x.ValorRecebido).Value - despesas.Sum(x => x.ValorPagamento).Value;
+
+            pcell = new PdfPCell(new Phrase("R$ " + totalGeral.ToString(), boldFont));
             pcell.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
-            pcell.Border = PdfPCell.TOP_BORDER;
+            pcell.Border = PdfPCell.NO_BORDER;
             table.AddCell(pcell);
 
             doc.Add(table);
