@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoClinicaEstetica.Services.Services
+namespace GestaoClinicaEstetica.Services
 {
     public class ClinicaService : ServiceBase<Clinica>, IClinicaService
     {

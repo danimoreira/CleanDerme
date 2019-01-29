@@ -10,5 +10,6 @@ namespace GestaoClinicaEstetica.Domain.Interfaces.Service
 {
     public interface IUsuarioService : IServiceBase<Usuario>
     {
+        Usuario Logar(Usuario dados);
     }
 }

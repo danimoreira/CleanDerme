@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace GestaoClinicaEstetica.Application.Controllers.Base
 {
@@ -10,13 +6,22 @@ namespace GestaoClinicaEstetica.Application.Controllers.Base
     {
         public BaseController()
         {
-            UpdateBag();
+
         }
 
         public virtual void UpdateBag()
         {
-            ViewBag.UsuarioLogin = "daniel";
-            ViewBag.UsuarioNome = "Daniel";
+            var login = string.Empty;
+            var usuarioName = string.Empty;
+
+            if (HttpContext.Request.Cookies["displayName"] != null)
+            {
+                login = HttpContext.Request.Cookies["loginUsuario"].Value;
+                usuarioName = HttpContext.Request.Cookies["displayName"].Value;
+            }
+
+            ViewBag.UsuarioLogin = login;
+            ViewBag.UsuarioNome = usuarioName;
         }
     }
 }

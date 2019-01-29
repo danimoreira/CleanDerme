@@ -1,0 +1,48 @@
+﻿<div id="modalVisualizar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span class="titulo-evento" id="paciente-evento"></span></h4>
+            </div>
+            <div class="modal-body modal-lg">
+
+                <div class="form-inline">
+
+                    <input type="hidden" id="idEventoVisualizar" />
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-user-md fa-2x"></i> <span class="texto-evento" id="profissional-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-cogs fa-2x"></i> <span class="texto-evento" id="especialidade-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-calendar fa-2x"></i> <span class="texto-evento" id="data-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                        <i class="fa fa-clock-o fa-2x"></i> <span class="texto-evento" id="hora-inicio-evento"></span> -
+                        <span class="texto-evento" id="hora-fim-evento"></span>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                        <i class="fa fa-file-text fa-2x"></i> <span class="texto-evento" id="observacao-evento"></span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="modalConsulta.informarAtendimento()"><i class="fa fa-list fa-lg"></i> Incluir atendimento</button>
+                <button type="button" class="btn btn-warning" onclick="modalConsulta.editarEvento()"><i class="fa fa-calendar fa-lg"></i> Reagendar</button>
+                <button type="button" class="btn btn-success" onclick="modalConsulta.indicarPresenca()"><i class="fa fa-calendar-check-o fa-lg"></i> Informar Presença</button>
+            </div>
+        </div>
+
+    </div>
+</div>

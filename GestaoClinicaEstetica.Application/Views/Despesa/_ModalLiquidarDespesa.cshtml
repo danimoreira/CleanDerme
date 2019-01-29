@@ -1,0 +1,70 @@
+﻿<div id="modalLiquidarDespesa" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Liquidar despesa</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="form-inline">
+
+                            <input type="hidden" class="form-control" name="IdDespesa" />
+
+                            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                                <label class="control-label">Descrição:</label>
+                                <span class="texto-evento" id="DespesaDescricao"></span>
+                            </div>
+
+                            <div class="form-group col-xs-12 col-sm-12 col-lg-12">
+                                <label class="control-label">Fornecedor:</label>
+                                <span class="texto-evento" id="DespesaFornecedor"></span>
+                            </div>
+
+                            <div class="form-group col-xs-4 col-md-4 col-sm-4">
+                                <label class="control-label">Valor da Despesa:</label>
+                                <span class="texto-evento" id="DespesaValor"></span>
+                            </div>
+
+                            <div class="form-group col-xs-4 col-md-4 col-sm-4">
+                                <label class="control-label">Forma de Pagamento:</label>
+                                <span class="texto-evento" id="DespesaTipoPagamento"></span>
+                            </div>
+
+                            <div class="form-group col-xs-4 col-md-4 col-sm-4">
+                                <label class="control-label">Data de Vencimento:</label>
+                                <span class="texto-evento" id="DespesaDataVencimento"></span>
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Data de Pagamento:</label>
+                                <input type="text" class="form-control date" name="DataPagamento" required data-LabelError="Data de Pagamento" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Valor Pago:</label>
+                                <input type="text" class="form-control money2" name="ValorPago" required data-LabelError="Valor Pago" />
+                            </div>
+
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                                <label class="control-label">Dados Complementares</label>
+                                <textarea name="ObservacaoLiqDespesa" class="form-control" rows="5"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="modalPagarDespesa.pagarDespesa()">Liquidar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

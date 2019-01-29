@@ -25,6 +25,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
+            UpdateBag();
             return View(_usuarioService.List());
         }
 
@@ -46,6 +47,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Usuarios/Create
         public ActionResult Create()
         {
+            UpdateBag();
+
             return View();
         }
 
@@ -54,9 +57,17 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Login,Senha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Nome,Login,Senha,ConfirmaSenha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
         {
             UpdateBag();
+
+            usuario.DataCadastro = DateTime.Now;
+            usuario.UsuarioCadastro = ViewBag.UsuarioLogin;
+            usuario.DataAlteracao = DateTime.Now;
+            usuario.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(usuario);
 
             if (ModelState.IsValid)
             {
@@ -70,6 +81,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Usuarios/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -87,8 +100,16 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Login,Senha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Login,Senha,ConfirmaSenha,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Usuario usuario)
         {
+            UpdateBag();
+
+            usuario.DataAlteracao = DateTime.Now;
+            usuario.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(usuario);
+
             if (ModelState.IsValid)
             {
                 _usuarioService.Update(usuario);
@@ -100,6 +121,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Usuarios/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,6 +140,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Usuario usuario = _usuarioService.GetById(id);
             _usuarioService.Delete(usuario);
             return RedirectToAction("Index");

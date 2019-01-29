@@ -25,16 +25,22 @@ namespace GestaoClinicaEstetica.Application
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/FullCalendar/lib/moment.min.js",
                       "~/Scripts/jquery.mask.js",
                       "~/Scripts/select2.full.min.js",
-                      "~/Scripts/Datatables/datatables.min.js",
+                      "~/Scripts/toastr.min.js",
+                      "~/Scripts/Datatables/datatables.min.js",                      
+                      "~/Scripts/FullCalendar/fullcalendar.min.js",
+                      "~/Scripts/FullCalendar/locale/pt-br.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/select2.min.css",
+                      "~/Content/toastr.min.css",
                       "~/Scripts/Datatables/datatables.min.css",
+                      "~/Scripts/FullCalendar/fullcalendar.min.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/configuration").Include(                      

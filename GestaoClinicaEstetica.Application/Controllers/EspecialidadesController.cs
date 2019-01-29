@@ -25,6 +25,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades
         public ActionResult Index()
         {
+            UpdateBag();
             return View(_especialidadeService.List());
         }
 
@@ -46,6 +47,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades/Create
         public ActionResult Create()
         {
+            UpdateBag();
             return View();
         }
 
@@ -54,7 +56,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Descricao,TipoAtendimento,TempoAtendimentoPadrao,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Especialidade especialidade)
+        public ActionResult Create(Especialidade especialidade)
         {
             UpdateBag();
 
@@ -62,6 +64,9 @@ namespace GestaoClinicaEstetica.Application.Controllers
             especialidade.UsuarioCadastro = ViewBag.UsuarioLogin;
             especialidade.DataAlteracao = DateTime.Now;
             especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(especialidade);
 
             if (ModelState.IsValid)
             {
@@ -76,6 +81,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -94,8 +101,16 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Descricao,TipoAtendimento,TempoAtendimentoPadrao,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Especialidade especialidade)
+        public ActionResult Edit(Especialidade especialidade)
         {
+            UpdateBag();
+
+            especialidade.DataAlteracao = DateTime.Now;
+            especialidade.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(especialidade);
+
             if (ModelState.IsValid)
             {
                 _especialidadeService.Update(especialidade);
@@ -107,6 +122,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Especialidades/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -125,6 +142,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Especialidade especialidade = _especialidadeService.GetById(id);
             _especialidadeService.Delete(especialidade);
             

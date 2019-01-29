@@ -10,5 +10,7 @@ namespace GestaoClinicaEstetica.Domain.Entidades
     public class Profissional : PessoaFisicaBase
     {
         public virtual ICollection<Agenda> Compromissos { get; set; }
+        public virtual ICollection<EspecialidadePorProfissional> EspecialidadePorProfissional { get; set; }
+        public virtual ICollection<RecebimentoServicoPorCliente> Recebimentos { get; set; }
     }
 }

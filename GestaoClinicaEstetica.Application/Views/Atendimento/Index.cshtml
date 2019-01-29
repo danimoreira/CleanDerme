@@ -1,0 +1,66 @@
+﻿<div class="col-xs-12 col-md-12 col-sm-12 formulario-topo">
+    <p class="listagem-titulo">Atendimento</p>
+</div>
+
+
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+
+        <div class="row col-xs-12 col-md-12 col-sm-12">
+            <div class="form-group col-xs-9 col-md-9 col-sm-9">
+                <label class="control-label">Selecione um cliente:</label>
+                <select class="form-control" name="CodigoCliente" id="CodigoClientePesquisaAtendimento">
+                    <option value=""></option>
+                    @foreach (var item in ViewBag.ListaClientes)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-xs-3 col-md-3 col-sm-3 botao-pesquisar">
+                <a class="form-control btn botao-acao" onclick="atendimento.pesquisarAtendimentos();" name="PesquisarAtendimentos">Pesquisar</a>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 col-sm-12 hidden" id="groupAtendimentoCliente">
+
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <table class="table table-striped hover" id="AtendimentosCliente" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Profissional
+                            </th>
+                            <th>
+                                Especialidade
+                            </th>
+                            <th>
+                                Início Consulta
+                            </th>
+                            <th>
+                                Fim Consulta
+                            </th>
+                            <th>
+                                Atendimento
+                            </th>
+                            <th></th>
+                            <th class="hidden">Codigo Agenda</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+@Html.Partial("~/Views/Atendimento/_ModalAtendimento.cshtml")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

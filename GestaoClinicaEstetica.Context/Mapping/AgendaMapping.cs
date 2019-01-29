@@ -35,8 +35,19 @@ namespace GestaoClinicaEstetica.Context.Mapping
             Property(x => x.Procedimento)
                 .HasColumnName("PROCEDIMENTO");
 
-            Property(x => x.TipoConsulta)
-                .HasColumnName("TIP_CONSULTA");
+            Property(x => x.CodigoServico)
+                .HasColumnName("COD_SERVICO");
+
+            Property(x => x.ObservacaoPresenca)
+                .HasColumnName("OBS_PRESENCA");
+
+            Property(x => x.SituacaoPresenca)
+                .HasColumnName("SIT_PRESENCA");
+
+            Property(x => x.ObsAtendimento)
+                .HasColumnName("OBS_ATENDIMENTO")
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(5000);
 
             HasRequired<Cliente>(s => s.Cliente)
                 .WithMany(x => x.Compromissos)
@@ -52,6 +63,12 @@ namespace GestaoClinicaEstetica.Context.Mapping
                 .WithMany(x => x.Compromissos)
                 .HasForeignKey<int>(s => s.CodigoProfissional)
                 .WillCascadeOnDelete(true);
+
+            HasOptional<Servico>(s => s.Servico)
+                .WithMany(x => x.Agenda)
+                .HasForeignKey<int?>(s => s.CodigoServico)
+                .WillCascadeOnDelete(true);
+
         }
     }
 }

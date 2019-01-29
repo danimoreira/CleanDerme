@@ -25,6 +25,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clientes
         public ActionResult Index()
         {
+            UpdateBag();
             return View(_clienteService.List());
         }
 
@@ -46,6 +47,7 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clientes/Create
         public ActionResult Create()
         {
+            UpdateBag();
             return View();
         }
 
@@ -56,6 +58,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Cpf,DataNascimento,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Cliente cliente)
         {
+            UpdateBag();
+
             cliente.DataCadastro = DateTime.Now;
             cliente.UsuarioCadastro = ViewBag.UsuarioLogin;
             cliente.DataAlteracao = DateTime.Now;
@@ -76,6 +80,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clientes/Edit/5
         public ActionResult Edit(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -95,6 +101,14 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Cpf,DataNascimento,Nome,Endereco,Bairro,Cidade,Uf,Cep,TelefoneFixo,TelefoneCelular,Email,DataCadastro,UsuarioCadastro,DataAlteracao,UsuarioAlteracao")] Cliente cliente)
         {
+            UpdateBag();
+
+            cliente.DataAlteracao = DateTime.Now;
+            cliente.UsuarioAlteracao = ViewBag.UsuarioLogin;
+
+            ModelState.Clear();
+            TryValidateModel(cliente);
+
             if (ModelState.IsValid)
             {
                 _clienteService.Update(cliente);
@@ -106,6 +120,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         // GET: Clientes/Delete/5
         public ActionResult Delete(int? id)
         {
+            UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -123,6 +139,8 @@ namespace GestaoClinicaEstetica.Application.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            UpdateBag();
+
             Cliente cliente = _clienteService.GetById(id);
             _clienteService.Delete(cliente);
             

@@ -21,6 +21,17 @@ namespace GestaoClinicaEstetica.Context.Mapping
 
             Property(x => x.ValorServico)
                 .HasColumnName("VLR_SERVICO");
-    }
+
+            Property(x => x.QuantidadeSessoes)
+               .HasColumnName("QTD_SESSOES");
+
+            Property(x => x.CodigoEspecialidade)
+               .HasColumnName("COD_ESPECIALIDADE");
+
+            HasRequired<Especialidade>(x => x.Especialidade)
+                .WithMany(y => y.Servicos)
+                .HasForeignKey(g => g.CodigoEspecialidade)
+                .WillCascadeOnDelete(true);
+        }
     }
 }

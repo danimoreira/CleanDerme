@@ -17,6 +17,6 @@ namespace GestaoClinicaEstetica.Domain.Entidades.Base
         [Required(ErrorMessage = "Favor informar a Data de Nascimento.", AllowEmptyStrings = false)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data de Nascimento")]
-        public DateTime DataNascimento { get; set; }
+        public DateTime? DataNascimento { get; set; }
     }
 }

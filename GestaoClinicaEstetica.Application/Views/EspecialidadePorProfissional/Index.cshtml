@@ -1,0 +1,58 @@
+﻿<div class="col-xs-12 col-md-12 col-sm-12 formulario-topo">
+    <p class="listagem-titulo">Especialidades por Profissional</p>
+</div>
+
+<div class="row formulario-botoes">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+            @* <a class="btn botao-acao" href="@Url.Action("Index")"><i class="fa fa-undo"></i> Voltar</a>*@
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 text-right">
+            <a class="btn botao-acao botao-acao-salvar" onclick="especialidades.Salvar()"><i class="fa fa-save"></i> Salvar</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+
+        <input type="hidden" name="Id" value="" />
+        <input type="hidden" name="DataCadastro" value="" />
+        <input type="hidden" name="UsuarioCadastro" value="" />
+        <input type="hidden" name="DataAlteracao" value="" />
+        <input type="hidden" name="UsuarioAlteracao" value="" />
+
+        <div class="row col-xs-12 col-md-12 col-sm-12">
+
+            <div class="form-group col-xs-9 col-md-9 col-sm-9">
+                <label class="control-label">Selecione um profissional:</label>
+                <select class="form-control" name="CodProfissional" id="CodProfissional">
+                    <option value=""></option>
+                    @foreach (var item in ViewBag.ListaProfissional)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-xs-3 col-md-3 col-sm-3 botao-pesquisar">
+                <a class="form-control btn botao-acao" onclick="especialidades.PesquisarEspecialidades()" name="PesquisarEspecialidades">Pesquisar</a>
+            </div>
+        </div>
+
+        <div class="row col-xs-12 col-md-12 col-sm-12 hidden" id="groupEspecialidades">
+            <div class="col-xs-12 col-md-12 col-sm-12 text-left">
+                <h3>Especialidades</h3>
+            </div>
+
+            <div id="ItemEspecialidade">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,17 @@ namespace GestaoClinicaEstetica.Domain.Enums
 {
     public enum Periodicidade
     {
+        [Description("Avulso")]
         Avulso = 0,
-        Semanal = 1,
-        Mensal = 2,
-        Bimestral = 3,
-        Trimestral = 4,
-        Semestral  = 5,
-        Anual = 6           
+        [Description("Mensal")]
+        Mensal = 1,
+        [Description("Bimestral")]
+        Bimestral = 2,
+        [Description("Trimestral")]
+        Trimestral = 3,
+        [Description("Semestral")]
+        Semestral  = 6,
+        [Description("Anual")]
+        Anual = 12
     }
 }

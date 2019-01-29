@@ -49,17 +49,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgendaService.cs" />
-    <Compile Include="Services\AtendimentoService.cs" />
     <Compile Include="Services\Base\ServiceBase.cs" />
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ClinicaService.cs" />
-    <Compile Include="Services\EspecialidadePorServicoService.cs" />
+    <Compile Include="Services\DespesaService.cs" />
+    <Compile Include="Services\EspecialidadePorProfissionalService.cs" />
     <Compile Include="Services\EspecialidadeService.cs" />
-    <Compile Include="Services\EspecialidadesPorServicoPorClienteService.cs" />
-    <Compile Include="Services\PresencaService.cs" />
     <Compile Include="Services\ProfissionalService.cs" />
     <Compile Include="Services\RecebimentoServicoPorClienteService.cs" />
-    <Compile Include="Services\ServicoPorClienteService.cs" />
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>

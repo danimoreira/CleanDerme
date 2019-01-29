@@ -1,0 +1,92 @@
+﻿<div id="modalDespesas" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Adicionar despesas</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="form-inline">
+
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <label class="control-label label-obrigatorio">Descrição:</label>
+                                <input type="text" class="form-control" name="Descricao" required data-LabelError="Descrição da Despesa" />
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <label class="control-label label-obrigatorio">Fornecedor:</label>
+                                <input type="text" class="form-control" name="Fornecedor" required data-LabelError="Fornecedor" />
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Valor da Despesa:</label>
+                                <input type="text" class="form-control money2" name="ValorDespesa" required data-LabelError="Valor da Despesa" />
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Forma de Pagamento:</label>
+                                <select class="form-control" name="TipoPagamento" id="TipoPagamento" required data-LabelError="Forma de Pagamento">
+                                    <option value=""></option>
+                                    <option value="0">Dinheiro</option>
+                                    <option value="1">Cartão de Débito</option>
+                                    <option value="2">Cartão de Crédito</option>
+                                    <option value="3">Cheque</option>
+                                    <option value="4">Boleto</option>
+                                    <option value="5">TED/DOC</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs-6 col-sm-6 col-md-6">
+                                <label class="control-label label-obrigatorio">Periodicidade:</label>
+                                <br />
+                                <div class="col-xs-6 col-md-6 col-sm-6">
+                                    <label class="radio">
+                                        <input type="radio" class="chkPeriodicidade" name="Periodicidade" value="U" checked> Única
+                                    </label>
+                                </div>
+                                <div class="col-xs-6 col-md-6 col-sm-6">
+                                    <label class="radio">
+                                        <input type="radio" class="chkPeriodicidade" name="Periodicidade" value="R"> Recorrente
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6 clsPeriodoRecorrente">
+                                <label class="control-label label-obrigatorio">Quantidade de Meses:</label>
+                                <input type="number" class="form-control" name="QtdeMesesAgendarPagto" min="1" max="999" maxlength="3" required data-LabelError="Quantidade de Meses" />
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6">
+                                <label class="control-label label-obrigatorio">Data 1º Vencimento:</label>
+                                <input type="text" class="form-control date" name="PrimeiroVenctoAgendarPagto" required data-LabelError="Data de Vencimento" value="@DateTime.Now.ToString("dd/MM/yyyy")" />
+                            </div>
+
+                            <div class="form-group col-xs-6 col-md-6 col-sm-6 clsPeriodoRecorrente">
+                                <label class="control-label label-obrigatorio">Dia Vencimento:</label>
+                                <input type="number" class="form-control" name="DiaVenctoAgendarPagto" min="1" max="31" maxlength="2" required data-LabelError="Data de Pagamento" />
+                            </div>
+
+
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                                <label class="control-label">Dados Complementares</label>
+                                <textarea name="Observacao" class="form-control" rows="5"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="modalDespesa.adicionarDespesa()">Incluir Despesa</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

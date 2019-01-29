@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoClinicaEstetica.Services.Services
+namespace GestaoClinicaEstetica.Services
 {
     public class UsuarioService : ServiceBase<Usuario>, IUsuarioService
     {
@@ -17,6 +17,14 @@ namespace GestaoClinicaEstetica.Services.Services
         public UsuarioService(IUsuarioRepository repository) : base(repository)
         {
             _repository = repository;
+        }
+
+        public Usuario Logar(Usuario dados)
+        {
+            var retorno = _repository.List();
+
+            return retorno.Where(x => x.Login == dados.Login && x.Senha == dados.Senha).FirstOrDefault();
+
         }
     }
 }

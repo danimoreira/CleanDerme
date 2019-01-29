@@ -41,24 +41,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\AgendaDto.cs" />
+    <Compile Include="Dto\AgendarPagamentoDto.cs" />
+    <Compile Include="Dto\AniversarianteDto.cs" />
+    <Compile Include="Dto\DadosAtendimentoDto.cs" />
+    <Compile Include="Dto\DadosPresencaDto.cs" />
+    <Compile Include="Dto\EventosDto.cs" />
+    <Compile Include="Dto\RecebimentoClienteDto.cs" />
+    <Compile Include="Dto\SalvarAtendimentoDto.cs" />
+    <Compile Include="Dto\SalvarPresencaDto.cs" />
+    <Compile Include="Dto\ServicoDto.cs" />
     <Compile Include="Entidades\Agenda.cs" />
-    <Compile Include="Entidades\Atendimento.cs" />
     <Compile Include="Entidades\Base\EntidadeBase.cs" />
     <Compile Include="Entidades\Base\PessoaBase.cs" />
     <Compile Include="Entidades\Base\PessoaFisicaBase.cs" />
     <Compile Include="Entidades\Base\PessoaJuridicaBase.cs" />
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Clinica.cs" />
+    <Compile Include="Entidades\Despesa.cs" />
     <Compile Include="Entidades\Especialidade.cs" />
-    <Compile Include="Entidades\EspecialidadePorServico.cs" />
-    <Compile Include="Entidades\EspecialidadesPorServicoPorCliente.cs" />
+    <Compile Include="Entidades\EspecialidadePorProfissional.cs" />
     <Compile Include="Entidades\RecebimentoServicoPorCliente.cs" />
-    <Compile Include="Entidades\Presenca.cs" />
     <Compile Include="Entidades\Profissional.cs" />
-    <Compile Include="Entidades\ServicoPorCliente.cs" />
     <Compile Include="Entidades\Servico.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Enums\Periodicidade.cs" />
+    <Compile Include="Enums\SituacaoDespesa.cs" />
     <Compile Include="Enums\SituacaoPagamento.cs" />
     <Compile Include="Enums\SituacaoPresenca.cs" />
     <Compile Include="Enums\TipoAtendimento.cs" />
@@ -66,34 +74,33 @@
     <Compile Include="Enums\TipoPagamento.cs" />
     <Compile Include="Interfaces\Repository\Base\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repository\IAgendaRepository.cs" />
-    <Compile Include="Interfaces\Repository\IAtendimentoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClinicaRepository.cs" />
-    <Compile Include="Interfaces\Repository\IEspecialidadePorServicoRepository.cs" />
-    <Compile Include="Interfaces\Repository\IEspecialidadesPorServicoPorClienteRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDespesaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEspecialidadePorProfissionalRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadeRepository.cs" />
-    <Compile Include="Interfaces\Repository\IPresencaRepository.cs" />
     <Compile Include="Interfaces\Repository\IProfissionalRepository.cs" />
     <Compile Include="Interfaces\Repository\IRecebimentoServicoPorClienteRepository.cs" />
-    <Compile Include="Interfaces\Repository\IServicoPorClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Service\Base\IServiceBase.cs" />
     <Compile Include="Interfaces\Service\IAgendaService.cs" />
-    <Compile Include="Interfaces\Service\IAtendimentoService.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClinicaService.cs" />
-    <Compile Include="Interfaces\Service\IEspecialidadePorServicoService.cs" />
+    <Compile Include="Interfaces\Service\IDespesaService.cs" />
+    <Compile Include="Interfaces\Service\IEspecialidadePorProfissionalService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadeService.cs" />
-    <Compile Include="Interfaces\Service\IEspecialidadesPorServicoPorClienteService.cs" />
-    <Compile Include="Interfaces\Service\IPresencaService.cs" />
     <Compile Include="Interfaces\Service\IProfissionalService.cs" />
     <Compile Include="Interfaces\Service\IRecebimentoServicoPorClienteService.cs" />
-    <Compile Include="Interfaces\Service\IServicoPorClienteService.cs" />
     <Compile Include="Interfaces\Service\IServicoService.cs" />
     <Compile Include="Interfaces\Service\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoClinicaEstetica.Util\GestaoClinicaEstetica.Util.csproj">
+      <Project>{B966CE4F-F2CF-49CC-8E6E-F56A18033223}</Project>
+      <Name>GestaoClinicaEstetica.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

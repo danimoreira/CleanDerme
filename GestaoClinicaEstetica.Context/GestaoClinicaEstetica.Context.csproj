@@ -63,21 +63,18 @@
   <ItemGroup>
     <Compile Include="ClinicaContext.cs" />
     <Compile Include="Mapping\AgendaMapping.cs" />
-    <Compile Include="Mapping\AtendimentoMapping.cs" />
     <Compile Include="Mapping\Base\BaseMapping.cs" />
     <Compile Include="Mapping\Base\PessoaFisicaMapping.cs" />
     <Compile Include="Mapping\Base\PessoaJuridicaMapping.cs" />
     <Compile Include="Mapping\Base\PessoaMapping.cs" />
     <Compile Include="Mapping\ClienteMapping.cs" />
     <Compile Include="Mapping\ClinicaMapping.cs" />
+    <Compile Include="Mapping\DespesaMapping.cs" />
     <Compile Include="Mapping\EspecialidadeMapping.cs" />
-    <Compile Include="Mapping\EspecialidadePorServicoMapping.cs" />
-    <Compile Include="Mapping\EspecialidadesPorServicoPorClienteMapping.cs" />
-    <Compile Include="Mapping\PresencaMapping.cs" />
+    <Compile Include="Mapping\EspecialidadePorProfissionalMapping.cs" />
     <Compile Include="Mapping\ProfissionalMapping.cs" />
     <Compile Include="Mapping\RecebimentoServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\ServicoMapping.cs" />
-    <Compile Include="Mapping\ServicoPorClienteMapping.cs" />
     <Compile Include="Mapping\UsuarioMapping.cs" />
     <Compile Include="Migrations\201810082204519_criacao-banco.cs" />
     <Compile Include="Migrations\201810082204519_criacao-banco.Designer.cs">
@@ -90,6 +87,78 @@
     <Compile Include="Migrations\201810152314060_AlterTableClinica_alternameCNPJ.cs" />
     <Compile Include="Migrations\201810152314060_AlterTableClinica_alternameCNPJ.Designer.cs">
       <DependentUpon>201810152314060_AlterTableClinica_alternameCNPJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810172153025_alterTableEspecialidade_obrigatorios.cs" />
+    <Compile Include="Migrations\201810172153025_alterTableEspecialidade_obrigatorios.Designer.cs">
+      <DependentUpon>201810172153025_alterTableEspecialidade_obrigatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810172313214_alterTableUsuarios_definicao.cs" />
+    <Compile Include="Migrations\201810172313214_alterTableUsuarios_definicao.Designer.cs">
+      <DependentUpon>201810172313214_alterTableUsuarios_definicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.cs" />
+    <Compile Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.Designer.cs">
+      <DependentUpon>201810180026341_dropTable_EspecialidadePorServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.cs" />
+    <Compile Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.Designer.cs">
+      <DependentUpon>201810222340305_addTableEspecialidadePorProfissional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810252128380_ajusteEstruturaTabelas.cs" />
+    <Compile Include="Migrations\201810252128380_ajusteEstruturaTabelas.Designer.cs">
+      <DependentUpon>201810252128380_ajusteEstruturaTabelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260029589_addCodigoServicoAgenda.cs" />
+    <Compile Include="Migrations\201810260029589_addCodigoServicoAgenda.Designer.cs">
+      <DependentUpon>201810260029589_addCodigoServicoAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260040550_ajustePresencaPorAgenda.cs" />
+    <Compile Include="Migrations\201810260040550_ajustePresencaPorAgenda.Designer.cs">
+      <DependentUpon>201810260040550_ajustePresencaPorAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810260050589_ajustePresenca.cs" />
+    <Compile Include="Migrations\201810260050589_ajustePresenca.Designer.cs">
+      <DependentUpon>201810260050589_ajustePresenca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.cs" />
+    <Compile Include="Migrations\201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.Designer.cs">
+      <DependentUpon>201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810271419295_alterTableRecebimento_addFKs.cs" />
+    <Compile Include="Migrations\201810271419295_alterTableRecebimento_addFKs.Designer.cs">
+      <DependentUpon>201810271419295_alterTableRecebimento_addFKs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs" />
+    <Compile Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.Designer.cs">
+      <DependentUpon>201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.cs" />
+    <Compile Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.Designer.cs">
+      <DependentUpon>201811031541513_alterAgenda_addObsAtendimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811171058233_alterServico_addObrigatorios.cs" />
+    <Compile Include="Migrations\201811171058233_alterServico_addObrigatorios.Designer.cs">
+      <DependentUpon>201811171058233_alterServico_addObrigatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811171500037_alterServico_renameCodEspecialidade.cs" />
+    <Compile Include="Migrations\201811171500037_alterServico_renameCodEspecialidade.Designer.cs">
+      <DependentUpon>201811171500037_alterServico_renameCodEspecialidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.cs" />
+    <Compile Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.Designer.cs">
+      <DependentUpon>201811171556111_alterRecebimentos_nullableDtPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901032050412_AlterarCorEventosClinica.cs" />
+    <Compile Include="Migrations\201901032050412_AlterarCorEventosClinica.Designer.cs">
+      <DependentUpon>201901032050412_AlterarCorEventosClinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901232250490_incluirTabelaDespesa.cs" />
+    <Compile Include="Migrations\201901232250490_incluirTabelaDespesa.Designer.cs">
+      <DependentUpon>201901232250490_incluirTabelaDespesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901252130061_RetirarEmailObrigatorio.cs" />
+    <Compile Include="Migrations\201901252130061_RetirarEmailObrigatorio.Designer.cs">
+      <DependentUpon>201901252130061_RetirarEmailObrigatorio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +182,60 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810152314060_AlterTableClinica_alternameCNPJ.resx">
       <DependentUpon>201810152314060_AlterTableClinica_alternameCNPJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810172153025_alterTableEspecialidade_obrigatorios.resx">
+      <DependentUpon>201810172153025_alterTableEspecialidade_obrigatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810172313214_alterTableUsuarios_definicao.resx">
+      <DependentUpon>201810172313214_alterTableUsuarios_definicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810180026341_dropTable_EspecialidadePorServico.resx">
+      <DependentUpon>201810180026341_dropTable_EspecialidadePorServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810222340305_addTableEspecialidadePorProfissional.resx">
+      <DependentUpon>201810222340305_addTableEspecialidadePorProfissional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810252128380_ajusteEstruturaTabelas.resx">
+      <DependentUpon>201810252128380_ajusteEstruturaTabelas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260029589_addCodigoServicoAgenda.resx">
+      <DependentUpon>201810260029589_addCodigoServicoAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260040550_ajustePresencaPorAgenda.resx">
+      <DependentUpon>201810260040550_ajustePresencaPorAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810260050589_ajustePresenca.resx">
+      <DependentUpon>201810260050589_ajustePresenca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.resx">
+      <DependentUpon>201810271112597_alterTableEspecialidade_addPrcRepasseCorEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810271419295_alterTableRecebimento_addFKs.resx">
+      <DependentUpon>201810271419295_alterTableRecebimento_addFKs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810312141127_alterTableRecebimento_addEspecialidadeProfissional.resx">
+      <DependentUpon>201810312141127_alterTableRecebimento_addEspecialidadeProfissional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811031541513_alterAgenda_addObsAtendimento.resx">
+      <DependentUpon>201811031541513_alterAgenda_addObsAtendimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811171058233_alterServico_addObrigatorios.resx">
+      <DependentUpon>201811171058233_alterServico_addObrigatorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811171500037_alterServico_renameCodEspecialidade.resx">
+      <DependentUpon>201811171500037_alterServico_renameCodEspecialidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811171556111_alterRecebimentos_nullableDtPagamento.resx">
+      <DependentUpon>201811171556111_alterRecebimentos_nullableDtPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901032050412_AlterarCorEventosClinica.resx">
+      <DependentUpon>201901032050412_AlterarCorEventosClinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901232250490_incluirTabelaDespesa.resx">
+      <DependentUpon>201901232250490_incluirTabelaDespesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901252130061_RetirarEmailObrigatorio.resx">
+      <DependentUpon>201901252130061_RetirarEmailObrigatorio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
