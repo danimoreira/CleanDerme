@@ -1,10 +1,8 @@
 ﻿using GestaoClinicaEstetica.Domain.Interfaces.Repository;
 using GestaoClinicaEstetica.Domain.Interfaces.Service;
-using GestaoClinicaEstetica.Repository.Repository;
-using GestaoClinicaEstetica.Services.Services;
-using Ninject;
+using GestaoClinicaEstetica.Repository;
+using GestaoClinicaEstetica.Services;
 using Ninject.Modules;
-using Ninject.Web.Common;
 
 namespace GestaoClinicaEstetica.Ioc
 {
@@ -21,6 +19,7 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IServicoRepository>().To<ServicoRepository>();
             Bind<IUsuarioRepository>().To<UsuarioRepository>();
             Bind<IEspecialidadePorProfissionalRepository>().To<EspecialidadePorProfissionalRepository>();
+            Bind<IDespesaRepository>().To<DespesaRepository>();
 
             Bind<IAgendaService>().To<AgendaService>();
             Bind<IClienteService>().To<ClienteService>();
@@ -31,6 +30,7 @@ namespace GestaoClinicaEstetica.Ioc
             Bind<IServicoService>().To<ServicoService>();
             Bind<IUsuarioService>().To<UsuarioService>();
             Bind<IEspecialidadePorProfissionalService>().To<EspecialidadePorProfissionalService>();
+            Bind<IDespesaService>().To<DespesaService>();
         }        
     }
 }

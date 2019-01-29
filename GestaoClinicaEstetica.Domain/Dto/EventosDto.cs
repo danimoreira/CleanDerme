@@ -23,5 +23,6 @@ namespace GestaoClinicaEstetica.Domain.Dto
         public int TipoEvento { get; set; }
         public int CodigoCliente { get; set; }
         public int CodigoRecebimento { get; set; }
+        public int CodigoDespesa { get; set; }
     }
 }

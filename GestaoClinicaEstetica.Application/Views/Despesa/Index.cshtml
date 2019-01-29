@@ -1,0 +1,77 @@
+﻿<div class="col-xs-12 col-md-12 col-sm-12 formulario-topo">
+    <p class="listagem-titulo">Gerenciar Despesas</p>
+</div>
+
+<div class="row listagem-botoes">
+    <div class="col-xs-9 col-sm-9 col-md-9 text-left">
+        <div class="col-xs-10 col-sm-10 col-md-10 input-search">
+            <input type="text" class="form-control" name="txtPesquisarCliente" value="" />
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 group-icons-search">
+            <a class="icon-button icon-search" data-idTable="DespesasClinica" data-nameInput="txtPesquisarCliente" data-toggle="tooltip" title="Pesquisar" onclick="PesquisarDataTable(this)">
+                <i class="fa fa-search"></i>
+            </a>
+            <a class="icon-button icon-clear" data-idTable="DespesasClinica" data-nameInput="txtPesquisarCliente" data-toggle="tooltip" title="Limpar Pesquisa" onclick="LimparPesquisaDataTable(this)">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+
+    </div>
+</div>
+
+<div class="col-xs-12 col-md-12 col-sm-12 formulario-conteudo">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+
+        <input type="hidden" name="Id" value="" />
+        <input type="hidden" name="DataCadastro" value="" />
+        <input type="hidden" name="UsuarioCadastro" value="" />
+        <input type="hidden" name="DataAlteracao" value="" />
+        <input type="hidden" name="UsuarioAlteracao" value="" />
+
+        <div class="col-xs-12 col-md-12 col-sm-12">
+            <div class="col-xs-12 col-md-12 col-sm-12 text-right">
+                <a class="btn btn-primary" onclick="modalDespesa.abrirModal()" name="bntAdicionarDespesa"><i class="fa fa-dollar"></i> Adicionar despesas</a>
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <table class="table table-striped hover" id="DespesasClinica" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Descrição
+                            </th>
+                            <th>
+                                Data Venc.
+                            </th>
+                            <th>
+                                Vlr Devido
+                            </th>
+                            <th>
+                                Situação
+                            </th>
+                            <th>
+                                Data Pagto.
+                            </th>
+                            <th></th>
+                            <th class="hidden">Codigo Despesa</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@Html.Partial("~/Views/Despesa/_ModalDespesas.cshtml")
+@Html.Partial("~/Views/Despesa/_ModalLiquidarDespesa.cshtml")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

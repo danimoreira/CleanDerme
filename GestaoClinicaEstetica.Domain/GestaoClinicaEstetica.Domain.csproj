@@ -58,6 +58,7 @@
     <Compile Include="Entidades\Base\PessoaJuridicaBase.cs" />
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Clinica.cs" />
+    <Compile Include="Entidades\Despesa.cs" />
     <Compile Include="Entidades\Especialidade.cs" />
     <Compile Include="Entidades\EspecialidadePorProfissional.cs" />
     <Compile Include="Entidades\RecebimentoServicoPorCliente.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Entidades\Servico.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Enums\Periodicidade.cs" />
+    <Compile Include="Enums\SituacaoDespesa.cs" />
     <Compile Include="Enums\SituacaoPagamento.cs" />
     <Compile Include="Enums\SituacaoPresenca.cs" />
     <Compile Include="Enums\TipoAtendimento.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Interfaces\Repository\IAgendaRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClinicaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDespesaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadePorProfissionalRepository.cs" />
     <Compile Include="Interfaces\Repository\IEspecialidadeRepository.cs" />
     <Compile Include="Interfaces\Repository\IProfissionalRepository.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Interfaces\Service\IAgendaService.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClinicaService.cs" />
+    <Compile Include="Interfaces\Service\IDespesaService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadePorProfissionalService.cs" />
     <Compile Include="Interfaces\Service\IEspecialidadeService.cs" />
     <Compile Include="Interfaces\Service\IProfissionalService.cs" />
@@ -91,6 +95,12 @@
     <Compile Include="Interfaces\Service\IServicoService.cs" />
     <Compile Include="Interfaces\Service\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoClinicaEstetica.Util\GestaoClinicaEstetica.Util.csproj">
+      <Project>{B966CE4F-F2CF-49CC-8E6E-F56A18033223}</Project>
+      <Name>GestaoClinicaEstetica.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

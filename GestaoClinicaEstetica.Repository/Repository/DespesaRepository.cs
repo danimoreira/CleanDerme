@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GestaoClinicaEstetica.Repository
 {
-    public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository
+    public class DespesaRepository : RepositoryBase<Despesa>, IDespesaRepository
     {
     }
 }
